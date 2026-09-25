@@ -26,7 +26,7 @@ Recomendación:
 - En `sandbox`, podés usar como webhook:
 
 ```text
-https://asokopamdmuvuupywjzt.supabase.co/functions/v1/galiopay-webhook
+https://hnhzbuornnrhqiknzmsm.supabase.co/functions/v1/galiopay-webhook
 ```
 
 ## Deploy
