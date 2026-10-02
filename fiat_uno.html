@@ -2492,8 +2492,8 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
             <span>disponibles</span>
           </div>
         </div>
-        <div class="hero-car-featured reveal" style="margin-top:0.9rem; display:none;">
-          <video src="./assets/premios/uno-video-presentacion.mp4" autoplay muted loop playsinline preload="metadata" controlsList="nodownload noplaybackrate" disablePictureInPicture disableRemotePlayback oncontextmenu="return false;" style="width:100%;height:auto;max-height:62vh;display:block;object-fit:contain;background:var(--ink3);pointer-events:none;"></video>
+        <div class="hero-car-featured reveal" style="margin-top:0.9rem;">
+          <video src="./assets/premios/uno-video-presentacion1.mp4" autoplay muted loop playsinline preload="metadata" controlsList="nodownload noplaybackrate" disablePictureInPicture disableRemotePlayback oncontextmenu="return false;" style="width:100%;height:auto;max-height:62vh;display:block;object-fit:contain;background:var(--ink3);pointer-events:none;"></video>
         </div>
       </div>
 
@@ -3152,8 +3152,8 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://hnhzbuornnrhqiknzmsm.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_Uuyg_FHMRarp25b-tREQ6Q_YfhBzFy0';
+const SUPABASE_URL = 'https://asokopamdmuvuupywjzt.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_zBhxdMJHw_uy_m3uRDj-ng_0yXz42EN';
 const CAMPAIGN_SLUG = 'sorteo-fiat-uno';
 const MAX_FALLBACK_CHANCES = 5000;
 const FUNCTIONS_BASE_URL = `${SUPABASE_URL}/functions/v1`;
@@ -3168,9 +3168,7 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, 
 // guardan unos minutos en localStorage. Recargas / visitas repetidas dentro
 // del TTL no consultan Supabase. Las acciones que cambian datos (reserva,
 // pago aprobado, registrar resultado demo) fuerzan o actualizan la cache.
-// El proyecto forma parte de la clave para no reutilizar datos cacheados de
-// otra instancia de Supabase al migrar la landing.
-const CACHE_PREFIX = `fiat_cache_v2:${new URL(SUPABASE_URL).host}:`;
+const CACHE_PREFIX = 'fiat_cache_v1:';
 const CACHE_TTL_MS = {
   campaign: 10 * 60 * 1000,
   packages: 10 * 60 * 1000,
@@ -3207,7 +3205,7 @@ const DEFAULT_SHARE_TITLE = 'Gran Sorteo - Fiat Uno';
 const DEFAULT_SHARE_DESCRIPTION = 'Participa de este sorteo. ¡Últimas chances disponibles!';
 const COURSE_PAGE_PATH = './curso-guia-auto-argentina.html';
 const COURSE_MIN_ENTRIES = 3;
-const DRAW_TARGET_ISO = '2026-09-25T20:00:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
+const DRAW_TARGET_ISO = '2026-10-02T12:00:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
 
 let activeCampaign = null;
 let packages = [];
