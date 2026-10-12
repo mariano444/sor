@@ -3565,7 +3565,9 @@ async function uploadParticipantPhoto(file, phone) {
   
   const { error } = await supabaseClient.storage.from('participant-profiles').upload(filePath, fileToUpload, {
     cacheControl: '3600',
-    upsert: true
+    // El nombre incluye el teléfono y la marca de tiempo; no hace falta permitir sobrescrituras.
+    // Así la política de Storage puede conceder solo INSERT, sin SELECT/UPDATE anónimos.
+    upsert: false
   });
   
   if (error) throw error;
@@ -4658,28 +4660,40 @@ async function submitOrder(){
     if (error) throw error;
 
     if (selectedPaymentProvider === 'galiopay') {
-      const response = await fetch(buildFunctionUrl('galiopay-create-payment'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain;charset=UTF-8'
-        },
-        body: JSON.stringify({
-          order_id: data.order_id,
-          provider: 'galiopay',
-          landing_url: window.location.origin + window.location.pathname,
-          landing_origin: window.location.origin
-        })
-      });
+      // functions.invoke agrega los encabezados de Supabase (incluido apikey).
+      const { data: checkout, error: paymentError } = await supabaseClient.functions.invoke(
+        'galiopay-create-payment',
+        {
+          body: {
+            order_id: data.order_id,
+            provider: 'galiopay',
+            landing_url: window.location.origin + window.location.pathname,
+            landing_origin: window.location.origin
+          }
+        }
+      );
 
-      const checkout = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(checkout.error || 'No se pudo generar el link de pago de Galiopay.');
+      if (paymentError) {
+        let message = paymentError.message || 'No se pudo generar el link de pago de Galiopay.';
+        // Intenta mostrar el mensaje que devolvió la Edge Function, si existe.
+        try {
+          const response = paymentError.context;
+          if (response && typeof response.json === 'function') {
+            const details = await response.json();
+            message = details.error || details.message || message;
+          }
+        } catch (_) {
+          // Conservamos el mensaje original si la respuesta no contiene JSON.
+        }
+        throw new Error(message);
       }
 
-      if (checkout.checkout_url) {
-        window.location.href = checkout.checkout_url;
-        return;
+      if (!checkout?.checkout_url) {
+        throw new Error(checkout?.error || 'Galiopay no devolvió una URL de pago válida.');
       }
+
+      window.location.href = checkout.checkout_url;
+      return;
     }
 
     setModalOpen(false);
