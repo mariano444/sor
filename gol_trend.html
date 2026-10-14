@@ -3595,10 +3595,35 @@ async function prepareParticipantPhoto(file) {
   }
 }
 
+// Pre-procesa la foto (HEIC + compresion) apenas se elige, asi al confirmar
+// solo queda subirla y no se espera la conversion.
+let preparedPhotoCache = { file: null, promise: null };
+function warmParticipantPhoto(file) {
+  if (!file) { preparedPhotoCache = { file: null, promise: null }; return; }
+  const promise = prepareParticipantPhoto(file);
+  promise.catch(() => {}); // el error real se reporta al confirmar, como antes
+  preparedPhotoCache = { file, promise };
+}
+function getPreparedParticipantPhoto(file) {
+  if (preparedPhotoCache.file === file && preparedPhotoCache.promise) return preparedPhotoCache.promise;
+  return prepareParticipantPhoto(file);
+}
+
+// Precalienta la conexion y la funcion de pago al abrir el modal, para evitar
+// el arranque en frio y el handshake TLS justo al tocar "Confirmar y pagar".
+let checkoutWarmedAt = 0;
+function warmCheckoutEndpoint() {
+  if (Date.now() - checkoutWarmedAt < 120000) return;
+  checkoutWarmedAt = Date.now();
+  try {
+    fetch(buildFunctionUrl('galiopay-create-payment'), { method: 'OPTIONS', mode: 'cors' }).catch(() => {});
+  } catch (_) {}
+}
+
 async function uploadParticipantPhoto(file, phone) {
   if (!file) return null;
 
-  const prepared = await prepareParticipantPhoto(file);
+  const prepared = await getPreparedParticipantPhoto(file);
   // No publicar teléfonos en la URL de las fotos: el nombre aleatorio evita
   // exponer el dato personal en listados y registros públicos de Storage.
   const randomId = (window.crypto && typeof crypto.randomUUID === 'function')
@@ -4576,6 +4601,7 @@ function openModal(pkgId){
   updatePhotoPreview(null);
   updateMessagePreview();
   selectPaymentProvider('galiopay');
+  warmCheckoutEndpoint();
   setModalOpen(true);
 }
 
@@ -4613,6 +4639,7 @@ document.getElementById('f-message').addEventListener('input', updateMessagePrev
 document.getElementById('f-photo').addEventListener('change', (event) => {
   const [file] = event.target.files || [];
   selectedPhotoFile = file || null;
+  warmParticipantPhoto(selectedPhotoFile);
   updatePhotoPreview(selectedPhotoFile);
 });
 document.getElementById('opinionModalClose').onclick = () => document.getElementById('opinionModal').classList.remove('open');
