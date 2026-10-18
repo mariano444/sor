@@ -2599,9 +2599,9 @@ display_name: 'Julio Acevedo',
 full_name: 'Julio Acevedo',
 participant_public_code: 'Julio Acevedo',
 
-saved_at: '2026-10-17T23:51:00-03:00',
-claim_submitted_at: '2026-10-17T23:59:05-03:00',
-delivery_confirmed_at: '2026-10-18T00:04:00-03:00',
+saved_at: '2026-10-17T22:51:00-03:00',
+claim_submitted_at: '2026-10-17T22:59:05-03:00',
+delivery_confirmed_at: '2026-10-17T23:08:00-03:00',
 
 delivery_status: 'delivered',
 delivery_status_label: 'Premio Verificado',
@@ -2614,15 +2614,19 @@ public_announcement: 'El sorteo se realizó de forma automática e imparcial.',
 video_data_url: './oficialt.mp4'
 };
 
+
 function formatDateTime(value) {
   return new Date(value).toLocaleString('es-AR', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
-  });
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'America/Argentina/Buenos_Aires'
+  }).replace('a. m.', 'AM').replace('p. m.', 'PM');
 }
+
 
 function renderWinnerModal(result) {
   document.body.classList.add('has-official-winner', 'modal-open');
