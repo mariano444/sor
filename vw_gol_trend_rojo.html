@@ -2628,6 +2628,27 @@ footer strong{color:#fff!important}
 .video-copy .section-tag *{color:#E8D5A5!important}
 .gallery-item-new{aspect-ratio:auto!important;height:auto!important;min-height:0}
 .gallery-item-new:nth-child(1){align-self:stretch}
+
+/* Recorrido en video: selector de capítulos */
+.video-frame{width:min(430px,88vw)!important;aspect-ratio:4/5!important;border-radius:30px!important}
+.video-frame video{border-radius:22px!important}
+.video-chip em{font-style:normal}
+.video-note{margin:.9rem auto 0;max-width:430px;text-align:center;font-size:.78rem;color:#D9C9CA;opacity:.85}
+.tour-tabs{display:grid;gap:.75rem;margin:0 0 1.8rem}
+.tour-tab{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.9rem;width:100%;text-align:left;padding:1rem 1.1rem 1.2rem;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;font-family:var(--font-body);cursor:pointer;overflow:hidden;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .25s,border-color .25s,transform .25s}
+.tour-tab:hover{background:rgba(255,255,255,.09);transform:translateX(3px)}
+.tour-tab.is-active{background:rgba(255,255,255,.12);border-color:rgba(232,213,165,.7);box-shadow:0 0 0 4px rgba(176,141,74,.12)}
+.tour-num{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;font-weight:800;font-size:.9rem;color:#E8D5A5;border:1px solid rgba(232,213,165,.5)}
+.tour-tab.is-active .tour-num{background:linear-gradient(145deg,#E8D5A5,#B08D4A);color:#150F10;border-color:transparent}
+.tour-txt{display:grid;gap:.15rem}
+.tour-txt b{font-size:1.05rem;font-weight:800;color:#fff}
+.tour-txt small{font-size:.85rem;color:#D9C9CA}
+.tour-prog{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.1)}
+.tour-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#E8D5A5,#fff)}
+.video-stage{flex-direction:column!important;align-items:center}
+.video-frame{flex:none}
+.video-copy .section-tag>*:first-child{color:#E8D5A5!important}
+.video-frame video{position:absolute;inset:9px;width:calc(100% - 18px)!important;height:calc(100% - 18px)!important}
 /* Modal y avisos */
 .modal-overlay{background:rgba(21,15,16,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .modal{background:var(--paper);color:var(--txt);border:1px solid var(--line);border-radius:24px;box-shadow:0 40px 90px -20px rgba(21,15,16,.55)}
@@ -2833,6 +2854,66 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 </div>
 
 <!-- PACKAGES -->
+<section id="video" class="video-section">
+  <div class="video-wrap">
+    <div class="video-copy reveal">
+      <span class="section-tag">🎥 Recorrido en video</span>
+      <h2 class="section-title">Conocelo <span>por fuera y por dentro</span></h2>
+      <p class="section-sub">Dos recorridos cortos por la carrocería y el habitáculo del Volkswagen Gol Trend. Elegí qué querés ver.</p>
+      <div class="tour-tabs" role="tablist">
+        <button type="button" class="tour-tab is-active" role="tab" data-i="0" aria-selected="true">
+          <span class="tour-num">01</span>
+          <span class="tour-txt"><b>Exterior</b><small>Frente, lateral y pintura · 0:04</small></span>
+          <span class="tour-prog"><i></i></span>
+        </button>
+        <button type="button" class="tour-tab" role="tab" data-i="1" aria-selected="false">
+          <span class="tour-num">02</span>
+          <span class="tour-txt"><b>Interior</b><small>Tablero, butacas y comandos · 0:05</small></span>
+          <span class="tour-prog"><i></i></span>
+        </button>
+      </div>
+      <a class="btn-primary" href="#paquetes">¡Quiero mis chances!</a>
+    </div>
+    <div class="video-stage reveal" style="transition-delay:.12s">
+      <div class="video-frame" id="gpFrame">
+        <video id="gpVideo" src="./assets/premios/gol-trend-rojo-exterior.mp4" poster="./assets/premios/gol-trend-rojo-exterior-poster.jpg" muted playsinline preload="metadata" aria-label="Recorrido en video del Volkswagen Gol Trend"></video>
+        <span class="video-chip"><i></i><em id="gpLabel">Exterior</em></span>
+        <button type="button" class="video-sound" id="gpSound" aria-label="Activar sonido">🔇</button>
+        <button type="button" class="video-play" id="gpPlay" aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <p class="video-note">Video ilustrativo generado a partir de las fotos del vehículo.</p>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var clips=[
+    {src:'./assets/premios/gol-trend-rojo-exterior.mp4',poster:'./assets/premios/gol-trend-rojo-exterior-poster.jpg',label:'Exterior'},
+    {src:'./assets/premios/gol-trend-rojo-recorrido-interior.mp4',poster:'./assets/premios/gol-trend-rojo-recorrido-interior-poster.jpg',label:'Interior'}
+  ];
+  var v=document.getElementById('gpVideo'),f=document.getElementById('gpFrame'),pb=document.getElementById('gpPlay'),sb=document.getElementById('gpSound'),lb=document.getElementById('gpLabel');
+  if(!v)return;
+  var tabs=[].slice.call(document.querySelectorAll('.tour-tab')),cur=0,userPaused=false;
+  function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  function ui(){f.classList.toggle('is-paused',v.paused);sb.textContent=v.muted?'🔇':'🔊';}
+  function setTab(i){cur=i;tabs.forEach(function(t,k){var on=k===i;t.classList.toggle('is-active',on);t.setAttribute('aria-selected',on);t.querySelector('i').style.width=on?'0%':'0%';});lb.textContent=clips[i].label;}
+  function load(i,auto){setTab(i);v.src=clips[i].src;v.poster=clips[i].poster;v.load();if(auto)play();}
+  tabs.forEach(function(t){t.addEventListener('click',function(){userPaused=false;load(+t.dataset.i,true);});});
+  function toggle(){if(v.paused){userPaused=false;play();}else{userPaused=true;v.pause();}}
+  pb.addEventListener('click',toggle);v.addEventListener('click',toggle);
+  sb.addEventListener('click',function(){v.muted=!v.muted;ui();});
+  v.addEventListener('play',ui);v.addEventListener('pause',ui);
+  v.addEventListener('timeupdate',function(){if(v.duration)tabs[cur].querySelector('i').style.width=(v.currentTime/v.duration*100)+'%';});
+  v.addEventListener('ended',function(){tabs[cur].querySelector('i').style.width='100%';load((cur+1)%clips.length,true);});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!userPaused)play();else if(!e.isIntersecting)v.pause();
+    });},{threshold:.5}).observe(f);
+  }
+  ui();
+})();
+</script>
+
 <section id="paquetes" class="packages-section">
   <div class="section-inner">
     <span class="section-tag">💎 Elegí tu pack</span>
