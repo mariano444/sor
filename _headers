@@ -1,0 +1,5 @@
+# Netlify / Cloudflare Pages: caché larga para fotos y videos (los HTML siempre se revalidan)
+/media/*
+  Cache-Control: public, max-age=2592000, immutable
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
