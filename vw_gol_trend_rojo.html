@@ -482,7 +482,7 @@ img,video,canvas{max-width:100%}
 
   <div class="hora" id="hora" role="timer" aria-live="off">
     <div class="hora-l"><span class="flame" aria-hidden="true">🔥</span>
-      <div><b>HORA DE LA SUERTE</b><small id="horaReset">Se reinicia en punto</small></div></div>
+      <div><b>HORA DE LA SUERTE</b></div></div>
     <div class="hora-c" aria-label="Tiempo restante de esta hora"><div class="dg"><i id="hM">00</i><u>MIN</u></div><span class="sep">:</span><div class="dg"><i id="hS">00</i><u>SEG</u></div></div>
     <div class="hora-r" id="horaMsg"></div>
     <div class="hbar"><i id="hBar"></i></div>
@@ -604,7 +604,7 @@ img,video,canvas{max-width:100%}
 <footer>
   <div class="wrap">
     <p><strong>+18 · Juego responsable.</strong> Jugar implica riesgo de perder el dinero apostado. Jugá solo con dinero que puedas permitirte perder. Si sentís que el juego deja de ser un entretenimiento, pedí ayuda.</p>
-    <p id="licenseTxt" style="margin-top:8px; display:none;"></p>
+    <p id="licenseTxt" style="margin-top:8px"></p>
   </div>
 </footer>
 
@@ -1569,15 +1569,17 @@ function shareText(res) {
 }
 
 /* ---- HORA DE LA SUERTE: contador que se reinicia cada hora + premios REALES de la hora ---- */
+const HORA_DEMO = DEMO || new URLSearchParams(location.search).has('demo');
 let horaWinners = null, horaTimer = null, lastHour = Math.floor(Date.now() / 3600000);
 function horaMsg() {
   const el = $('#horaMsg'); if (!el) return;
   if (horaWinners === null) { el.textContent = ''; return; }
-  if (horaWinners > 0) el.innerHTML = `<span class="live"></span><em>${horaWinners}</em> ${horaWinners === 1 ? 'jugador ganó' : 'jugadores ganaron'} un premio en esta hora`;
+  const tag = HORA_DEMO ? ' <small style="opacity:.6;font-size:10px;letter-spacing:.12em;border:1px solid currentColor;border-radius:6px;padding:1px 5px">DEMO</small>' : '';
+  if (horaWinners > 0) el.innerHTML = `<span class="live"></span><em>${horaWinners}</em> ${horaWinners === 1 ? 'jugador ganó' : 'jugadores ganaron'} un premio en esta hora${tag}`;
   else el.innerHTML = '<span class="live"></span>Todavía no hubo premios en esta hora: <em>¡podés ser el primero!</em>';
 }
 async function horaFetch() {
-  if (DEMO) { horaWinners = 0; horaMsg(); return; }
+  if (HORA_DEMO) { horaWinners = 1 + Math.floor(Math.random() * 50); horaMsg(); return; }   // demostración: número al azar entre 1 y 50
   try { const { data } = await sb.rpc('get_hour_stats'); if (data && typeof data.winners === 'number') { horaWinners = data.winners; horaMsg(); } } catch {}
 }
 function horaTick() {
@@ -1587,9 +1589,8 @@ function horaTick() {
   $('#hora').classList.toggle('last', ms <= 60000);
   const hr = Math.floor(Date.now() / 3600000);
   if (hr !== lastHour) { lastHour = hr; horaWinners = 0; horaMsg(); horaFetch(); confetti(40); toast('🔥 ¡Empezó una nueva Hora de la Suerte!', 3500); }
-  const nx = new Date(Date.now() + ms); $('#horaReset').textContent = 'Se reinicia a las ' + String(nx.getHours()).padStart(2, '0') + ':00';
 }
-function horaStart() { horaTick(); clearInterval(horaTimer); horaTimer = setInterval(horaTick, 1000); horaFetch(); setInterval(horaFetch, 30000); }
+function horaStart() { horaTick(); clearInterval(horaTimer); horaTimer = setInterval(horaTick, 1000); horaFetch(); setInterval(horaFetch, HORA_DEMO ? 4000 : 30000); }
 /* ====================== RECLAMO DE PREMIO ====================== */
 let claimingCode = null, claimPhotoData = null;
 function renderClaims() {
