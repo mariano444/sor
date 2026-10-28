@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Mega — Girá y ganá hasta $20.000.000</title>
-<meta name="description" content="Un tiro, diez premios. Comprá tu ficha por transferencia con Galiopay y girá la Mega Ruleta.">
+<title>Mega Giro — Girá y ganá hasta $20.000.000</title>
+<meta name="description" content="Un tiro, diez premios. Comprá tu ficha por transferencia con Galiopay y jugá en Mega Giro.">
 <meta name="theme-color" content="#0a0508">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://pay.galio.app" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
@@ -365,11 +368,11 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div id="demoBar" class="demo" hidden style="display:none;">MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
+<div id="demoBar" class="demo" hidden>MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
 
 <header>
   <div class="wrap">
-    <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".5" stop-color="#f5c542"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><circle cx="16" cy="16" r="14" fill="none" stroke="url(#lg)" stroke-width="2.4"/><circle cx="16" cy="16" r="3.2" fill="url(#lg)"/><g stroke="url(#lg)" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M7.5 7.5l4.2 4.2M20.3 20.3l4.2 4.2M24.5 7.5l-4.2 4.2M11.7 20.3l-4.2 4.2"/></g></svg>MEGA</div>
+    <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".5" stop-color="#f5c542"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><circle cx="16" cy="16" r="14" fill="none" stroke="url(#lg)" stroke-width="2.4"/><circle cx="16" cy="16" r="3.2" fill="url(#lg)"/><g stroke="url(#lg)" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M7.5 7.5l4.2 4.2M20.3 20.3l4.2 4.2M24.5 7.5l-4.2 4.2M11.7 20.3l-4.2 4.2"/></g></svg>MEGA GIRO</div>
     <nav class="nav" aria-label="Secciones"><a href="#premios">Premios</a><a href="#como">Cómo funciona</a><a href="#ganadores">Ganadores</a><a href="#faq">Preguntas</a></nav>
     <div class="hdr-right">
       <div class="chip">🎟️ Fichas: <b id="tokCount">0</b></div>
@@ -455,7 +458,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
   <section class="block reveal" id="autoShow" hidden>
     <div class="carshow">
       <div class="carframe vidmode">
-        <video id="vidA" class="cv on" muted loop playsinline preload="metadata" poster="media/gol-trend-exterior.jpg"><source src="media/gol-trend-exterior.mp4" type="video/mp4"></video>
+        <video id="vidA" class="cv on" muted loop playsinline preload="none" poster="media/gol-trend-exterior.jpg"><source src="media/gol-trend-exterior.mp4" type="video/mp4"></video>
         <video id="vidB" class="cv" muted loop playsinline preload="none" poster="media/gol-trend-interior.jpg"><source src="media/gol-trend-interior.mp4" type="video/mp4"></video>
         <img id="carImg" alt="Volkswagen Gol Trend rojo" decoding="async" hidden>
         <div class="vtabs" role="tablist"><button type="button" role="tab" class="on" data-v="vidA" aria-selected="true">🚗 Exterior</button><button type="button" role="tab" data-v="vidB" aria-selected="false">🪑 Interior</button></div>
@@ -490,7 +493,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
   <section class="block reveal" id="ganadores" hidden>
     <span class="eyebrow">GANADORES</span>
     <h3>NUESTROS GANADORES</h3>
-    <p class="sub">Personas que ya giraron la ruleta y se llevaron su premio.</p>
+    <p class="sub">Personas que ya giraron y se llevaron su premio.</p>
     <div class="wgrid" id="wGrid"></div>
   </section>
 
@@ -498,7 +501,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
     <span class="eyebrow">AYUDA</span>
     <h3>PREGUNTAS FRECUENTES</h3>
     <details><summary>¿Cómo se decide el premio?</summary><p>Al girar, el servidor sortea el resultado con un generador aleatorio criptográfico y recién después la rueda se anima hasta ese gajo. La animación es solo visual: no se puede influir en el resultado.</p></details>
-    <details><summary>¿Cuál es la diferencia entre los packs?</summary><p>Cada ficha es un giro de la ruleta. El pack de 3 fichas tiene un precio menor por giro que comprar fichas de a una.</p></details>
+    <details><summary>¿Cuál es la diferencia entre los packs?</summary><p>Cada ficha es un giro. El pack de 3 fichas tiene un precio menor por giro que comprar fichas de a una.</p></details>
     <details><summary>¿Cuándo se acreditan mis fichas?</summary><p>Apenas se confirma tu transferencia. La pantalla se actualiza sola; si cerrás la página, tus fichas quedan guardadas en este dispositivo.</p></details>
     <details><summary>¿Cómo cobro mi premio?</summary><p>Después de ganar tocá “Reclamar mi premio” y completá tu nombre, apellido y una foto de perfil. Validamos tus datos y coordinamos el pago o la entrega por teléfono o WhatsApp.</p></details>
     <details><summary>¿Qué pasa con “Otro tiro”?</summary><p>Se acredita una ficha gratis en tu cuenta al instante y podés girar de nuevo.</p></details>
@@ -508,7 +511,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
 <footer>
   <div class="wrap">
     <p><strong>+18 · Juego responsable.</strong> Jugar implica riesgo de perder el dinero apostado. Jugá solo con dinero que puedas permitirte perder. Si sentís que el juego deja de ser un entretenimiento, pedí ayuda.</p>
-    <p id="licenseTxt" style="margin-top:8px; display:none;"></p>
+    <p id="licenseTxt" style="margin-top:8px"></p>
   </div>
 </footer>
 
@@ -630,10 +633,24 @@ async function loadWheel() {
     const total = DEMO_PRIZES.reduce((s, p) => s + p.w, 0);
     prizes = DEMO_PRIZES.map(p => ({ ...p, probability: p.w / total }));
   } else {
-    const { data, error } = await sb.rpc('get_wheel');
-    if (error || !data || !data.length) { toast('No se pudo cargar la ruleta. Reintentá en unos segundos.'); return; }
-    prizes = data.map(p => ({ ...p, amount: Number(p.amount) }));
+    const cached = store.get('mr_c_wheel', null);
+    const get = async () => { const { data, error } = await sb.rpc('get_wheel'); return (error || !data || !data.length) ? null : data; };
+    if (Array.isArray(cached) && cached.length && !window._wheelCached) {      // render instantáneo con los premios guardados
+      window._wheelCached = true;
+      applyWheel(cached);
+      get().then(d => { if (d) { store.set('mr_c_wheel', d); if (JSON.stringify(d) !== JSON.stringify(cached)) { applyWheel(d); try { renderHero(); } catch {} } } });
+      return;
+    }
+    const data = await get();
+    if (!data) { toast('No se pudo cargar el juego. Reintentá en unos segundos.'); return; }
+    store.set('mr_c_wheel', data);
+    applyWheel(data); return;
   }
+  prizes.sort((a, b) => a.position - b.position);
+  renderPrizes(); renderCarShow();
+}
+function applyWheel(data) {
+  prizes = data.map(p => ({ ...p, amount: Number(p.amount) }));
   prizes.sort((a, b) => a.position - b.position);
   renderPrizes(); renderCarShow();
 }
@@ -1145,10 +1162,20 @@ async function loadWinners() {
 /* ====================== PACKS ====================== */
 const minPerSpin = () => packs.length ? Math.min(...packs.map(k => k.price / k.qty)) : 0;
 async function loadPacks() {
-  let list = null;
-  if (!DEMO) {
-    try { const { data, error } = await sb.rpc('get_packs'); if (error) console.warn('get_packs:', error.message); else if (Array.isArray(data) && data.length) list = data; } catch {}
+  const cached = DEMO ? null : store.get('mr_c_packs', null);
+  const fresh = (async () => {
+    if (DEMO) return null;
+    try { const { data, error } = await sb.rpc('get_packs'); if (error) console.warn('get_packs:', error.message); else if (Array.isArray(data) && data.length) { store.set('mr_c_packs', data); return data; } } catch {}
+    return null;
+  })();
+  if (Array.isArray(cached) && cached.length) {             // pinta al instante con lo guardado y actualiza por detrás
+    applyPacks(cached);
+    fresh.then(l => { if (l && JSON.stringify(l) !== JSON.stringify(cached)) applyPacks(l); });
+    return;
   }
+  applyPacks(await fresh);
+}
+function applyPacks(list) {
   packs = (list || DEMO_PACKS).map(k => ({ id: String(k.id), label: String(k.label), qty: Number(k.qty), price: Number(k.price), badge: k.badge || null }));
   const keep = store.get('mr_pack', null);
   selPack = packs.find(k => k.id === keep) || packs.slice().sort((a, b) => b.qty - a.qty)[0] || null;   // por defecto el pack más conveniente
@@ -1164,7 +1191,7 @@ function renderPacks() {
     const dot = document.createElement('span'); dot.className = 'dot';
     const mid = document.createElement('span'); mid.className = 'pmid';
     const t = document.createElement('b'); t.textContent = k.label;
-    const sub = document.createElement('small'); sub.textContent = k.qty > 1 ? `${fmt(Math.round(k.price / k.qty))} por ficha` : '1 giro de la ruleta';
+    const sub = document.createElement('small'); sub.textContent = k.qty > 1 ? `${fmt(Math.round(k.price / k.qty))} por ficha` : '1 giro';
     mid.append(t, sub);
     const pr = document.createElement('span'); pr.className = 'pprice'; pr.textContent = fmt(k.price);
     lab.append(inp, dot, mid, pr);
@@ -1206,6 +1233,7 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reduceMotion) {
 
 /* ====================== COMPRA ====================== */
 let pollTimer = null, pollUntil = 0;
+function stopPoll() { clearTimeout(pollTimer); pollTimer = null; }
 const openModal = id => $(id).classList.add('on');
 const closeModal = id => $(id).classList.remove('on');
 
@@ -1232,25 +1260,36 @@ function showPayModal(info, returning = false) {
 }
 
 function startPolling(ref) {
-  clearInterval(pollTimer); pollUntil = Date.now() + 30 * 60 * 1000;
+  clearTimeout(pollTimer); pollTimer = 1; pollUntil = Date.now() + 30 * 60 * 1000;
   const tick = async () => {
-    if (Date.now() > pollUntil) { clearInterval(pollTimer); return; }
+    if (Date.now() > pollUntil) { stopPoll(); return; }
     try {
       const { data } = await sb.rpc('get_payment_status', { p_reference: ref });
       if (data && data.status === 'paid') {
-        clearInterval(pollTimer); store.del('mr_pending');
+        stopPoll(); store.del('mr_pending');
         const codes = Array.isArray(data.token_codes) ? data.token_codes : [];
         codes.forEach(c => { if (!tokens.includes(c)) tokens.push(c); });
         saveTokens(); closeModal('#payModal'); sfx.ok(); confetti(70);
         toast(codes.length > 1 ? `¡${codes.length} fichas acreditadas! Ya podés girar 🎰` : '¡Ficha acreditada! Ya podés girar 🎰');
         $('#wheelWrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (data && (data.status === 'rejected' || data.status === 'expired')) {
-        clearInterval(pollTimer); store.del('mr_pending'); closeModal('#payModal'); toast('El pago fue rechazado o expiró.');
+        stopPoll(); store.del('mr_pending'); closeModal('#payModal'); toast('El pago fue rechazado o expiró.');
       }
     } catch {}
   };
-  pollTimer = setInterval(tick, 4000); tick();
+  // sondeo rápido (1,5 s) los primeros 3 minutos y luego cada 4 s; chequea al instante al volver a la pestaña
+  const t0 = Date.now(); let busy = false;
+  const loop = async () => {
+    if (!pollTimer) return;
+    if (!busy) { busy = true; await tick(); busy = false; }
+    if (pollTimer) pollTimer = setTimeout(loop, Date.now() - t0 < 180000 ? 1500 : 4000);
+  };
+  pollTimer = setTimeout(loop, 0);
+  window._pollNow = () => { if (pollTimer && !busy) { busy = true; tick().finally(() => { busy = false; }); } };
 }
+document.addEventListener('visibilitychange', () => { if (!document.hidden && window._pollNow) window._pollNow(); });
+addEventListener('pageshow', () => { if (window._pollNow) window._pollNow(); });
+addEventListener('focus', () => { if (window._pollNow) window._pollNow(); });
 
 function validate() {
   const name = $('#fName').value.trim(), phone = $('#fPhone').value.trim();
@@ -1289,7 +1328,7 @@ async function buy(e) {
       }
       store.set('mr_pending', info);
       showPayModal(info); startPolling(info.reference);
-      if (info.checkout_url) setTimeout(() => location.assign(info.checkout_url), 1300);   // redirección automática a Galiopay
+      if (info.checkout_url) setTimeout(() => location.assign(info.checkout_url), 250);   // redirección automática a Galiopay
     }
   } catch { $('#buyErr').textContent = 'Error de conexión. Intentá de nuevo.'; }
   finally { btn.disabled = false; }
@@ -1431,7 +1470,7 @@ function coinRain(n = 40) {
 }
 function flashScreen() { if (reduceMotion) return; const f = document.createElement('div'); f.className = 'flash'; document.body.append(f); setTimeout(() => f.remove(), 1000); }
 function shareText(res) {
-  return `🎰 ¡Gané ${res.label} en Mega Ruleta! Probá tu suerte vos también: ${location.origin}${location.pathname}`;
+  return `🎰 ¡Gané ${res.label} en Mega Giro! Probá tu suerte vos también: ${location.origin}${location.pathname}`;
 }
 
 /* ====================== RECLAMO DE PREMIO ====================== */
@@ -1537,7 +1576,7 @@ paintSound();
   const back = new URLSearchParams(location.search).get('pago');       // ?pago=ok | ?pago=error (vuelta desde Galiopay)
   if (back) history.replaceState(null, '', location.pathname);
   if (pending && !DEMO) {
-    if (back === 'error') { clearInterval(pollTimer); store.del('mr_pending'); toast('El pago no se completó. Podés intentarlo de nuevo.', 5000); }
+    if (back === 'error') { stopPoll(); store.del('mr_pending'); toast('El pago no se completó. Podés intentarlo de nuevo.', 5000); }
     else { showPayModal(pending, true); startPolling(pending.reference); }
   }
 })();
