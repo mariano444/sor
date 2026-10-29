@@ -2836,7 +2836,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <section id="video" class="video-section">
   <div class="video-wrap">
     <div class="video-copy reveal">
-      <span class="section-tag">🎥 Video del auto</span>
+      <span class="section-tag">🎥 Video real del auto</span>
       <h2 class="section-title">Miralo <span>en movimiento</span></h2>
       <p class="section-sub">Así es el Volkswagen Gol Power que se sortea: un recorrido real, sin filtros, por el frente, el lateral y los detalles de la carrocería.</p>
       <ul class="video-points">
@@ -2849,7 +2849,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
     <div class="video-stage reveal" style="transition-delay:.12s">
       <div class="video-frame" id="gpVideoFrame">
         <video id="gpVideo" src="./assets/premios/gol-power-video.mp4" poster="./assets/premios/gol-power-video-poster.jpg" muted loop playsinline preload="metadata" aria-label="Recorrido en video del Volkswagen Gol Power"></video>
-        <span class="video-chip"><i></i> Video · Gol Power</span>
+        <span class="video-chip"><i></i> Video real · Gol Power</span>
         <button type="button" class="video-sound" id="gpVideoSound" aria-label="Activar sonido">🔇</button>
         <button type="button" class="video-play" id="gpVideoPlay" aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="video-bar"><div class="video-bar-fill" id="gpVideoBar"></div></div>
@@ -3430,7 +3430,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 </div>
 
 <!-- WHATSAPP FLOAT -->
-<a class="whatsapp-float" href="https://wa.me/543518757751?text=Hola!%20me%20gustaría%20participar" target="_blank" rel="noopener noreferrer">
+<a class="whatsapp-float" href="https://wa.me/543518757751?text=Hola!%20Quiero%20participar" target="_blank" rel="noopener noreferrer">
   <span style="font-size:1.3rem">💬</span>
   <span><small>Consultas</small>WhatsApp</span>
 </a>
@@ -3743,7 +3743,7 @@ async function uploadParticipantPhoto(file, phone) {
   
   const { error } = await supabaseClient.storage.from('participant-profiles').upload(filePath, fileToUpload, {
     cacheControl: '3600',
-    upsert: true
+    upsert: false
   });
   
   if (error) throw error;
@@ -4818,7 +4818,14 @@ async function submitOrder(){
   button.textContent = 'PROCESANDO...';
 
   try {
-    const photoUrl = await uploadParticipantPhoto(selectedPhotoFile, phone);
+    // La foto es opcional: si la subida falla (permisos, red), se continúa sin ella
+    // para no perder la compra.
+    let photoUrl = null;
+    try {
+      photoUrl = await uploadParticipantPhoto(selectedPhotoFile, phone);
+    } catch (photoErr) {
+      console.warn('No se pudo subir la foto de perfil; se continúa sin foto.', photoErr);
+    }
     const { data, error } = await supabaseClient.rpc('create_order_from_landing', {
       p_campaign_slug: CAMPAIGN_SLUG,
       p_package_id: selectedPkg.id,
