@@ -417,6 +417,14 @@ footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
 .sus{position:absolute;left:50%;bottom:-6px;transform:translate(-50%,10px);z-index:7;white-space:nowrap;pointer-events:none;font:400 clamp(20px,5vw,30px)/1 'Bebas Neue',Impact,sans-serif;letter-spacing:.18em;color:#fff3c4;text-shadow:0 0 14px #f5c542;opacity:0;transition:.5s}
 .sus.on{opacity:1;transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){.wheel-wrap.tense{transform:none}#dim.on{animation:none}}
+.hist{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.hist small{width:100%;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.55)}
+.hchip{padding:4px 10px;border-radius:99px;font-size:12px;font-weight:700;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7)}
+.hchip.w{background:rgba(245,197,66,.16);border-color:rgba(245,197,66,.6);color:#ffe08a}
+.hchip.f{background:rgba(46,204,113,.14);border-color:rgba(46,204,113,.5);color:#8ff0b5}
+.btn.conv{background:linear-gradient(180deg,#3be58a,#14a85a);color:#04210f;box-shadow:0 8px 24px rgba(20,168,90,.45)}
+.btn.conv[hidden]{display:none}
+.convnote{font-size:12px;color:#8ff0b5;margin-top:6px;text-align:center}
 @media(prefers-reduced-motion:reduce){.coin,.flash,.xp i{animation:none}}
 </style>
 <style id="v6">
@@ -484,7 +492,7 @@ img,video,canvas{max-width:100%}
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div id="demoBar" class="demo" hidden style="display:none;">MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
+<div id="demoBar" class="demo" style="display:none;" hidden>MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
 
 <header>
   <div class="wrap">
@@ -502,7 +510,7 @@ img,video,canvas{max-width:100%}
     <div class="badge-live"><span class="dot"></span>SORTEO ABIERTO · GIRÁ CUANDO QUIERAS</div>
     <h1>GIRÁ <em>Y</em> GANÁ</h1>
     <p class="lead">Diez premios en juego, incluido <b>un auto</b>. Un solo giro puede cambiarte el día.</p>
-    <p class="from" id="fromTxt" style="display:none;"></p>
+    <p class="from" id="fromTxt"></p>
     <div class="jackpot"><span>PREMIO MAYOR</span> <b id="jackAmt">$20.000.000</b></div>
     <ul class="trust">
       <li>🔒 Pago seguro por transferencia</li>
@@ -552,6 +560,7 @@ img,video,canvas{max-width:100%}
         </div>
         <div class="xp"><i id="meXp"></i></div>
         <div class="badges" id="badges"></div>
+        <div class="hist" id="hist" aria-label="Tus últimos tiros"></div>
       </div>
 
       <form id="buyForm" novalidate>
@@ -664,6 +673,7 @@ img,video,canvas{max-width:100%}
     <div class="big" id="resPrize"></div>
     <p id="resMsg"></p>
     <button class="btn" id="resClaim" type="button" hidden>🏆 RECLAMAR MI PREMIO</button>
+    <button class="btn conv" id="resConvert" type="button" hidden></button>
     <button class="btn" id="resShare" type="button" hidden>📲 COMPARTIR EN WHATSAPP</button>
     <button class="btn" id="resAgain"></button>
     <button class="btn ghost" id="resClose">Cerrar</button>
@@ -686,6 +696,7 @@ img,video,canvas{max-width:100%}
       <button class="btn" type="submit" id="claimBtn">ENVIAR RECLAMO</button>
       <div class="err" id="claimErr" role="alert"></div>
     </form>
+    <button class="btn conv" id="claimConvert" type="button" hidden style="margin-top:8px"></button>
     <button class="btn ghost" id="claimClose" type="button" style="margin-top:8px">Reclamar más tarde</button>
   </div>
 </div>
@@ -1257,6 +1268,9 @@ const DEMO_WINNERS = [
   { first_name: 'Martina', last_name: 'Gómez', avatar_url: null, prize_label: '$1.000.000', comment: '¡No lo podía creer! Giré una sola vez y a los pocos días ya tenía la transferencia. Gracias!', won_at: new Date(Date.now() - 2 * 864e5).toISOString(), is_sample: true },
   { first_name: 'Lucas', last_name: 'Fernández', avatar_url: null, prize_label: '$200.000', comment: 'Compré la ficha de curioso y salió premio. Muy buena experiencia.', won_at: new Date(Date.now() - 5 * 864e5).toISOString(), is_sample: true }
 ];
+const MIN_PUBLIC = 200000;           // por debajo de este monto, en lo público no se muestra cuánto ganó
+function smallPrize(label) { const m = /^\s*\$\s*([\d.]+)\s*$/.exec(label || ''); return !!m && parseInt(m[1].replace(/\./g, ''), 10) < MIN_PUBLIC; }
+function publicPrize(label) { return smallPrize(label) ? 'Uno de nuestros ganadores' : label; }
 function renderWinners(list) {
   const sec = $('#ganadores'), g = $('#wGrid'); g.textContent = '';
   if (!Array.isArray(list) || !list.length) { sec.hidden = true; return; }
@@ -1273,7 +1287,7 @@ function renderWinners(list) {
     const dt = document.createElement('div'); dt.className = 'wdate';
     dt.textContent = w.won_at ? new Date(w.won_at).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
     who.append(n, dt); top.append(av, who); c.append(top);
-    const pz = document.createElement('div'); pz.className = 'wprize'; pz.textContent = '🏆 ' + w.prize_label; c.append(pz);
+    const pz = document.createElement('div'); pz.className = 'wprize'; pz.textContent = '🏆 ' + publicPrize(w.prize_label); c.append(pz);
     if (w.comment) { const q = document.createElement('div'); q.className = 'wcomment'; q.textContent = '“' + w.comment + '”'; c.append(q); }
     g.append(c);
   });
@@ -1296,8 +1310,10 @@ async function loadWinners() {
   const { data } = await sb.rpc('recent_winners');
   if (!Array.isArray(data) || !data.length) return;
   const tr = $('#tickerTrack'); tr.textContent = '';
-  data.forEach(w => { const s = document.createElement('span'); s.textContent = `🏆 ${w.name} ganó ${w.prize}`; tr.append(s); });
+  data.forEach(w => { const s = document.createElement('span'); s.textContent = smallPrize(w.prize) ? '🏆 Uno de nuestros ganadores se llevó un premio' : `🏆 ${w.name} ganó ${w.prize}`; tr.append(s); });
   $('#ticker').classList.add('on');
+  window._recentW = data.filter(w => !smallPrize(w.prize));
+  if (!window._wToast && window._recentW.length) { window._wToast = true; let wi = 0; setTimeout(function nextW() { const L = window._recentW; if (L && L.length && !document.hidden && !spinning) { const w = L[wi++ % L.length]; toast(`🏆 Ganador reciente: ${w.name} — ${w.prize}`, 4200); } setTimeout(nextW, 45000); }, 20000); }
 }
 
 /* ====================== PACKS ====================== */
@@ -1505,7 +1521,7 @@ async function spin() {
   }
   tokens = tokens.filter(c => c !== code);
   if (res.new_token_code) tokens.push(res.new_token_code);
-  if (res.claim_code) { claims.push({ code: res.claim_code, label: res.label, amount: res.amount }); store.set('mr_claims', claims); renderClaims(); }
+  if (res.claim_code) { claims.push({ code: res.claim_code, label: res.label, amount: res.amount, kind: res.kind }); store.set('mr_claims', claims); renderClaims(); }
   store.set('mr_tokens', tokens);
   await countdown();
   await animateTo(res.position, res.kind);
@@ -1535,6 +1551,8 @@ function showResult(res) {
   const cb = $('#resClaim'), cl = claims.find(c => c.code === res.claim_code);
   cb.hidden = !(win && cl); again.classList.toggle('ghost', !!(win && cl));
   if (win && cl) cb.onclick = () => { closeModal('#resModal'); openClaim(cl); };
+  const cv = $('#resConvert'); cv.hidden = !(win && cl && canConvert(res));
+  if (!cv.hidden) { cv.textContent = convLabel(res.amount); cv.onclick = () => convertPrize(cl); }
   again.textContent = tokens.length ? '🎰 GIRAR DE NUEVO' : 'COMPRAR OTRA FICHA';
   again.onclick = () => { closeModal('#resModal'); if (tokens.length) setTimeout(spin, 250); else { $('#buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
   const tier = $('#resTier'), amt = +res.amount || 0;
@@ -1565,6 +1583,7 @@ const BADGES = [
   ['ten', '💎', '10 tiros jugados', st => st.spins >= 10]
 ];
 let me = store.get('mr_me', null) || { spins: 0, wins: 0, frees: 0, best: 0, badges: [] };
+if (!Array.isArray(me.hist)) me.hist = [];
 function meSave() { store.set('mr_me', me); }
 function renderMe(newIds = []) {
   let li = 0; LEVELS.forEach((l, i) => { if (me.spins >= l[0]) li = i; });
@@ -1573,7 +1592,10 @@ function renderMe(newIds = []) {
   $('#meNext').textContent = nxt ? `Te faltan ${nxt[0] - me.spins} tiro${nxt[0] - me.spins === 1 ? '' : 's'} para ${nxt[1]}` : '¡Nivel máximo!';
   $('#meXp').style.width = (nxt ? Math.round((me.spins - LEVELS[li][0]) / (nxt[0] - LEVELS[li][0]) * 100) : 100) + '%';
   $('#meSpins').textContent = me.spins; $('#meWins').textContent = me.wins;
-  $('#meBest').textContent = me.best ? '$' + fmt(me.best) : '—';
+  $('#meBest').textContent = me.best ? fmt(me.best) : '—';
+  const hs = $('#hist'); hs.textContent = '';
+  if (me.hist.length) { const t = document.createElement('small'); t.textContent = 'Tus últimos tiros'; hs.append(t);
+    me.hist.slice(-6).reverse().forEach(h => { const c = document.createElement('span'); c.className = 'hchip ' + (h.k === 'cash' || h.k === 'item' ? 'w' : h.k === 'free_spin' ? 'f' : ''); c.textContent = h.k === 'none' ? '—' : h.l; hs.append(c); }); }
   const b = $('#badges'); b.textContent = '';
   BADGES.forEach(([id, ico, name]) => {
     const d = document.createElement('div'); d.className = 'bdg' + (me.badges.includes(id) ? ' on' : '') + (newIds.includes(id) ? ' new' : '');
@@ -1581,7 +1603,7 @@ function renderMe(newIds = []) {
   });
 }
 function meRecord(res) {
-  me.spins++;
+  me.spins++; me.hist.push({ l: String(res.label || '').slice(0, 24), k: res.kind }); if (me.hist.length > 12) me.hist.shift();
   if (res.kind === 'cash' || res.kind === 'item') { me.wins++; me.best = Math.max(me.best, +res.amount || 0); }
   if (res.kind === 'free_spin') me.frees++;
   const fresh = BADGES.filter(([id, , , test]) => !me.badges.includes(id) && test(me));
@@ -1682,7 +1704,7 @@ function countUpJack() {
   const el = $('#jackAmt'); if (!el || reduceMotion) return;
   const final = el.textContent, n = parseInt(final.replace(/\D/g, ''), 10); if (!n) return;
   const t0 = performance.now(), dur = 1600;
-  const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = '$' + fmt(Math.round(n * e)); if (p < 1) requestAnimationFrame(step); else el.textContent = final; };
+  const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(Math.round(n * e)); if (p < 1) requestAnimationFrame(step); else el.textContent = final; };
   requestAnimationFrame(step);
 }
 function extras() { renderMarquee(); tipRotate(); setInterval(tipRotate, 5200); streakUpdate(); waSetup(); countUpJack(); }
@@ -1717,8 +1739,37 @@ function countUpPrize(res) {
   const el = $('#resPrize'), n = +res.amount || 0;
   if (res.kind !== 'cash' || !n || reduceMotion) return;
   const t0 = performance.now(), dur = 1100, final = el.textContent;
-  const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = p < 1 ? '$' + fmt(Math.round(n * e)) : final; if (p < 1) requestAnimationFrame(step); };
+  const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = p < 1 ? fmt(Math.round(n * e)) : final; if (p < 1) requestAnimationFrame(step); };
   requestAnimationFrame(step);
+}
+
+/* ====================== CANJE: usar un premio chico como fichas ====================== */
+const CREDIT_MAX = 10000;             // el servidor tiene la última palabra (settings.credit_max)
+function creditQty(amount) {
+  const best = packs.length ? Math.min(...packs.map(k => k.price / k.qty)) : 5000;
+  return Math.max(1, Math.floor(amount / best));
+}
+function canConvert(res) { return res && res.kind === 'cash' && +res.amount > 0 && +res.amount <= CREDIT_MAX && !!res.claim_code; }
+function convLabel(amount) { const q = creditQty(amount); return `🎰 USAR COMO ${q} FICHA${q > 1 ? 'S' : ''} (en vez de retirarlo)`; }
+async function convertPrize(c) {
+  const q = creditQty(+c.amount);
+  if (!confirm(`Vas a usar tu premio de ${c.label} para jugar: recibís ${q} ficha${q > 1 ? 's' : ''} y ya no se entrega en efectivo. ¿Confirmás?`)) return;
+  try {
+    let codes;
+    if (DEMO) codes = Array.from({ length: q }, () => 'demo-' + crypto.randomUUID());
+    else {
+      const { data, error } = await sb.rpc('convert_prize_to_tokens', { p_claim_code: c.code });
+      if (error) throw error; codes = Array.isArray(data && data.token_codes) ? data.token_codes : [];
+    }
+    codes.forEach(k => { if (!tokens.includes(k)) tokens.push(k); });
+    saveTokens(); claims = claims.filter(x => x.code !== c.code); store.set('mr_claims', claims); renderClaims(); renderTokens();
+    closeModal('#resModal'); closeModal('#claimModal'); sfx.ok(); confetti(90);
+    toast(`¡Listo! Sumaste ${codes.length} ficha${codes.length > 1 ? 's' : ''} para seguir jugando 🎰`, 4800);
+    $('#wheelWrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (e) {
+    const m = (e && e.message) || '';
+    toast(/ya_procesado|canje_invalido/.test(m) ? 'Este premio ya no se puede canjear.' : /no_canjeable/.test(m) ? 'Este premio no se puede canjear por fichas.' : 'No pudimos canjear el premio. Intentá de nuevo.', 4200);
+  }
 }
 
 /* ====================== RECLAMO DE PREMIO ====================== */
@@ -1733,6 +1784,8 @@ function openClaim(c) {
   claimingCode = c.code; claimPhotoData = null;
   $('#claimPrize').textContent = c.label; $('#claimErr').textContent = '';
   $('#claimForm').reset(); const pv = $('#cPrev'); pv.style.backgroundImage = ''; pv.textContent = '📷';
+  const cc = $('#claimConvert'), ok = c.amount > 0 && +c.amount <= CREDIT_MAX && c.kind !== 'item';
+  cc.hidden = !ok; if (ok) { cc.textContent = convLabel(+c.amount); cc.onclick = () => convertPrize(c); }
   openModal('#claimModal');
 }
 function fileToAvatar(file) {
@@ -1774,7 +1827,7 @@ async function submitClaim(e) {
     done(); sfx.ok(); confetti(90); toast('¡Reclamo enviado! Validamos tus datos y coordinamos la entrega.', 5200);
   } catch (ex) {
     const m = (ex && ex.message) || '';
-    if (/ya_reclamado/.test(m)) { done(); toast('Este premio ya fue reclamado.'); }
+    if (/ya_reclamado|ya_procesado/.test(m)) { done(); toast('Este premio ya fue procesado.'); }
     else err.textContent = /foto_invalida/.test(m) ? 'La foto no es válida. Probá con otra.' : 'No pudimos enviar el reclamo. Intentá de nuevo.';
   } finally { btn.disabled = false; }
 }
