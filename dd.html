@@ -3518,7 +3518,7 @@ const DEFAULT_SHARE_TITLE = 'Gran Sorteo - Volkswagen Gol Trend';
 const DEFAULT_SHARE_DESCRIPTION = 'Participa de este sorteo. ¡Últimas chances disponibles!';
 const COURSE_PAGE_PATH = './curso-guia-auto-argentina.html';
 const COURSE_MIN_ENTRIES = 3;
-const DRAW_TARGET_ISO = '2026-10-29T22:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
+const DRAW_TARGET_ISO = '2026-10-29T23:00:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
 
 let activeCampaign = null;
 let packages = [];
@@ -3771,7 +3771,7 @@ async function uploadParticipantPhoto(file, phone) {
   
   const { error } = await supabaseClient.storage.from('participant-profiles').upload(filePath, fileToUpload, {
     cacheControl: '3600',
-    upsert: true
+    upsert: false
   });
   
   if (error) throw error;
@@ -4846,7 +4846,14 @@ async function submitOrder(){
   button.textContent = 'PROCESANDO...';
 
   try {
-    const photoUrl = await uploadParticipantPhoto(selectedPhotoFile, phone);
+    // La foto es opcional: si la subida falla (permisos, red), se continúa sin ella
+    // para no perder la compra.
+    let photoUrl = null;
+    try {
+      photoUrl = await uploadParticipantPhoto(selectedPhotoFile, phone);
+    } catch (photoErr) {
+      console.warn('No se pudo subir la foto de perfil; se continúa sin foto.', photoErr);
+    }
     const { data, error } = await supabaseClient.rpc('create_order_from_landing', {
       p_campaign_slug: CAMPAIGN_SLUG,
       p_package_id: selectedPkg.id,
