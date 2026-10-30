@@ -488,16 +488,44 @@ img,video,canvas{max-width:100%}
   .reveal{transition-duration:.35s}
 }
 </style>
+<style id="v7">
+/* ===== Raspadita ===== */
+#raspadita .scwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:22px;border-radius:26px;
+  background:linear-gradient(160deg,rgba(11,106,120,.28),rgba(18,6,12,.92) 70%);border:1px solid var(--line)}
+@media(max-width:820px){#raspadita .scwrap{grid-template-columns:1fr;padding:14px;gap:20px}}
+.sccard{position:relative;width:100%;max-width:480px;margin:0 auto;aspect-ratio:3/2.2;padding:12px;border-radius:22px;
+  background:linear-gradient(145deg,#ffe08a,#f5c542 45%,#b8860b);box-shadow:0 0 50px rgba(245,197,66,.25),0 18px 40px rgba(0,0,0,.5)}
+.scgrid{position:relative;height:100%;border-radius:14px;overflow:hidden;background:#12060c}
+.sccells{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:6px;height:100%;padding:6px}
+.sccell{display:flex;align-items:center;justify-content:center;text-align:center;border-radius:10px;line-height:1;
+  font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(20px,5.2vw,38px);letter-spacing:1px;color:#fff3c4;
+  background:linear-gradient(160deg,#3a0a1c,#12060c);border:1px solid rgba(245,197,66,.25);transition:background .4s,box-shadow .4s,transform .4s}
+.sccell.q{color:rgba(255,243,196,.35)}
+.sccell.open{animation:scpop .45s ease-out}
+@keyframes scpop{0%{transform:scale(.88);box-shadow:0 0 0 rgba(245,197,66,0)}60%{transform:scale(1.06);box-shadow:0 0 18px rgba(245,197,66,.7)}100%{transform:scale(1)}}
+.sccell.hit{color:#3a0a12;background:linear-gradient(180deg,#ffe08a,#f5c542);box-shadow:0 0 22px rgba(245,197,66,.8);transform:scale(1.04);animation:pulse 1.2s ease-in-out infinite}
+#scCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;border-radius:14px;user-select:none;-webkit-user-select:none}
+.scinfo h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,6vw,54px);line-height:.95;letter-spacing:2px;color:var(--gold-2);margin-bottom:8px}
+.scinfo p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:14px}
+.scprizes{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.scprizes span{padding:5px 11px;border-radius:99px;font-size:12.5px;font-weight:800;color:#fff3c4;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.35)}
+.scprizes span.top{color:#2a1a02;background:linear-gradient(90deg,#f5c542,#ffe9a6)}
+.scbtns{display:grid;gap:8px}
+.scbtns .btn{display:block;width:100%}
+.scbtns .btn[hidden]{display:none}
+.scnote{margin-top:10px;font-size:12.5px;color:var(--muted);text-align:center}
+@media(prefers-reduced-motion:reduce){.sccell.hit{animation:none}}
+</style>
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div id="demoBar" class="demo" style="display:none;" hidden>MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
+<div id="demoBar" class="demo" hidden>MODO DEMO · sin cobros reales · configurá Supabase en el código para producción</div>
 
 <header>
   <div class="wrap">
     <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".5" stop-color="#f5c542"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><circle cx="16" cy="16" r="14" fill="none" stroke="url(#lg)" stroke-width="2.4"/><circle cx="16" cy="16" r="3.2" fill="url(#lg)"/><g stroke="url(#lg)" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M7.5 7.5l4.2 4.2M20.3 20.3l4.2 4.2M24.5 7.5l-4.2 4.2M11.7 20.3l-4.2 4.2"/></g></svg>MEGA GIRO</div>
-    <nav class="nav" aria-label="Secciones"><a href="#premios">Premios</a><a href="#como">Cómo funciona</a><a href="#ganadores">Ganadores</a><a href="#faq">Preguntas</a></nav>
+    <nav class="nav" aria-label="Secciones"><a href="#premios">Premios</a><a href="#raspadita">Raspadita</a><a href="#como">Cómo funciona</a><a href="#ganadores">Ganadores</a><a href="#faq">Preguntas</a></nav>
     <div class="hdr-right">
       <div class="chip">🎟️ Fichas: <b id="tokCount">0</b></div>
       <button class="icon-btn" id="soundBtn" aria-label="Activar o silenciar sonido" title="Sonido">🔊</button>
@@ -510,7 +538,7 @@ img,video,canvas{max-width:100%}
     <div class="badge-live"><span class="dot"></span>SORTEO ABIERTO · GIRÁ CUANDO QUIERAS</div>
     <h1>GIRÁ <em>Y</em> GANÁ</h1>
     <p class="lead">Diez premios en juego, incluido <b>un auto</b>. Un solo giro puede cambiarte el día.</p>
-    <p class="from" id="fromTxt" style="display:none;"></p>
+    <p class="from" id="fromTxt"></p>
     <div class="jackpot"><span>PREMIO MAYOR</span> <b id="jackAmt">$20.000.000</b></div>
     <ul class="trust">
       <li>🔒 Pago seguro por transferencia</li>
@@ -627,6 +655,28 @@ img,video,canvas{max-width:100%}
     <div class="pcta"><button class="btn" id="ctaBuy" type="button">🎰 QUIERO GIRAR AHORA</button></div>
   </section>
 
+  <section class="block reveal" id="raspadita">
+    <span class="eyebrow">NUEVO · RASPADITA</span>
+    <h3>RASPÁ Y GANÁ</h3>
+    <p class="sub">Premios desde $100 hasta $1.000.000. Raspá la plata y, si encontrás 3 montos iguales, te lo llevás.</p>
+    <div class="scwrap">
+      <div class="sccard"><div class="scgrid">
+        <div class="sccells" id="scCells"></div>
+        <canvas id="scCanvas" aria-label="Zona para raspar"></canvas>
+      </div></div>
+      <div class="scinfo">
+        <h3>3 IGUALES,<br>PREMIO ASEGURADO</h3>
+        <p>Cada raspadita usa <b>1 ficha</b>, la misma que usás para la rueda. El resultado lo define el servidor antes de que raspes: raspar es solo la parte divertida.</p>
+        <div class="scprizes" id="scPrizes"></div>
+        <div class="scbtns">
+          <button class="btn" id="scBuy" type="button">🎟️ RASPAR AHORA</button>
+          <button class="btn ghost" id="scReveal" type="button" hidden>✨ REVELAR TODO</button>
+        </div>
+        <div class="scnote" id="scNote">Usá el dedo o el mouse para raspar.</div>
+      </div>
+    </div>
+  </section>
+
   <section class="block reveal" id="ganadores" hidden>
     <span class="eyebrow">GANADORES</span>
     <h3>NUESTROS GANADORES</h3>
@@ -648,7 +698,7 @@ img,video,canvas{max-width:100%}
 <footer>
   <div class="wrap">
     <p><strong>+18 · Juego responsable.</strong> Jugar implica riesgo de perder el dinero apostado. Jugá solo con dinero que puedas permitirte perder. Si sentís que el juego deja de ser un entretenimiento, pedí ayuda.</p>
-    <p id="licenseTxt" style="margin-top:8px; display:none;"></p>
+    <p id="licenseTxt" style="margin-top:8px"></p>
   </div>
 </footer>
 
@@ -1174,7 +1224,7 @@ function renderTokens() {
   hub.textContent = tokens.length ? 'GIRAR' : 'FICHA';
   paintBuy();
   hub.classList.toggle('ready', tokens.length > 0 && !spinning);
-  hub.disabled = spinning; $('#spinBtn').disabled = spinning;
+  hub.disabled = spinning; $('#spinBtn').disabled = spinning; try { scPaint(); } catch {}
 }
 
 function prizeMeta(p, rank) {
@@ -1837,6 +1887,171 @@ async function syncClaims() {
   if (Array.isArray(data) && data.length) { claims = claims.filter(c => !data.includes(c.code)); store.set('mr_claims', claims); renderClaims(); }
 }
 
+/* ====================== RASPADITA ====================== */
+const SC_PRIZES = [
+  { amount: 100, w: 150000 }, { amount: 500, w: 80000 }, { amount: 1000, w: 50000 }, { amount: 5000, w: 30000 },
+  { amount: 10000, w: 15000 }, { amount: 50000, w: 4000 }, { amount: 200000, w: 500 }, { amount: 1000000, w: 40 }
+];                                         // solo demo: en producción decide el servidor con do_scratch
+const SC_NONE_W = 670460;
+let SC_POOL = SC_PRIZES.map(p => p.amount);       // en producción se reemplaza por get_scratch_prizes()
+let sc = null, scBusy = false, scDrawing = false, scLast = null, scChk = 0;
+const scCv = $('#scCanvas'), scx = scCv.getContext('2d', { willReadFrequently: true });
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+function scDemoRoll() {
+  const total = SC_NONE_W + SC_PRIZES.reduce((s, p) => s + p.w, 0);
+  let r = crypto.getRandomValues(new Uint32Array(1))[0] % total;
+  for (const p of SC_PRIZES) { if (r < p.w) return { kind: 'cash', amount: p.amount, label: money(p.amount), claim_code: 'demo-claim-' + crypto.randomUUID() }; r -= p.w; }
+  return { kind: 'none', amount: 0, label: 'SUERTE LA PRÓXIMA', claim_code: null };
+}
+function scMakeCells(res) {
+  const amt = +res.amount;
+  if (res.kind === 'cash' && amt > 0) {
+    const others = shuffle(SC_POOL.filter(a => a !== amt)).slice(0, 3);
+    return shuffle([amt, amt, amt, ...others]);
+  }
+  return shuffle(SC_POOL.flatMap(a => [a, a])).slice(0, 6);   // ningún monto aparece 3 veces
+}
+function scRenderCells() {
+  const box = $('#scCells'); box.textContent = '';
+  for (let i = 0; i < 6; i++) {
+    const c = document.createElement('div'); c.className = 'sccell';
+    if (sc) { c.textContent = money(sc.cells[i]); if (sc.done && sc.res.kind === 'cash' && sc.cells[i] === +sc.res.amount) c.classList.add('hit'); }
+    else { c.textContent = '?'; c.classList.add('q'); }
+    box.append(c);
+  }
+}
+let scRects = [], scRev = [];
+function scRR(x, y, w, h, r) {
+  scx.beginPath(); scx.moveTo(x + r, y);
+  scx.arcTo(x + w, y, x + w, y + h, r); scx.arcTo(x + w, y + h, x, y + h, r);
+  scx.arcTo(x, y + h, x, y, r); scx.arcTo(x, y, x + w, y, r); scx.closePath();
+}
+function scCover() {            // cada casilla tiene su propia capa plateada, separada de las demás
+  const dpr = Math.min(window.devicePixelRatio || 1, 2), w = scCv.clientWidth, h = scCv.clientHeight;
+  if (!w) return;
+  scCv.width = Math.round(w * dpr); scCv.height = Math.round(h * dpr);
+  scx.setTransform(dpr, 0, 0, dpr, 0, 0); scx.globalCompositeOperation = 'source-over';
+  const cr = scCv.getBoundingClientRect();
+  scRects = [...$('#scCells').children].map(el => { const r = el.getBoundingClientRect(); return { x: r.left - cr.left, y: r.top - cr.top, w: r.width, h: r.height }; });
+  scRev = scRects.map(() => false);
+  scRects.forEach(t => {
+    const g = scx.createLinearGradient(t.x, t.y, t.x + t.w, t.y + t.h);
+    g.addColorStop(0, '#d9dde3'); g.addColorStop(.3, '#f6f8fa'); g.addColorStop(.55, '#aeb4bd'); g.addColorStop(.8, '#eef0f3'); g.addColorStop(1, '#9aa1ab');
+    scRR(t.x, t.y, t.w, t.h, 10); scx.fillStyle = g; scx.fill();
+    scx.save(); scx.clip();
+    scx.strokeStyle = 'rgba(255,255,255,.38)'; scx.lineWidth = 5;
+    for (let k = -t.h; k < t.w; k += 20) { scx.beginPath(); scx.moveTo(t.x + k, t.y + t.h); scx.lineTo(t.x + k + t.h, t.y); scx.stroke(); }
+    scx.restore();
+    scRR(t.x + .5, t.y + .5, t.w - 1, t.h - 1, 10); scx.strokeStyle = 'rgba(245,197,66,.55)'; scx.lineWidth = 1.5; scx.stroke();
+    scx.fillStyle = 'rgba(60,40,10,.6)'; scx.textAlign = 'center'; scx.textBaseline = 'middle';
+    scx.font = `400 ${Math.round(sc ? t.h * .3 : t.h * .5)}px 'Bebas Neue', Impact, sans-serif`;
+    scx.fillText(sc ? 'RASPÁ' : '?', t.x + t.w / 2, t.y + t.h / 2);
+  });
+}
+function scPaint() {
+  const b = $('#scBuy'), r = $('#scReveal'), active = sc && !sc.done;
+  b.disabled = scBusy || !!active;
+  b.textContent = scBusy ? 'PREPARANDO…' : active ? '👆 RASPÁ LA TARJETA' : tokens.length ? (sc ? '🎟️ RASPAR OTRA · usa 1 ficha' : '🎟️ RASPAR AHORA · usa 1 ficha') : '🎟️ COMPRAR FICHAS PARA RASPAR';
+  r.hidden = !active;
+  scCv.style.pointerEvents = active ? 'auto' : 'none';
+}
+function scPos(e) { const r = scCv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+function scErase(x, y) {
+  scx.globalCompositeOperation = 'destination-out'; scx.lineCap = 'round'; scx.lineJoin = 'round';
+  scx.lineWidth = Math.max(30, scCv.clientWidth * .075);
+  scx.beginPath();
+  if (scLast) { scx.moveTo(scLast[0], scLast[1]); scx.lineTo(x, y); } else { scx.moveTo(x, y); scx.lineTo(x + .01, y); }
+  scx.stroke(); scLast = [x, y];
+  const now = performance.now();
+  if (now - scChk > 140) { scChk = now; scProgress(); }
+}
+function scProgress() {         // cada casilla se destapa sola cuando raspaste más de la mitad
+  if (!sc || sc.done) return;
+  const dpr = scCv.width / (scCv.clientWidth || 1), cells = $('#scCells').children;
+  scRects.forEach((t, i) => {
+    if (scRev[i]) return;
+    const x = Math.max(0, Math.floor(t.x * dpr)), y = Math.max(0, Math.floor(t.y * dpr));
+    const w = Math.min(scCv.width - x, Math.floor(t.w * dpr)), h = Math.min(scCv.height - y, Math.floor(t.h * dpr));
+    if (w <= 0 || h <= 0) return;
+    const d = scx.getImageData(x, y, w, h).data;
+    let clear = 0, tot = 0;
+    for (let k = 3; k < d.length; k += 32) { tot++; if (d[k] === 0) clear++; }
+    if (clear / tot > .5) {
+      scRev[i] = true;
+      scx.globalCompositeOperation = 'destination-out'; scx.fillStyle = '#000';
+      scRR(t.x - 1, t.y - 1, t.w + 2, t.h + 2, 11); scx.fill();
+      if (cells[i]) cells[i].classList.add('open');
+    }
+  });
+  if (scRev.length && scRev.every(Boolean)) scFinish();
+}
+function scFinish() {
+  if (!sc || sc.done) return;
+  sc.done = true; store.del('mr_scratch'); scDrawing = false;
+  scx.globalCompositeOperation = 'source-over'; scx.clearRect(0, 0, scCv.width, scCv.height);
+  scRenderCells(); scPaint();
+  const res = sc.res, win = res.kind === 'cash' && +res.amount > 0;
+  if (win) { sfx.win(); if (navigator.vibrate) navigator.vibrate([60, 40, 60]); } else sfx.lose();
+  setTimeout(() => {
+    showResult(res);
+    const ag = $('#resAgain');
+    ag.textContent = tokens.length ? '🎟️ RASPAR OTRA' : 'COMPRAR OTRA FICHA';
+    ag.onclick = () => { closeModal('#resModal'); if (tokens.length) setTimeout(scStart, 250); else $('#buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  }, win ? 900 : 500);
+}
+async function scStart() {
+  if (scBusy || spinning) return;
+  if (sc && !sc.done) { toast('Terminá de raspar tu tarjeta actual.'); return; }
+  if (!tokens.length) { $('#buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('#fName').focus({ preventScroll: true }), 500); return; }
+  ac(); scBusy = true; scPaint();
+  const code = tokens[0]; let res;
+  try {
+    if (DEMO) res = scDemoRoll();
+    else { const { data, error } = await sb.rpc('do_scratch', { p_code: code }); if (error) throw error; res = data; }
+  } catch (e) {
+    scBusy = false; scPaint();
+    if (/ficha_usada|ficha_invalida/.test((e && e.message) || '')) { tokens = tokens.filter(c => c !== code); saveTokens(); toast('Esa ficha ya no es válida.'); }
+    else toast('No se pudo preparar la raspadita. Tu ficha sigue disponible.');
+    return;
+  }
+  res.amount = +res.amount || 0; res.label = res.label || (res.amount ? money(res.amount) : 'SUERTE LA PRÓXIMA');
+  tokens = tokens.filter(c => c !== code); store.set('mr_tokens', tokens);
+  if (res.claim_code) { claims.push({ code: res.claim_code, label: res.label, amount: res.amount, kind: res.kind }); store.set('mr_claims', claims); renderClaims(); }
+  sc = { res, cells: scMakeCells(res), done: false };
+  store.set('mr_scratch', { res: sc.res, cells: sc.cells });
+  scBusy = false; renderTokens(); scRenderCells(); scCover(); scPaint(); sfx.ok();
+  $('#raspadita .sccard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function scChips() {
+  const pr = $('#scPrizes'); pr.textContent = '';
+  SC_POOL.slice().sort((a, b) => b - a).forEach((a, i) => { const s = document.createElement('span'); if (i < 2) s.className = 'top'; s.textContent = money(a); pr.append(s); });
+}
+async function scLoadPrizes() {          // los montos vienen del servidor (scratch_prizes)
+  if (DEMO || !sb) return;
+  try {
+    const { data, error } = await sb.rpc('get_scratch_prizes');
+    if (error || !Array.isArray(data)) return;
+    const pool = [...new Set(data.map(x => +x.amount).filter(a => a > 0))];
+    for (const p of SC_PRIZES) { if (pool.length >= 4) break; if (!pool.includes(p.amount)) pool.push(p.amount); }   // la tarjeta necesita al menos 4 montos distintos
+    if (pool.length) { SC_POOL = pool; scChips(); }
+  } catch {}
+}
+function scInit() {
+  scChips(); scLoadPrizes();
+  const saved = store.get('mr_scratch', null);
+  if (saved && saved.res && Array.isArray(saved.cells) && saved.cells.length === 6) sc = { res: saved.res, cells: saved.cells, done: false };
+  scRenderCells(); scCover(); scPaint();
+  scCv.addEventListener('pointerdown', e => { if (!sc || sc.done) return; scDrawing = true; scLast = null; try { scCv.setPointerCapture(e.pointerId); } catch {} const [x, y] = scPos(e); scErase(x, y); e.preventDefault(); });
+  scCv.addEventListener('pointermove', e => { if (!scDrawing) return; const [x, y] = scPos(e); scErase(x, y); e.preventDefault(); });
+  const up = () => { if (!scDrawing) return; scDrawing = false; scLast = null; scProgress(); };
+  scCv.addEventListener('pointerup', up); scCv.addEventListener('pointercancel', up);
+  $('#scBuy').addEventListener('click', scStart);
+  $('#scReveal').addEventListener('click', scFinish);
+  addEventListener('resize', () => { if (!sc && scCv.clientWidth && Math.abs(scCv.width / (Math.min(window.devicePixelRatio || 1, 2)) - scCv.clientWidth) > 2) scCover(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!sc || !sc.done) scCover(); });
+}
+
 /* ====================== INIT ====================== */
 $('#buyForm').addEventListener('submit', buy);
 $('#hub').addEventListener('click', spin);
@@ -1868,7 +2083,7 @@ paintSound();
 (async () => {
   await Promise.all([loadPacks(), loadWheel()]);
   renderCarShow(); renderHero(); setupReveal();
-  renderTokens(); renderClaims(); renderMe(); horaStart(); extras();
+  renderTokens(); renderClaims(); renderMe(); horaStart(); extras(); scInit();
   requestAnimationFrame(frame);
   syncClaims();
   await syncTokens();
