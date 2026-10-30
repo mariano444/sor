@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mega Giro — Girá y ganá hasta $20.000.000</title>
-<meta name="description" content="Un tiro, diez premios. Comprá tu ficha por transferencia y jugá en Mega Giro.">
+<meta name="description" content="Una ficha, dos juegos: girá la Rueda o raspá la Raspadita. Comprá tus fichas por transferencia y jugá en Mega Giro.">
 <meta name="theme-color" content="#0a0508">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,6 +225,34 @@ footer strong{color:var(--text)}
 #toast.on{transform:translate(-50%,0);opacity:1}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ---- Fichas y juegos ---- */
+.games{padding:26px 0 8px;text-align:center}
+.games .ghead h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,6vw,54px);letter-spacing:2px;line-height:1;color:var(--gold-2);margin:4px 0 8px}
+.games .ghead p{max-width:620px;margin:0 auto;color:#d8c9a8;font-size:15px;line-height:1.6}
+.games .ghead b{color:var(--gold-2)}
+.gcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 16px;text-align:left}
+@media(max-width:640px){.gcards{grid-template-columns:1fr}}
+.gc{position:relative;padding:22px 20px 20px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(245,197,66,.3);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:8px}
+.gc .gi{font-size:38px;line-height:1}
+.gc .gtag{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:2px;color:var(--gold);border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:3px 10px}
+.gc h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1.5px;color:var(--gold-2);line-height:1}
+.gc p{color:var(--muted);font-size:14px;line-height:1.55;flex:1}
+.gc p b{color:var(--text)}
+.gc .btn{margin-top:6px}
+.gflow{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:13.5px;color:#d8c9a8}
+.gflow li{display:flex;align-items:center;gap:8px}
+.gflow b{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;background:var(--gold);color:#3a0a12;font-size:13px}
+.panel .psub{margin-top:6px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.panel .psub b{color:var(--gold-2)}
+.hv-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.hv-btns .btn{padding:12px 8px;font-size:14px}
+.hownote{margin-top:18px;text-align:center;font-size:14px;color:var(--muted);line-height:1.6}
+.hownote b{color:var(--gold-2)}
+.scsteps{margin:0 0 14px 20px;color:#d8c9a8;font-size:14px;line-height:1.7}
+.scsteps b{color:var(--gold-2)}
+.scprizes-t{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+#resOther{margin-top:8px}
 </style>
 
 <style id="v2">
@@ -525,9 +553,9 @@ img,video,canvas{max-width:100%}
 <header>
   <div class="wrap">
     <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".5" stop-color="#f5c542"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><circle cx="16" cy="16" r="14" fill="none" stroke="url(#lg)" stroke-width="2.4"/><circle cx="16" cy="16" r="3.2" fill="url(#lg)"/><g stroke="url(#lg)" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M7.5 7.5l4.2 4.2M20.3 20.3l4.2 4.2M24.5 7.5l-4.2 4.2M11.7 20.3l-4.2 4.2"/></g></svg>MEGA GIRO</div>
-    <nav class="nav" aria-label="Secciones"><a href="#premios">Premios</a><a href="#raspadita">Raspadita</a><a href="#como">Cómo funciona</a><a href="#ganadores">Ganadores</a><a href="#faq">Preguntas</a></nav>
+    <nav class="nav" aria-label="Secciones"><a href="#buyPanel">Fichas</a><a href="#rueda">Rueda</a><a href="#raspadita">Raspadita</a><a href="#premios">Premios</a><a href="#como">Cómo funciona</a><a href="#ganadores">Ganadores</a><a href="#faq">Preguntas</a></nav>
     <div class="hdr-right">
-      <div class="chip">🎟️ Fichas: <b id="tokCount">0</b></div>
+      <div class="chip" title="Cada ficha = 1 jugada: Rueda o Raspadita">🎟️ Fichas: <b id="tokCount">0</b></div>
       <button class="icon-btn" id="soundBtn" aria-label="Activar o silenciar sonido" title="Sonido">🔊</button>
     </div>
   </div>
@@ -535,15 +563,16 @@ img,video,canvas{max-width:100%}
 
 <main class="wrap">
   <div class="hero">
-    <div class="badge-live"><span class="dot"></span>SORTEO ABIERTO · GIRÁ CUANDO QUIERAS</div>
+    <div class="badge-live"><span class="dot"></span>JUEGOS ABIERTOS · RUEDA Y RASPADITA</div>
     <h1>GIRÁ <em>Y</em> GANÁ</h1>
-    <p class="lead">Diez premios en juego, incluido <b>un auto</b>. Un solo giro puede cambiarte el día.</p>
+    <p class="lead">Con tus fichas jugás a <b>dos juegos</b>: girá la <b>Rueda</b> (diez premios, incluido <b>un auto</b>) o raspá la <b>Raspadita</b>. <b>1 ficha = 1 jugada</b>, y elegís en cuál usarla.</p>
     <p class="from" id="fromTxt"></p>
     <div class="jackpot"><span>PREMIO MAYOR</span> <b id="jackAmt">$20.000.000</b></div>
     <ul class="trust">
       <li>🔒 Pago seguro por transferencia</li>
       <li>⚡ Fichas al instante</li>
       <li>🎯 Sorteo en servidor, sin trampas</li>
+      <li>🎟️ Una ficha sirve para la Rueda o la Raspadita</li>
     </ul>
   </div>
 
@@ -556,6 +585,39 @@ img,video,canvas{max-width:100%}
   </div>
 
   <div class="marq" id="marq" aria-hidden="true"><div class="marq-t" id="marqT"></div></div>
+
+  <section class="games reveal" id="juegos" aria-label="Qué podés hacer con tus fichas">
+    <div class="ghead">
+      <span class="eyebrow">TU FICHA, TU ELECCIÓN</span>
+      <h2>1 FICHA = 1 JUGADA</h2>
+      <p>Comprás fichas una sola vez y las usás en el juego que quieras. Cada ficha se gasta <b>una vez</b>: o en la Rueda o en la Raspadita. Tenés <b id="gTok">0</b> fichas ahora.</p>
+    </div>
+    <div class="gcards">
+      <article class="gc">
+        <div class="gi" aria-hidden="true">🎰</div>
+        <span class="gtag">JUEGO 1</span>
+        <h3>LA RUEDA</h3>
+        <p>Girá y ganá hasta <b id="gRuedaTop">$20.000.000</b> o el auto. Usa <b>1 ficha</b> por giro.</p>
+        <button class="btn" id="gWheel" type="button">🎰 GIRAR LA RUEDA</button>
+      </article>
+      <article class="gc">
+        <div class="gi" aria-hidden="true">🎟️</div>
+        <span class="gtag">JUEGO 2</span>
+        <h3>LA RASPADITA</h3>
+        <p>Raspá y, si encontrás 3 montos iguales, ganás hasta <b id="gScTop">$1.000.000</b>. Usa <b>1 ficha</b> por tarjeta.</p>
+        <button class="btn" id="gScratch" type="button">🎟️ RASPAR</button>
+      </article>
+    </div>
+    <ol class="gflow" aria-label="Cómo empezar">
+      <li><b>1</b> Comprá fichas</li><li><b>2</b> Elegí Rueda o Raspadita</li><li><b>3</b> Si ganás, reclamás tu premio</li>
+    </ol>
+  </section>
+
+  <section class="block reveal" id="rueda" style="padding-bottom:0">
+    <span class="eyebrow">JUEGO 1 · LA RUEDA</span>
+    <h3>GIRÁ LA RUEDA</h3>
+    <p class="sub">Tocá <b>GIRAR</b> (usa 1 ficha). ¿No tenés fichas? Comprá un pack en el panel de al lado y se acreditan solas.</p>
+  </section>
 
   <div class="stage">
     <div class="wheel-wrap" id="wheelWrap">
@@ -574,11 +636,14 @@ img,video,canvas{max-width:100%}
 
     <aside class="panel" id="buyPanel">
       <div class="claimbar" id="claimBar"><span id="claimBarTxt"></span><button class="btn" id="claimBarBtn" type="button">🏆 RECLAMAR AHORA</button></div>
-      <div class="ptitle"><span class="eyebrow">COMPRÁ TUS FICHAS</span><h2>ELEGÍ TU PACK</h2></div>
+      <div class="ptitle"><span class="eyebrow">COMPRÁ TUS FICHAS</span><h2>ELEGÍ TU PACK</h2><p class="psub">Cada ficha vale <b>1 jugada</b>: usala en la <b>Rueda</b> o en la <b>Raspadita</b>.</p></div>
 
       <div class="have" id="haveBox">
         <b id="haveTxt"></b>
-        <button class="btn" id="spinBtn" style="margin-top:10px">🎰 GIRAR AHORA</button>
+        <div class="hv-btns">
+          <button class="btn" id="spinBtn" type="button">🎰 GIRAR LA RUEDA</button>
+          <button class="btn" id="haveScratch" type="button">🎟️ RASPAR</button>
+        </div>
       </div>
 
       <div class="me" id="me" aria-label="Tu progreso">
@@ -606,18 +671,47 @@ img,video,canvas{max-width:100%}
     </aside>
   </div>
 
+  <section class="block reveal" id="raspadita">
+    <span class="eyebrow">JUEGO 2 · LA RASPADITA</span>
+    <h3>RASPÁ Y GANÁ</h3>
+    <p class="sub">Premios desde $100 hasta $1.000.000. Usa <b>1 ficha</b>, igual que la Rueda. Raspá la plata y, si encontrás 3 montos iguales, te lo llevás.</p>
+    <div class="scwrap">
+      <div class="sccard"><div class="scgrid">
+        <div class="sccells" id="scCells"></div>
+        <canvas id="scCanvas" aria-label="Zona para raspar"></canvas>
+      </div></div>
+      <div class="scinfo">
+        <h3>3 IGUALES,<br>PREMIO ASEGURADO</h3>
+        <p>Cada raspadita usa <b>1 ficha</b>, la misma que usás para la rueda. El resultado lo define el servidor antes de que raspes: raspar es solo la parte divertida.</p>
+        <ol class="scsteps">
+          <li>Tocá <b>RASPAR AHORA</b> (se usa 1 ficha).</li>
+          <li>Raspá las 6 casillas con el dedo o el mouse.</li>
+          <li>Si hay <b>3 montos iguales</b>, ganaste ese monto.</li>
+        </ol>
+        <div class="scprizes-t">Montos que podés ganar:</div>
+        <div class="scprizes" id="scPrizes"></div>
+        <div class="scbtns">
+          <button class="btn" id="scBuy" type="button">🎟️ RASPAR AHORA</button>
+          <button class="btn ghost" id="scReveal" type="button" hidden>✨ REVELAR TODO</button>
+        </div>
+        <div class="scnote" id="scNote">Usá el dedo o el mouse para raspar.</div>
+      </div>
+    </div>
+  </section>
+
   <section class="block reveal" id="winnersBlock">
     <div class="ticker" id="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
   </section>
 
   <section class="block reveal" id="como">
     <span class="eyebrow">CÓMO FUNCIONA</span>
-    <h3>TRES PASOS Y A GIRAR</h3>
+    <h3>TRES PASOS Y A JUGAR</h3>
     <div class="how">
-      <div class="st"><div class="n">1</div><h4>Elegí tu pack</h4><p>1 ficha o 3 fichas: cada ficha es un giro. El pack de 3 te sale más barato por giro.</p></div>
+      <div class="st"><div class="n">1</div><h4>Elegí tu pack</h4><p>1 ficha o 3 fichas: cada ficha es una jugada. El pack de 3 te sale más barato por ficha.</p></div>
       <div class="st"><div class="n">2</div><h4>Hacé la transferencia</h4><p>Te llevamos al pago seguro. Apenas se confirma la transferencia, tus fichas se acreditan solas.</p></div>
-      <div class="st"><div class="n">3</div><h4>Girá y mirá tu premio</h4><p>El sorteo se decide en el servidor. Si ganás, reclamás tu premio con tus datos y una foto.</p></div>
+      <div class="st"><div class="n">3</div><h4>Girá la Rueda o raspá</h4><p>Con cada ficha elegís: <b>girar la Rueda</b> o <b>raspar una tarjeta</b>. El sorteo se decide en el servidor. Si ganás, reclamás tu premio con tus datos y una foto.</p></div>
     </div>
+    <p class="hownote">🎟️ Cada ficha se usa <b>una sola vez</b>: en la Rueda <i>o</i> en la Raspadita. Si te quedan fichas, podés seguir con el juego que prefieras.</p>
   </section>
 
   <section class="block reveal" id="autoShow" hidden>
@@ -636,7 +730,7 @@ img,video,canvas{max-width:100%}
       </div>
       <div class="cartxt">
         <h3>ESTE GOL TREND<br>PUEDE SER TUYO</h3>
-        <p>Con giros desde <b id="carPrice">$0</b> cada uno participás por <b id="carName">el Gol Trend</b>. Si sale, es tuyo.</p>
+        <p>Con giros de la Rueda desde <b id="carPrice">$0</b> cada uno participás por <b id="carName">el Gol Trend</b>. Si sale, es tuyo.</p>
         <ul class="pts">
           <li>Sorteo en el servidor, sin trampas ni manipulación</li>
           <li>Pago por transferencia, se acredita solo</li>
@@ -648,33 +742,11 @@ img,video,canvas{max-width:100%}
   </section>
 
   <section class="block reveal" id="premios">
-    <span class="eyebrow">PREMIOS</span>
+    <span class="eyebrow">PREMIOS DE LA RUEDA</span>
     <h3>DIEZ PREMIOS EN JUEGO</h3>
-    <p class="sub">Cada giro puede cambiarte el día. Mirá todo lo que podés ganar:</p>
+    <p class="sub">Cada giro de la Rueda puede cambiarte el día. Mirá todo lo que podés ganar. (Los montos de la Raspadita están en <a href="#raspadita" style="color:var(--gold-2)">su sección</a>.)</p>
     <div class="pgrid" id="prizeGrid"></div>
     <div class="pcta"><button class="btn" id="ctaBuy" type="button">🎰 QUIERO GIRAR AHORA</button></div>
-  </section>
-
-  <section class="block reveal" id="raspadita">
-    <span class="eyebrow">NUEVO · RASPADITA</span>
-    <h3>RASPÁ Y GANÁ</h3>
-    <p class="sub">Premios desde $100 hasta $1.000.000. Raspá la plata y, si encontrás 3 montos iguales, te lo llevás.</p>
-    <div class="scwrap">
-      <div class="sccard"><div class="scgrid">
-        <div class="sccells" id="scCells"></div>
-        <canvas id="scCanvas" aria-label="Zona para raspar"></canvas>
-      </div></div>
-      <div class="scinfo">
-        <h3>3 IGUALES,<br>PREMIO ASEGURADO</h3>
-        <p>Cada raspadita usa <b>1 ficha</b>, la misma que usás para la rueda. El resultado lo define el servidor antes de que raspes: raspar es solo la parte divertida.</p>
-        <div class="scprizes" id="scPrizes"></div>
-        <div class="scbtns">
-          <button class="btn" id="scBuy" type="button">🎟️ RASPAR AHORA</button>
-          <button class="btn ghost" id="scReveal" type="button" hidden>✨ REVELAR TODO</button>
-        </div>
-        <div class="scnote" id="scNote">Usá el dedo o el mouse para raspar.</div>
-      </div>
-    </div>
   </section>
 
   <section class="block reveal" id="ganadores" hidden>
@@ -687,18 +759,20 @@ img,video,canvas{max-width:100%}
   <section class="block reveal" id="faq">
     <span class="eyebrow">AYUDA</span>
     <h3>PREGUNTAS FRECUENTES</h3>
-    <details><summary>¿Cómo se decide el premio?</summary><p>Al girar, el servidor sortea el resultado con un generador aleatorio criptográfico y recién después la rueda se anima hasta ese gajo. La animación es solo visual: no se puede influir en el resultado.</p></details>
-    <details><summary>¿Cuál es la diferencia entre los packs?</summary><p>Cada ficha es un giro. El pack de 3 fichas tiene un precio menor por giro que comprar fichas de a una.</p></details>
+    <details open><summary>¿Para qué sirven las fichas?</summary><p>Cada ficha es <b>una jugada</b>. Podés usarla en la <b>Rueda</b> (un giro) o en la <b>Raspadita</b> (una tarjeta). Una ficha se gasta una sola vez, en el juego que elijas. Tus fichas disponibles aparecen arriba, en “Fichas”.</p></details>
+    <details><summary>¿Cómo se juega la Raspadita?</summary><p>Tocá “Raspar ahora” (usa 1 ficha) y raspá las 6 casillas con el dedo o el mouse. Si encontrás 3 montos iguales, ganaste ese monto. Si no hay 3 iguales, no hubo premio esta vez.</p></details>
+    <details><summary>¿Cómo se decide el premio?</summary><p>En la Rueda y en la Raspadita el servidor sortea el resultado con un generador aleatorio criptográfico antes de mostrártelo. La animación de la rueda y el raspado son solo visuales: no se puede influir en el resultado.</p></details>
+    <details><summary>¿Cuál es la diferencia entre los packs?</summary><p>Cada ficha es una jugada (un giro de la Rueda o una raspadita). El pack de 3 fichas tiene un precio menor por ficha que comprar fichas de a una.</p></details>
     <details><summary>¿Cuándo se acreditan mis fichas?</summary><p>Apenas se confirma tu transferencia. La pantalla se actualiza sola; si cerrás la página, tus fichas quedan guardadas en este dispositivo.</p></details>
-    <details><summary>¿Cómo cobro mi premio?</summary><p>Después de ganar tocá “Reclamar mi premio” y completá tu nombre, apellido y una foto de perfil. Validamos tus datos y coordinamos el pago o la entrega por teléfono o WhatsApp.</p></details>
-    <details><summary>¿Qué pasa con “Otro tiro”?</summary><p>Se acredita una ficha gratis en tu cuenta al instante y podés girar de nuevo.</p></details>
+    <details><summary>¿Cómo cobro mi premio?</summary><p>Después de ganar (en la Rueda o en la Raspadita) tocá “Reclamar mi premio” y completá tu nombre, apellido y una foto de perfil. Validamos tus datos y coordinamos el pago o la entrega por teléfono o WhatsApp.</p></details>
+    <details><summary>¿Qué pasa con “Otro tiro”?</summary><p>Se acredita una ficha gratis en tu cuenta al instante y podés usarla en la Rueda o en la Raspadita.</p></details>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
     <p><strong>+18 · Juego responsable.</strong> Jugar implica riesgo de perder el dinero apostado. Jugá solo con dinero que puedas permitirte perder. Si sentís que el juego deja de ser un entretenimiento, pedí ayuda.</p>
-    <p id="licenseTxt" style="margin-top:8px" style="display:none;"></p>
+    <p id="licenseTxt" style="margin-top:8px"></p>
   </div>
 </footer>
 
@@ -726,6 +800,7 @@ img,video,canvas{max-width:100%}
     <button class="btn conv" id="resConvert" type="button" hidden></button>
     <button class="btn" id="resShare" type="button" hidden>📲 COMPARTIR EN WHATSAPP</button>
     <button class="btn" id="resAgain"></button>
+    <button class="btn ghost" id="resOther" type="button" hidden></button>
     <button class="btn ghost" id="resClose">Cerrar</button>
   </div>
 </div>
@@ -1218,13 +1293,17 @@ function renderTokens() {
   const box = $('#haveBox');
   if (tokens.length) {
     box.classList.add('on');
-    $('#haveTxt').textContent = tokens.length === 1 ? '¡Tenés 1 ficha lista para girar!' : `¡Tenés ${tokens.length} fichas listas para girar!`;
+    $('#haveTxt').textContent = (tokens.length === 1 ? '¡Tenés 1 ficha lista!' : `¡Tenés ${tokens.length} fichas listas!`) + ' Usala en la Rueda o en la Raspadita.';
   } else box.classList.remove('on');
   const hub = $('#hub');
   hub.textContent = tokens.length ? 'GIRAR' : 'FICHA';
   paintBuy();
   hub.classList.toggle('ready', tokens.length > 0 && !spinning);
-  hub.disabled = spinning; $('#spinBtn').disabled = spinning; try { scPaint(); } catch {}
+  hub.disabled = spinning; $('#spinBtn').disabled = spinning; $('#gWheel').disabled = spinning;
+  $('#gTok').textContent = tokens.length;
+  $('#gWheel').textContent = tokens.length ? '🎰 GIRAR LA RUEDA · usa 1 ficha' : '🎰 COMPRAR FICHAS PARA GIRAR';
+  $('#gScratch').textContent = tokens.length ? '🎟️ RASPAR · usa 1 ficha' : '🎟️ COMPRAR FICHAS PARA RASPAR';
+  try { scPaint(); } catch {}
 }
 
 function prizeMeta(p, rank) {
@@ -1398,7 +1477,7 @@ function renderPacks() {
     const dot = document.createElement('span'); dot.className = 'dot';
     const mid = document.createElement('span'); mid.className = 'pmid';
     const t = document.createElement('b'); t.textContent = k.label;
-    const sub = document.createElement('small'); sub.textContent = k.qty > 1 ? `${fmt(Math.round(k.price / k.qty))} por ficha` : '1 giro';
+    const sub = document.createElement('small'); sub.textContent = k.qty > 1 ? `${fmt(Math.round(k.price / k.qty))} por ficha` : '1 ficha = 1 jugada';
     mid.append(t, sub);
     const pr = document.createElement('span'); pr.className = 'pprice'; pr.textContent = fmt(k.price);
     lab.append(inp, dot, mid, pr);
@@ -1418,7 +1497,8 @@ function paintBuy() {
 function renderHero() {
   const top = Math.max(...prizes.filter(p => p.kind === 'cash').map(p => p.amount), 0), el = $('#jackAmt');
   if (top) { if (reduceMotion) el.textContent = money(top); else countUp(el, top); }
-  const mp = minPerSpin(); $('#fromTxt').textContent = mp ? `Girá desde ${fmt(Math.round(mp))} por tiro` : '';
+  const mp = minPerSpin(); $('#fromTxt').textContent = mp ? `Jugá desde ${fmt(Math.round(mp))} por ficha` : '';
+  const gt = $('#gRuedaTop'); if (gt && top) gt.textContent = money(top);
 }
 function setupReveal() {
   const els = document.querySelectorAll('.reveal');
@@ -1619,6 +1699,10 @@ function showResult(res) {
   else if (win && amt >= 200000) coinRain(30);
   if (win && navigator.vibrate) navigator.vibrate([80, 40, 80, 40, 160]);
   if (win) { sfx.win(); confetti(win && res.amount >= 1000000 ? 320 : 160); } else if (free) { sfx.free(); confetti(80); } else sfx.lose();
+  const ot = $('#resOther'), fromWheel = res.position !== undefined;
+  ot.hidden = !tokens.length;
+  ot.textContent = fromWheel ? '🎟️ USAR UNA FICHA EN LA RASPADITA' : '🎰 USAR UNA FICHA EN LA RUEDA';
+  ot.onclick = () => { closeModal('#resModal'); setTimeout(fromWheel ? scStart : spin, 250); };
   openModal('#resModal'); countUpPrize(res);
 }
 
@@ -1722,11 +1806,12 @@ function renderMarquee() {
 }
 const TIPS = [
   '🎁 Si te sale “OTRO TIRO”, te regalamos una ficha extra',
-  '💡 Con el pack de 3 fichas cada giro te sale mucho menos',
+  '💡 Con el pack de 3 fichas cada ficha te sale mucho menos',
+  '🎟️ Tus fichas sirven para la Rueda y para la Raspadita',
   '⚡ Pagás por transferencia y las fichas se acreditan solas',
   '🚗 Entre los premios hay un Gol Trend rojo, ¡podés ser el próximo!',
   '🏆 Si ganás, reclamás tu premio con tu nombre y una foto',
-  '🎰 Cada giro es un sorteo independiente, hecho en el servidor'
+  '🎰 Cada jugada (giro o raspadita) es un sorteo independiente, hecho en el servidor'
 ];
 let tipI = 0;
 function tipRotate() {
@@ -1954,6 +2039,7 @@ function scPaint() {
   b.disabled = scBusy || !!active;
   b.textContent = scBusy ? 'PREPARANDO…' : active ? '👆 RASPÁ LA TARJETA' : tokens.length ? (sc ? '🎟️ RASPAR OTRA · usa 1 ficha' : '🎟️ RASPAR AHORA · usa 1 ficha') : '🎟️ COMPRAR FICHAS PARA RASPAR';
   r.hidden = !active;
+  const hs = $('#haveScratch'), gs = $('#gScratch'); if (hs) hs.disabled = b.disabled || spinning; if (gs) gs.disabled = b.disabled || spinning;
   scCv.style.pointerEvents = active ? 'auto' : 'none';
 }
 function scPos(e) { const r = scCv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
@@ -2024,6 +2110,7 @@ async function scStart() {
   $('#raspadita .sccard').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function scChips() {
+  const gs = $('#gScTop'); if (gs && SC_POOL.length) gs.textContent = money(Math.max(...SC_POOL));
   const pr = $('#scPrizes'); pr.textContent = '';
   SC_POOL.slice().sort((a, b) => b - a).forEach((a, i) => { const s = document.createElement('span'); if (i < 2) s.className = 'top'; s.textContent = money(a); pr.append(s); });
 }
@@ -2055,6 +2142,9 @@ function scInit() {
 /* ====================== INIT ====================== */
 $('#buyForm').addEventListener('submit', buy);
 $('#hub').addEventListener('click', spin);
+$('#haveScratch').addEventListener('click', scStart);
+$('#gScratch').addEventListener('click', scStart);
+$('#gWheel').addEventListener('click', () => { if (!tokens.length) { $('#buyPanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('#fName').focus({ preventScroll: true }), 500); return; } $('#wheelWrap').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(spin, 450); });
 $('#spinBtn').addEventListener('click', spin);
 $('#payClose').addEventListener('click', () => closeModal('#payModal'));
 $('#resClose').addEventListener('click', () => closeModal('#resModal'));
