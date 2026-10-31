@@ -850,6 +850,33 @@ footer .wrap{max-width:780px}
 .card p{font-size:15px}
 .card .btn+.btn{margin-top:10px}
 @media(min-width:601px){.card{padding:30px 26px;border-radius:var(--r-xl)}}
+
+/* Hora de la suerte: sin mensaje vacío, queda centrada y compacta */
+.hora:has(.hora-r:empty){grid-template-columns:1fr auto}
+.hora-r:empty{display:none}
+@media(min-width:821px){.hora:has(.hora-r:empty){grid-template-columns:auto auto;justify-content:center;gap:clamp(20px,5vw,56px)}}
+.hora-l b{font-size:clamp(22px,3vw,28px);letter-spacing:.1em}
+.hora-c .dg{border-radius:var(--r-md)}
+
+/* Pulido extra */
+.badge-live{margin-bottom:18px}
+.hero h1{margin-bottom:4px}
+.gc{transition:border-color .25s}
+.gc:hover{border-color:rgba(245,197,66,.5)}
+.total{border-top:1px solid var(--bd-soft)}
+.wheel-wrap{margin-block:8px}
+.sccard{border-radius:var(--r-lg)}
+.scbtns{gap:10px}
+.scnote{font-size:13px}
+.wgrid{gap:clamp(12px,2vw,20px)}
+.prest{gap:clamp(10px,1.5vw,16px)}
+.phero{gap:clamp(12px,2vw,18px)}
+.pgrid{max-width:1100px;margin:0 auto}
+details{transition:background .2s}
+details[open]{background:rgba(245,197,66,.06)}
+.copyrow{border-radius:var(--r-sm)}
+#toast{font-size:14px;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+@media(max-width:600px){.hora-l b{font-size:20px}.hero h1{margin-bottom:0}.gflow{flex-direction:column;align-items:center;gap:8px}}
 </style>
 </head>
 <body>
@@ -2090,7 +2117,7 @@ function horaMsg() {
   if (horaWinners === null) { el.textContent = ''; return; }
   const tag = HORA_DEMO ? ' <small style="opacity:.6;font-size:10px;letter-spacing:.12em;border:1px solid currentColor;border-radius:6px;padding:1px 5px">DEMO</small>' : '';
   if (horaWinners > 0) el.innerHTML = `<span class="live"></span><em>${horaWinners}</em> ${horaWinners === 1 ? 'jugador ganó' : 'jugadores ganaron'} un premio en esta hora${tag}`;
-  else el.innerHTML = '<span class="live"></span>Todavía no hubo premios en esta hora: <em>¡podés ser el primero!</em>';
+  else el.textContent = '';
 }
 async function horaFetch() {
   if (HORA_DEMO) { horaWinners = 1 + Math.floor(Math.random() * 50); horaMsg(); return; }   // demostración: número al azar entre 1 y 50
