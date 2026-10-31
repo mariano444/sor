@@ -877,6 +877,20 @@ details[open]{background:rgba(245,197,66,.06)}
 .copyrow{border-radius:var(--r-sm)}
 #toast{font-size:14px;box-shadow:0 12px 32px rgba(0,0,0,.5)}
 @media(max-width:600px){.hora-l b{font-size:20px}.hero h1{margin-bottom:0}.gflow{flex-direction:column;align-items:center;gap:8px}}
+
+/* Premio mayor: video / foto del auto */
+.herocar{position:relative;width:min(100%,780px);aspect-ratio:16/9;margin:28px auto 0;border-radius:var(--r-xl);overflow:hidden;isolation:isolate;background:linear-gradient(160deg,#3a0a1c,#12060c);border:1px solid var(--bd);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 50px rgba(245,197,66,.18);text-align:left}
+.herocar::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;z-index:4;pointer-events:none;background:conic-gradient(from var(--ang),#fff3c4,#f5c542,#c1121f,#f5c542,#fff3c4);animation:angspin 6s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.hc-img,.hc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hc-vid{opacity:0;transition:opacity .6s;z-index:1}
+.hc-vid.on{opacity:1}
+.herocar figcaption{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:56px clamp(14px,3vw,26px) clamp(14px,2.5vw,22px);background:linear-gradient(0deg,rgba(10,5,8,.92),rgba(10,5,8,.55) 60%,transparent)}
+.hc-tag{font-size:11.5px;font-weight:800;letter-spacing:1.6px;padding:4px 12px;border-radius:99px;color:#3a0a12;background:linear-gradient(180deg,#ffe08a,var(--gold))}
+.hc-name{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(28px,5vw,44px);letter-spacing:1.5px;line-height:1;color:var(--gold-2)}
+.herocar small{flex-basis:100%;font-size:clamp(13px,2vw,15px);color:#e8dcc0}
+.herocar small b{color:var(--gold-2);font-size:1.1em}
+@media(max-width:600px){.herocar{aspect-ratio:4/3;margin-top:22px;border-radius:var(--r-lg)}}
+@media(prefers-reduced-motion:reduce){.herocar::before{animation:none}}
 </style>
 </head>
 <body>
@@ -903,7 +917,15 @@ details[open]{background:rgba(245,197,66,.06)}
     <h1>GIRÁ <em>Y</em> GANÁ</h1>
     <p class="lead">Con tus fichas jugás a <b>dos juegos</b>: girá la <b>Rueda</b> (diez premios, incluido <b>un auto</b>) o raspá la <b>Raspadita</b>. <b>1 ficha = 1 jugada</b>, y elegís en cuál usarla.</p>
     <p class="from" id="fromTxt" style="display:none;"></p>
-    <div class="jackpot"><span>PREMIO MAYOR</span> <b id="jackAmt">$20.000.000</b></div>
+    <figure class="herocar" id="heroCar">
+      <img class="hc-img" id="hcImg" src="media/gol-trend-premio.jpg" alt="Volkswagen Gol Trend, premio mayor" decoding="async">
+      <video class="hc-vid" id="hcVid" muted loop playsinline autoplay preload="metadata" poster="media/gol-trend-exterior.jpg" aria-label="Video del Gol Trend"><source src="media/gol-trend-exterior.mp4" type="video/mp4"></video>
+      <figcaption>
+        <span class="hc-tag">PREMIO MAYOR</span>
+        <b class="hc-name">🚗 <span id="hcName">Gol Trend</span></b>
+        <small>Además, premios de hasta <b id="jackAmt">$20.000.000</b></small>
+      </figcaption>
+    </figure>
     <ul class="trust">
       <li>🔒 Pago seguro por transferencia</li>
       <li>⚡ Fichas al instante</li>
@@ -2537,6 +2559,18 @@ const sc=()=>h.classList.toggle('scrolled',scrollY>8);sc();addEventListener('scr
 const links=[...nav.querySelectorAll('a')],map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('on'));const a=map.get(e.target.id);a&&a.classList.add('on')}}),{rootMargin:'-45% 0px -50% 0px'});
 map.forEach((a,id)=>{const el=document.getElementById(id);el&&io.observe(el)})}
+})();
+</script>
+<script>
+(()=>{const f=document.getElementById('heroCar'),v=document.getElementById('hcVid'),i=document.getElementById('hcImg'),n=document.getElementById('carName'),h=document.getElementById('hcName');
+if(!f)return;
+v.addEventListener('playing',()=>v.classList.add('on'));
+v.addEventListener('error',()=>v.remove(),true);
+i.addEventListener('error',()=>i.remove());
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){v.pause();v.removeAttribute('autoplay')}
+else{const p=v.play();p&&p.catch(()=>{});
+ if('IntersectionObserver' in window)new IntersectionObserver(es=>{es[0].isIntersecting?v.play().catch(()=>{}):v.pause()},{threshold:.2}).observe(f)}
+if(n&&h){const s=()=>{const x=n.textContent.trim();if(x&&x!=='el Gol Trend')h.textContent=x};s();new MutationObserver(s).observe(n,{childList:true,characterData:true,subtree:true})}
 })();
 </script>
 </body>
