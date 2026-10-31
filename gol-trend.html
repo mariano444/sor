@@ -544,6 +544,173 @@ img,video,canvas{max-width:100%}
 .scnote{margin-top:10px;font-size:12.5px;color:var(--muted);text-align:center}
 @media(prefers-reduced-motion:reduce){.sccell.hit{animation:none}}
 </style>
+<style id="v8">
+/* ===== v8 · Capa responsiva avanzada (solo agrega; no reemplaza reglas previas) ===== */
+:root{--hdr-h:60px;--gut:clamp(14px,4vw,28px);--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(var(--hdr-h) + 14px)}
+section[id],#buyPanel,#wheelWrap,#raspadita{scroll-margin-top:calc(var(--hdr-h) + 14px)}
+h1,h2,h3,h4{text-wrap:balance}
+p,.sub,.lead,details p{text-wrap:pretty}
+body{overflow-wrap:break-word}
+.stage>*,.carshow>*,.scwrap>*,.gcards>*,.how>*,.hora>*{min-width:0}
+.panel,.pack,.pmid{min-width:0}
+
+/* accesibilidad de foco coherente */
+:where(a,button,summary,input,.pack):focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:12px}
+
+/* cabecera con zona segura (notch) */
+header{padding-top:var(--sat)}
+header .wrap{height:var(--hdr-h)}
+
+/* grillas que nunca desbordan en pantallas muy angostas */
+.wgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
+.prize-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr))}
+.jackpot{flex-wrap:wrap;justify-content:center;text-align:center;max-width:100%}
+.copyrow{flex-wrap:wrap}
+.card{overscroll-behavior:contain}
+
+/* bloquear scroll del fondo y ocultar barras flotantes cuando hay un modal abierto */
+html:has(.modal.on){overflow:hidden}
+body:has(.modal.on) .sticky-cta,body:has(.modal.on) .wa{display:none!important}
+
+/* ---------- Pantallas grandes ---------- */
+@media(min-width:1280px){
+  .wrap{max-width:1240px}
+  .stage{gap:48px}
+  .wheel-wrap{width:min(94vw,620px)}
+}
+@media(min-width:1600px){
+  .wrap{max-width:1360px}
+  .wheel-wrap{width:min(94vw,680px)}
+  .hero .lead{max-width:720px}
+  .panel{padding:34px}
+}
+@media(min-width:2200px){
+  html{font-size:112.5%}
+  .wrap{max-width:1560px}
+}
+
+/* ---------- Laptop chica / tablet horizontal: la nav no se amontona ---------- */
+@media(min-width:900px) and (max-width:1150px){
+  .nav{gap:0}
+  .nav a{padding:8px 9px;font-size:12px}
+  .stage{gap:24px}
+  .hora{gap:12px}
+}
+
+/* ---------- Tablet vertical ---------- */
+@media(min-width:601px) and (max-width:900px){
+  .wheel-wrap{width:min(78vw,540px,max(320px,calc(100svh - 160px)))}
+  .gcards{gap:14px}
+  .carshow{padding:18px;gap:22px}
+  .hora{grid-template-columns:1fr auto;gap:12px 16px}
+  .hora-r{grid-column:1/-1;text-align:center}
+  .packs{grid-template-columns:1fr 1fr;gap:14px}
+  .pack{flex-wrap:wrap}
+  .modal{align-items:center}
+  .modal .card{border-radius:24px;width:min(520px,100%)}
+}
+
+/* ---------- Celular ---------- */
+@media(max-width:600px){
+  :root{--hdr-h:54px}
+  header .wrap{gap:8px}
+  .hdr-right{gap:6px;min-width:0}
+  .wheel-wrap{width:min(92vw,520px,max(280px,calc(100svh - 210px)))}
+  .stage{padding-bottom:18px}
+  .hero h1{white-space:normal;overflow-wrap:anywhere}
+  .badge-live{font-size:10.5px;letter-spacing:.6px;padding:6px 12px;text-align:center}
+  .eyebrow{font-size:10px;letter-spacing:1.6px}
+  .jackpot{padding:9px 16px;gap:6px}
+  .gcards{margin:16px 0 12px;gap:12px}
+  .gc{padding:18px 16px}
+  .gc .btn{padding:14px 12px;font-size:15px}
+  .panel h2{font-size:32px}
+  .pack{padding:14px 12px;gap:10px}
+  .pack .save{white-space:normal}
+  .total b{font-size:32px}
+  #buyBtn{font-size:15px;padding:15px 12px;line-height:1.25}
+  .hv-btns{grid-template-columns:1fr}
+  .me-top{align-items:flex-start}
+  .me-stats{width:100%;justify-content:space-between}
+  .hora{padding:12px 12px 16px;gap:8px 10px}
+  .hora-r{font-size:13px}
+  .prest{grid-template-columns:1fr 1fr;gap:10px}
+  .pcard{padding:14px}
+  .pcard.hero{min-height:170px;padding:20px 16px}
+  .pico{font-size:28px}
+  .ptag{font-size:9.5px;padding:3px 8px;letter-spacing:1px}
+  .how .st{padding:18px 16px}
+  .scwrap{gap:16px}
+  #raspadita .scwrap{padding:12px}
+  .sccard{padding:9px}
+  .scsteps{margin-left:18px}
+  .card{padding:22px 16px calc(22px + var(--sab));position:relative}
+  .card::before{content:"";display:block;width:44px;height:4px;border-radius:99px;background:rgba(255,255,255,.22);margin:-10px auto 14px}
+  .card h4{font-size:36px}
+  #toast{bottom:calc(84px + var(--sab));width:calc(100vw - 28px);border-radius:18px}
+  .sus{font-size:clamp(16px,5.4vw,24px);letter-spacing:.1em}
+  footer{padding-bottom:calc(96px + var(--sab))}
+  .marq{padding:8px 0}
+  .mchip{font-size:13px;padding:7px 14px}
+}
+/* premios en una columna si el ancho no alcanza para dos tarjetas */
+@media(max-width:380px){
+  .prest{grid-template-columns:1fr}
+  .pack .pprice{font-size:26px}
+  .hora-c .dg{min-width:46px}
+  .hora-c i{font-size:30px}
+  .chip{font-size:11px;padding:4px 8px}
+  .logo{font-size:18px;letter-spacing:1px}
+  .trust{grid-template-columns:1fr}
+}
+@media(max-width:320px){
+  .logo svg{display:none}
+  .panel{padding:16px 10px}
+  .btn{font-size:14px}
+}
+
+/* ---------- Celular de costado / pantallas bajas ---------- */
+@media(max-height:480px) and (orientation:landscape){
+  :root{--hdr-h:46px}
+  .stage{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;padding:10px 0}
+  .wheel-wrap{width:min(46vw,calc(100svh - 70px),420px)}
+  .panel{max-height:calc(100svh - 70px);overflow:auto;overscroll-behavior:contain}
+  .hero{padding:6px 0}
+  .modal{align-items:center}
+  .modal .card{width:min(520px,100%);border-radius:20px;max-height:94svh}
+  .card::before{display:none}
+  .wa{bottom:12px}
+}
+
+/* ---------- Dispositivos táctiles: sin efectos hover pegajosos y objetivos de 44px ---------- */
+@media(hover:none){
+  .pack:hover,.how .st:hover,.btn:hover:not(:disabled),.pcard.in:hover{transform:none;filter:none}
+  .pcard:hover .pimg{transform:none}
+  .hub:hover:not(:disabled){transform:translate(-50%,-50%)}
+}
+@media(pointer:coarse){
+  .icon-btn{width:44px;height:44px}
+  .copyrow button{min-height:40px;padding:8px 14px}
+  details summary{min-height:48px}
+  .check{padding:4px 0}
+  .check input{width:20px;height:20px}
+  .vtabs button{min-height:40px}
+}
+
+/* ---------- Preferencias del sistema ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal,.js .reveal:not(.in){opacity:1;transform:none;transition:none}
+}
+@media(forced-colors:active){
+  .pack.sel,.btn{border:2px solid ButtonText}
+}
+@media print{
+  header,.sticky-cta,.wa,.aurora,#confetti,#dim{display:none!important}
+  body{background:#fff;color:#000}
+}
+</style>
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
