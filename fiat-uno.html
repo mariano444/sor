@@ -3768,7 +3768,7 @@ async function uploadParticipantPhoto(file, phone) {
   
   const { error } = await supabaseClient.storage.from('participant-profiles').upload(filePath, fileToUpload, {
     cacheControl: '3600',
-    upsert: true
+    upsert: false // el nombre ya es único (teléfono + timestamp); upsert exigiría además permiso UPDATE
   });
   
   if (error) throw error;
