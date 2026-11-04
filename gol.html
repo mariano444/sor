@@ -2839,6 +2839,39 @@ img,svg,video{max-width:100%}
   .hero-cta{flex-direction:column;align-items:stretch}
 }
 @media(prefers-reduced-motion:reduce){.mp-aura,.mp-sweep,.prov.on,.countdown-sep{animation:none!important}}
+
+/* ===== Tarjetas en tema oscuro (legibilidad) ===== */
+:root{--card:#131E34;--card2:#1B2842;--sky:rgba(255,255,255,.07);--blue:#FF6A5E;--paper2:#0E1729}
+.pkg,.proof-card,.draw-card,.step,.course-premium-card,.draw-showcase-panel,.draw-featured-card,.faq-item,.participants-table-wrap,.payment-status-card,.live-feed-card{
+  background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid rgba(255,255,255,.12);border-radius:var(--r);box-shadow:0 18px 40px -22px rgba(0,0,0,.7);color:#E8ECF4}
+.pkg *,.proof-card *,.draw-card *,.step *,.course-premium-card *,.draw-showcase-panel *,.draw-featured-card *,.faq-item *,.participants-table-wrap *,.payment-status-card *,.live-feed-card *{--txt:#E8ECF4;--text:#E8ECF4;--muted:#B6C0D6}
+.pkg-chances,.pkg-price,.course-premium-title,.step-title,.draw-card-title,.proof-card h3,.proof-card h4,.faq-q{color:#fff}
+.pkg-unit,.pkg-price-unit,.step-desc,.draw-card-copy,.faq-a{color:#B6C0D6}
+.pkg:hover{border-color:rgba(255,106,94,.6)}
+.pkg-progress{background:rgba(255,255,255,.12)}
+.pkg-saving{color:#2BD98C}
+.pkg.featured{background:linear-gradient(165deg,rgba(229,48,43,.28),var(--card));border:1px solid rgba(242,181,68,.7)}
+.pkg-badge,.course-premium-tag{background:linear-gradient(145deg,#F8E3A3,#E0B04A);color:#1B1415}
+.step-num{background:linear-gradient(145deg,#FF5A50,#E5302B);color:#fff;box-shadow:0 0 0 4px rgba(229,48,43,.22),0 8px 18px -6px rgba(229,48,43,.7);font-variant-numeric:tabular-nums}
+.course-premium-title span{color:#FF8A80}
+.table-header-gp{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.participant-row{border-color:rgba(255,255,255,.1);color:#E8ECF4}
+.participant-row:hover{background:rgba(255,255,255,.07)}
+.search-wrapper input,.form-input,.form-textarea{background:#0E1729;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.search-wrapper input::placeholder,.form-input::placeholder,.form-textarea::placeholder{color:#8F9BB5}
+.form-input:focus,.form-textarea:focus,.search-wrapper input:focus{border-color:#FF6A5E;box-shadow:0 0 0 4px rgba(255,106,94,.25)}
+.gallery-section{background:var(--ink2)}
+
+/* ===== Modal y botones en tema oscuro ===== */
+.modal{background:linear-gradient(170deg,#1B2842,#101a2e);color:#E8ECF4;border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px -20px rgba(0,0,0,.8)}
+.modal *{--txt:#E8ECF4;--text:#E8ECF4}
+.modal-title,.modal strong,.form-check-title,.modal-trust-text,.form-label{color:#fff}
+.modal-sub,.form-help,.file-upload-help,.form-check-sub,.modal-close{color:#B6C0D6}
+.modal-close:hover{color:#fff}
+.modal select,.modal option{background:#0E1729;color:#fff}
+.btn-draw-sec{background:rgba(255,255,255,.08)!important;color:#fff!important;border:1px solid rgba(255,255,255,.3)!important;box-shadow:none}
+.btn-draw-sec:hover{background:rgba(255,255,255,.16)!important;border-color:#fff!important}
+.whatsapp-float{background:#0E8A3B!important;color:#fff}
 </style>
 
 </head>
