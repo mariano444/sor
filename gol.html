@@ -3080,6 +3080,35 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
   </div>
 </div></section>
 
+<section id="ruleta" class="spin-section"><div class="section-inner">
+  <span class="section-tag">Regalo de bienvenida</span>
+  <h2 class="section-title">Girá la ruleta y llevate<br><span style="color:var(--volt)">de 1 a 15 chances de regalo</span></h2>
+  <p class="section-sub">Todos los giros ganan. Tu regalo se suma a tu compra de <b>10 chances o más</b>: cada chance extra es una participación más en el sorteo del Volkswagen Gol Trend.</p>
+  <div class="spin-grid">
+    <div class="spin-stage">
+      <div class="spin-wheel-wrap" id="spWrap">
+        <svg id="spSvg" viewBox="0 0 400 400" role="img" aria-label="Ruleta con premios de 1 a 15 chances de regalo"></svg>
+        <button type="button" class="spin-hub" id="spBtn" aria-label="Girar la ruleta"><span>GIRAR</span></button>
+      </div>
+      <div class="spin-demo hidden" id="spDemo">MODO DEMO · este giro no suma chances reales</div>
+    </div>
+    <div class="spin-side">
+      <ol class="spin-steps">
+        <li><span>1</span><div><b>Girá la ruleta</b>Un giro por persona. Ganás entre 1 y 15 chances.</div></li>
+        <li><span>2</span><div><b>Elegí un pack de 10+</b>El regalo se activa con packs de 10 chances o más.</div></li>
+        <li><span>3</span><div><b>Se suman solas</b>Tus chances de regalo se agregan a tu compra y figuran en la lista.</div></li>
+      </ol>
+      <div class="spin-result" id="spResult" aria-live="polite">
+        <div class="spin-result-kicker" id="spKicker">Tu turno</div>
+        <div class="spin-result-big" id="spBig">🎁</div>
+        <p class="spin-result-copy" id="spCopy">Tocá <b>GIRAR</b> y descubrí cuántas chances de regalo te tocan.</p>
+        <a href="#paquetes" class="btn-primary spin-cta hidden" id="spCta">Usar mi regalo · elegir pack</a>
+      </div>
+      <p class="spin-fine">Los 15 números tienen la misma probabilidad. Un giro por persona. El regalo se suma al comprar un pack de 10 chances o más y no se canjea por dinero.</p>
+    </div>
+  </div>
+</div></section>
+
 <section id="paquetes" class="packages-section">
   <div class="section-inner">
     <span class="section-tag">Elegí tu pack</span>
@@ -5079,6 +5108,15 @@ async function submitOrder(){
 
     if (error) throw error;
 
+    // Regalo de la ruleta: se registra en el servidor antes de ir al pago
+    const spinGift = window.GTSpin && window.GTSpin.eligibleFor(selectedPkg);
+    if (spinGift) {
+      const giftOk = await window.GTSpin.apply(data.order_id);
+      if (!giftOk && !confirm('No pudimos registrar tu regalo de la ruleta. Si continuás con el pago, el regalo podría no sumarse. ¿Querés continuar igual?')) {
+        throw new Error('Cancelaste la compra porque el regalo no pudo registrarse. Probá de nuevo en unos minutos.');
+      }
+    }
+
     if (selectedPaymentProvider === 'galiopay') {
       const response = await fetch(buildFunctionUrl('galiopay-create-payment'), {
         method: 'POST',
@@ -5835,6 +5873,184 @@ select.form-input option{background:#1E1614;color:#EDEAE6}
 <script>
 document.addEventListener('input',function(e){if(e.target.classList&&e.target.classList.contains('field-error'))e.target.classList.remove('field-error')});
 document.addEventListener('change',function(e){if(e.target.classList&&e.target.classList.contains('field-error'))e.target.classList.remove('field-error')});
+</script>
+<style id="spin-css">
+.spin-section{background:linear-gradient(180deg,var(--ink2),var(--ink));position:relative;overflow:hidden}
+.spin-section::before{content:"";position:absolute;left:50%;top:38%;width:min(900px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(232,163,61,.16),transparent 70%);pointer-events:none}
+.spin-grid{position:relative;display:grid;grid-template-columns:minmax(300px,1fr) 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;margin-top:2.2rem}
+.spin-stage{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.spin-wheel-wrap{position:relative;width:min(440px,88vw);aspect-ratio:1;filter:drop-shadow(0 26px 40px rgba(0,0,0,.6))}
+#spSvg{width:100%;height:100%;display:block;overflow:visible}
+.sp-wheel{transform-box:fill-box;transform-origin:center;will-change:transform}
+.sp-bulb{fill:#F6D9A0;animation:spBulb 1.4s steps(1) infinite}
+.sp-bulb:nth-child(2n){animation-delay:-.7s}
+@keyframes spBulb{0%{fill:#F6D9A0;filter:drop-shadow(0 0 4px #E8A33D)}50%{fill:#5a4630;filter:none}}
+.sp-pointer{filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
+.sp-pointer.tick{animation:spTick .12s ease-out 1}
+@keyframes spTick{50%{transform:rotate(-12deg)}}
+.sp-pointer{transform-box:fill-box;transform-origin:50% 20%}
+.spin-hub{position:absolute;left:50%;top:50%;width:25%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:4px solid #F6D9A0;background:radial-gradient(circle at 35% 30%,#ff5a4f,var(--volt) 55%,var(--volt2));color:#fff;font:800 clamp(.8rem,2.6vw,1.05rem) 'Archivo',sans-serif;letter-spacing:.06em;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.55),inset 0 -6px 12px rgba(0,0,0,.25);animation:spHub 1.8s ease-in-out infinite}
+.spin-hub:hover:not(:disabled){filter:brightness(1.1)}
+.spin-hub:disabled{animation:none;cursor:default;filter:grayscale(.35) brightness(.85)}
+@keyframes spHub{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.55),0 0 0 0 rgba(217,39,43,.6),inset 0 -6px 12px rgba(0,0,0,.25)}50%{box-shadow:0 8px 24px rgba(0,0,0,.55),0 0 0 16px rgba(217,39,43,0),inset 0 -6px 12px rgba(0,0,0,.25)}}
+.spin-demo{padding:.4rem .9rem;border-radius:999px;background:rgba(255,200,0,.12);border:1px dashed #E8A33D;color:#F6D9A0;font:700 .72rem 'JetBrains Mono',monospace;letter-spacing:.04em}
+.spin-steps{list-style:none;display:grid;gap:.75rem;margin-bottom:1.4rem}
+.spin-steps li{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem 1rem;border-radius:14px;background:var(--ink3);border:1px solid rgba(255,255,255,.08);color:var(--silver2);font-size:.88rem;line-height:1.45}
+.spin-steps li>span{flex:none;width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--volt);color:#fff;font-weight:800}
+.spin-steps b{display:block;color:#fff;font-size:.95rem}
+.spin-result{text-align:center;padding:1.3rem 1.2rem;border-radius:18px;background:linear-gradient(135deg,rgba(232,163,61,.14),rgba(217,39,43,.14));border:1px solid rgba(232,163,61,.4);position:relative;overflow:hidden}
+.spin-result.won{border-color:#F2B544;box-shadow:0 0 0 1px rgba(242,181,68,.4),0 18px 50px -18px rgba(242,181,68,.45)}
+.spin-result-kicker{font:700 .72rem 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#F6D9A0}
+.spin-result-big{font:800 clamp(2.6rem,8vw,3.6rem)/1.05 'Archivo',sans-serif;color:#fff;margin:.3rem 0}
+.spin-result.won .spin-result-big{color:#F2B544;animation:spPop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes spPop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.spin-result-copy{color:var(--silver);font-size:.95rem;line-height:1.55}
+.spin-result-copy b{color:#fff}
+.spin-cta{display:inline-flex;margin-top:1rem;justify-content:center}
+.spin-fine{margin-top:1rem;color:var(--silver2);font-size:.76rem;line-height:1.5;text-align:center}
+.sp-confetti{position:absolute;top:-10px;width:8px;height:14px;border-radius:2px;pointer-events:none;animation:spFall linear forwards;z-index:3}
+@keyframes spFall{to{transform:translate3d(var(--dx),420px,0) rotate(var(--r));opacity:0}}
+.pkg-gift{display:block;margin:.5rem 0;padding:.45rem .6rem;border-radius:10px;background:rgba(242,181,68,.14);border:1px solid rgba(242,181,68,.5);color:#F6D9A0;font-size:.78rem;line-height:1.35;text-decoration:none;font-weight:600}
+.pkg-gift.ghost{background:transparent;border-style:dashed}
+.pkg-gift.dim{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.15);color:var(--silver2);font-weight:500}
+.modal-gift{margin:-.4rem 0 1rem;padding:.7rem .9rem;border-radius:12px;background:rgba(242,181,68,.14);border:1px solid rgba(242,181,68,.55);color:#F6D9A0;font-size:.85rem;line-height:1.45}
+.modal-gift b{color:#fff}.modal-gift.dim{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.15);color:var(--silver2)}
+@media(max-width:860px){.spin-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.spin-hub,.sp-bulb,.spin-result.won .spin-result-big{animation:none}}
+</style>
+<script>
+(function(){
+var MIN=10,N=15,KEY='gt_spin_v1',SEG=360/N;
+var demo=/[?&]ruleta=demo/.test(location.search);
+var svg=document.getElementById('spSvg');if(!svg)return;
+var ns='http://www.w3.org/2000/svg',btn=document.getElementById('spBtn');
+function st(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}}
+function save(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+function dev(){var s=st()||{};if(s.dev)return s.dev;var d=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random());s.dev=d;save(s);return d}
+function el(t,a,p){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function pt(a,r){var x=a*Math.PI/180;return[200+r*Math.sin(x),200-r*Math.cos(x)]}
+
+/* ---- dibujo de la ruleta: 15 gajos, del +1 al +15 ---- */
+el('circle',{cx:200,cy:200,r:197,fill:'#1E1614',stroke:'#E8A33D','stroke-width':5},svg);
+for(var b=0;b<30;b++){var q=pt(b*12,191);el('circle',{cx:q[0],cy:q[1],r:3.2,'class':'sp-bulb'},svg)}
+var wheel=el('g',{'class':'sp-wheel',id:'spWheel'},svg);
+var COL=[['#D9272B','#fff'],['#291E1B','#fff'],['#E8A33D','#1b120d']];
+for(var i=0;i<N;i++){
+ var a0=i*SEG-SEG/2,a1=i*SEG+SEG/2,p0=pt(a0,176),p1=pt(a1,176),c=COL[i%3];
+ el('path',{d:'M200 200L'+p0[0]+' '+p0[1]+'A176 176 0 0 1 '+p1[0]+' '+p1[1]+'Z',fill:c[0],stroke:'#F6D9A0','stroke-width':1.2},wheel);
+ var tp=pt(i*SEG,132),t=el('text',{x:tp[0],y:tp[1],fill:c[1],'font-size':27,'font-weight':800,'font-family':'Archivo, sans-serif','text-anchor':'middle','dominant-baseline':'central',transform:'rotate('+(i*SEG)+' '+tp[0]+' '+tp[1]+')'},wheel);
+ t.textContent='+'+(i+1);
+}
+el('circle',{cx:200,cy:200,r:176,fill:'none',stroke:'#F6D9A0','stroke-width':2},svg);
+var pg=el('g',{transform:'translate(0,8)'},svg);
+var ptr=el('path',{d:'M200 34L184 -2Q200 -14 216 -2Z',fill:'#fff',stroke:'#D9272B','stroke-width':3,'class':'sp-pointer'},pg);
+
+/* ---- estado ---- */
+var rot=0,busy=false;
+function R(id){return document.getElementById(id)}
+function setRes(kicker,big,copy,won,cta){
+ R('spKicker').textContent=kicker;R('spBig').textContent=big;R('spCopy').innerHTML=copy;
+ R('spResult').classList.toggle('won',!!won);R('spCta').classList.toggle('hidden',!cta);
+}
+function exampleTotal(v){var m=0;try{(packages||[]).forEach(function(p){var c=Number(p.entries_qty||0)+Number(p.bonus_entries||0);if(c>=MIN&&(!m||c<m))m=c})}catch(e){}return m||MIN}
+function showWon(v,again){
+ var base=exampleTotal(v);
+ setRes(again?'Tu regalo te está esperando':'¡Felicitaciones!','+'+v+' chances',
+  (again?'Ya tenés ':'Ganaste ')+'<b>'+v+' chance'+(v>1?'s':'')+' de regalo</b>. Se suman cuando comprás un pack de <b>10 chances o más</b>: por ejemplo, con '+base+' chances participás con <b>'+(base+v)+'</b>.',true,true);
+}
+function showUsed(v){setRes('Regalo aplicado','✅','Tu regalo de <b>+'+v+' chances</b> ya fue sumado a tu compra. ¡Mucha suerte!',true,false)}
+function boot(){
+ var s=st();if(demo)R('spDemo').classList.remove('hidden');
+ if(s&&s.v&&!demo){
+  setWheel(s.v);btn.disabled=true;btn.firstChild.textContent='LISTO';
+  s.used?showUsed(s.v):showWon(s.v,true);
+ }
+}
+function setWheel(v){rot=-(v-1)*SEG;wheel.style.transition='none';wheel.style.transform='rotate('+rot+'deg)'}
+
+/* ---- tirada ---- */
+function localPick(){var a=new Uint32Array(1),lim=Math.floor(4294967296/N)*N,x;do{crypto.getRandomValues(a);x=a[0]}while(x>=lim);return x%N+1}
+async function roll(){
+ if(demo)return localPick();
+ var r=await supabaseClient.rpc('spin_roll',{p_device_id:dev(),p_campaign_slug:CAMPAIGN_SLUG});
+ if(r.error)throw r.error;
+ var v=Number(r.data&&r.data.bonus!==undefined?r.data.bonus:r.data);
+ if(!(v>=1&&v<=N))throw new Error('bad');return v;
+}
+function confetti(){
+ var box=R('spResult'),cols=['#F2B544','#D9272B','#fff','#FF7A59','#12A66B'];
+ for(var i=0;i<46;i++){var c=document.createElement('i');c.className='sp-confetti';
+  c.style.left=Math.random()*100+'%';c.style.background=cols[i%cols.length];
+  c.style.setProperty('--dx',(Math.random()*160-80)+'px');c.style.setProperty('--r',(Math.random()*720-360)+'deg');
+  c.style.animationDuration=(1.6+Math.random()*1.4)+'s';c.style.animationDelay=(Math.random()*.4)+'s';
+  box.appendChild(c);setTimeout(function(n){n.remove()},3600,c)}
+}
+btn.addEventListener('click',async function(){
+ if(busy)return;busy=true;btn.disabled=true;btn.firstChild.textContent='...';
+ setRes('Girando…','🎰','Mucha suerte, la ruleta está girando.',false,false);
+ var v;
+ try{v=await roll()}catch(e){
+  console.error(e);busy=false;btn.disabled=false;btn.firstChild.textContent='GIRAR';
+  setRes('Ups','⚠️','La ruleta no está disponible en este momento. Probá de nuevo en unos minutos.',false,false);return}
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,dur=reduce?900:6200;
+ var jitter=(Math.random()*2-1)*(SEG*.32);
+ var base=Math.ceil(rot/360)*360;                       /* siguiente vuelta completa */
+ var target=base+360*(reduce?1:6)-(v-1)*SEG+jitter;      /* el gajo v queda bajo el puntero */
+ wheel.style.transition='transform '+dur+'ms cubic-bezier(.12,.62,.08,1)';
+ wheel.style.transform='rotate('+target+'deg)';rot=target;
+ var tk=setInterval(function(){ptr.classList.remove('tick');void ptr.getBBox();ptr.classList.add('tick')},260);
+ setTimeout(function(){
+  clearInterval(tk);busy=false;
+  if(!demo)save(Object.assign(st()||{},{v:v,used:false}));
+  btn.firstChild.textContent='LISTO';showWon(v,false);confetti();
+  if(navigator.vibrate)navigator.vibrate([60,40,120]);
+  if(window.GTSpin)window.GTSpin.refresh();
+ },dur+80);
+});
+
+/* ---- integración con packs y compra ---- */
+function gift(){var s=st();return(!demo&&s&&s.v)?{v:s.v,used:!!s.used}:null}
+function chancesOf(p){return Number(p.entries_qty||0)+Number(p.bonus_entries||0)}
+window.GTSpin={
+ MIN:MIN,
+ gift:gift,
+ eligibleFor:function(p){var g=gift();return g&&!g.used&&p&&chancesOf(p)>=MIN?g.v:0},
+ apply:async function(orderId){
+  var g=gift();if(!g)return true;
+  try{var r=await supabaseClient.rpc('apply_spin_bonus',{p_order_id:orderId,p_device_id:dev()});
+   if(r.error)throw r.error;save(Object.assign(st()||{},{used:true}));return true}
+  catch(e){console.error('apply_spin_bonus',e);return false}
+ },
+ refresh:function(){try{decoratePackages()}catch(e){}if(btn.disabled&&gift()&&gift().used)showUsed(gift().v)}
+};
+function decoratePackages(){
+ var grid=R('packagesGrid');if(!grid||typeof packages==='undefined')return;
+ var list=packages.filter(function(p){return Number(p.entries_qty)<100}),g=gift();
+ Array.prototype.forEach.call(grid.children,function(card,i){
+  var p=list[i];if(!p||card.querySelector('.pkg-gift'))return;
+  var c=chancesOf(p),btnEl=card.querySelector('.pkg-btn'),n;if(!btnEl)return;
+  if(c>=MIN){
+   if(g&&!g.used){n=document.createElement('span');n.className='pkg-gift';n.textContent='🎁 +'+g.v+' de regalo · participás con '+(c+g.v)+' chances'}
+   else if(!g&&!demo){n=document.createElement('a');n.href='#ruleta';n.className='pkg-gift ghost';n.textContent='🎁 Girá la ruleta y sumá de 1 a 15 chances de regalo'}
+  }else if(g&&!g.used){n=document.createElement('span');n.className='pkg-gift dim';n.textContent='Tu regalo de +'+g.v+' se activa desde 10 chances'}
+  if(n)btnEl.parentNode.insertBefore(n,btnEl);
+ });
+}
+var _rp=window.renderPackages;
+if(typeof _rp==='function'){window.renderPackages=renderPackages=function(){_rp.apply(this,arguments);decoratePackages()}}
+var _om=window.openModal;
+if(typeof _om==='function'){window.openModal=openModal=function(id){
+ _om.apply(this,arguments);
+ var old=R('modalGift');if(old)old.remove();
+ var g=gift();if(!g||g.used||!selectedPkg)return;
+ var c=chancesOf(selectedPkg),box=document.querySelector('.modal-pkg-display');if(!box)return;
+ var d=document.createElement('div');d.id='modalGift';d.className='modal-gift'+(c>=MIN?'':' dim');
+ d.innerHTML=c>=MIN?'🎁 <b>+'+g.v+' chances de regalo</b> de la ruleta. Participás con <b>'+(c+g.v)+' chances</b> en total, pagando solo las '+c+'.'
+  :'🎁 Tu regalo de <b>+'+g.v+' chances</b> se activa con packs de <b>10 chances o más</b>.';
+ box.parentNode.insertBefore(d,box.nextSibling);
+}}
+boot();setTimeout(function(){try{decoratePackages()}catch(e){}},1500);
+})();
 </script>
 </body>
 </html>
