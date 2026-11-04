@@ -3088,7 +3088,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
     <ol class="how-steps" aria-label="Cómo participar en 3 pasos">
       <li><span class="how-n">1</span><div><b>Elegí tu pack</b><p>Cuantas más chances, más veces participás en el sorteo.</p></div></li>
-      <li><span class="how-n">2</span><div><b>Completá tus datos y pagá</b><p>Te pedimos solo nombre y WhatsApp. Después te llevamos a la página de pago.</p></div></li>
+      <li><span class="how-n">2</span><div><b>Completá tus datos y pagá</b><p>Nombre, WhatsApp, provincia y localidad. Después te llevamos a la página de pago.</p></div></li>
       <li><span class="how-n">3</span><div><b>Aparecés en la lista pública</b><p>Cuando el pago se acredita, volvés acá solo y tu participación queda registrada a la vista de todos.</p></div></li>
     </ol>
     <ul class="how-notes">
@@ -3467,7 +3467,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q">¿Cómo participo, paso a paso? <span class="faq-arrow">▼</span></button>
-        <div class="faq-a">1) Elegís tu pack. 2) Completás nombre y WhatsApp (lo demás es opcional) y tocás "Confirmar y pagar". 3) Te llevamos a la página de pago. 4) Cuando el pago se acredita, volvés a esta página automáticamente y tu participación aparece en la lista pública. No tenés que enviar comprobantes.</div>
+        <div class="faq-a">1) Elegís tu pack. 2) Completás nombre, WhatsApp, provincia y localidad y tocás "Confirmar y pagar". 3) Te llevamos a la página de pago. 4) Cuando el pago se acredita, volvés a esta página automáticamente y tu participación aparece en la lista pública. No tenés que enviar comprobantes.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Ya pagué, ¿cuándo aparezco en la lista? <span class="faq-arrow">▼</span></button>
@@ -3539,11 +3539,11 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
     <div class="modal-title">¡Casi listo! 🎉</div>
-    <p class="modal-sub">Son 3 pasos simples. Este es el primero: tus datos. Lleva menos de un minuto.</p>
+    <p class="modal-sub">Son 3 pasos simples. Este es el primero: tus datos (los campos con * son obligatorios).</p>
     <div class="modal-assurance">
       <strong>Así funciona, paso a paso:</strong>
       <ol class="modal-steps">
-        <li class="now"><span>1</span><div><b>Tus datos (estás acá)</b>Nombre y WhatsApp son obligatorios. Lo demás es opcional.</div></li>
+        <li class="now"><span>1</span><div><b>Tus datos (estás acá)</b>Completá nombre, WhatsApp, provincia y localidad (todos obligatorios). La foto y el mensaje son opcionales.</div></li>
         <li><span>2</span><div><b>Pago</b>Al confirmar, te llevamos a la página de pago. Pagás ahí con los datos que te muestra.</div></li>
         <li><span>3</span><div><b>Lista pública</b>Cuando el pago se acredita volvés a esta página automáticamente y aparecés en la lista.</div></li>
       </ol>
@@ -3568,12 +3568,14 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
       <div class="form-help">Es tu medio de contacto si resultás ganador. <b>No se muestra</b> en la lista pública.</div>
     </div>
     <div class="form-group">
-      <label class="form-label">Provincia <small class="lbl-note">(se muestra en la lista)</small></label>
-      <input class="form-input" type="text" id="f-province" placeholder="Tu provincia">
+      <label class="form-label" for="f-province">Provincia *</label>
+      <select class="form-input" id="f-province" required><option value="">Seleccioná tu provincia</option><option>Buenos Aires</option><option>Ciudad de Buenos Aires</option><option>Catamarca</option><option>Chaco</option><option>Chubut</option><option>Córdoba</option><option>Corrientes</option><option>Entre Ríos</option><option>Formosa</option><option>Jujuy</option><option>La Pampa</option><option>La Rioja</option><option>Mendoza</option><option>Misiones</option><option>Neuquén</option><option>Río Negro</option><option>Salta</option><option>San Juan</option><option>San Luis</option><option>Santa Cruz</option><option>Santa Fe</option><option>Santiago del Estero</option><option>Tierra del Fuego</option><option>Tucumán</option></select>
+      <div class="form-help">Se muestra en la lista pública y enciende tu provincia en el mapa.</div>
     </div>
     <div class="form-group">
-      <label class="form-label">Ciudad/localidad <small class="lbl-note">(se muestra en la lista)</small></label>
-      <input class="form-input" type="text" id="f-city" placeholder="Tu ciudad">
+      <label class="form-label" for="f-city">Ciudad/localidad *</label>
+      <input class="form-input" type="text" id="f-city" placeholder="Tu ciudad o localidad" autocomplete="address-level2" required>
+      <div class="form-help">También se muestra en la lista pública.</div>
     </div>
     <div class="form-group">
       <label class="form-label">Foto de perfil opcional</label>
@@ -5031,12 +5033,21 @@ function normalizeParticipantLocation(row) {
 async function submitOrder(){
   const name = document.getElementById('f-name').value.trim();
   const phone = document.getElementById('f-phone').value.trim();
-  const province = document.getElementById('f-province').value.trim() || 'Argentina';
+  const province = document.getElementById('f-province').value.trim();
   const city = document.getElementById('f-city').value.trim() || '';
   const opinionMessage = document.getElementById('f-message').value.trim();
   const wantsAnonymous = document.getElementById('f-anonymous').checked;
-  if (!selectedPkg) return showToast('ElegÃ­ un paquete.');
-  if (!name || !phone) return alert('CompletÃ¡ nombre y WhatsApp');
+  if (!selectedPkg) return showToast('Elegí un pack para continuar.');
+  const fields = [['f-name', name, 'tu nombre completo'], ['f-phone', phone, 'tu WhatsApp'], ['f-province', province, 'tu provincia'], ['f-city', city, 'tu ciudad o localidad']];
+  fields.forEach(([id]) => document.getElementById(id).classList.remove('field-error'));
+  const missing = fields.filter(([, v]) => !v);
+  if (missing.length) {
+    missing.forEach(([id]) => document.getElementById(id).classList.add('field-error'));
+    const first = document.getElementById(missing[0][0]);
+    first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    first.focus({ preventScroll: true });
+    return showToast('Falta completar ' + missing[0][2] + '.');
+  }
 
   const button = document.getElementById('modalConfirm');
   const originalText = button.textContent;
@@ -5816,5 +5827,14 @@ setInterval(function(){
  .how-steps li:not(:last-child)::after{content:"↓";right:auto;left:2.1rem;top:auto;bottom:-1.05rem;transform:none}
 }
 </style>
+<style id="req-css">
+select.form-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:2.4rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23A79E97' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+select.form-input option{background:#1E1614;color:#EDEAE6}
+.form-input.field-error{border-color:#FF5A50!important;box-shadow:0 0 0 3px rgba(255,90,80,.22)!important}
+</style>
+<script>
+document.addEventListener('input',function(e){if(e.target.classList&&e.target.classList.contains('field-error'))e.target.classList.remove('field-error')});
+document.addEventListener('change',function(e){if(e.target.classList&&e.target.classList.contains('field-error'))e.target.classList.remove('field-error')});
+</script>
 </body>
 </html>
