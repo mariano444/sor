@@ -2668,6 +2668,212 @@ footer strong{color:#fff!important}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 
+
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,800;112,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="pro2">
+:root{--ink:#0A1220;--ink2:#0E1729;--ink3:#131E34;--ink4:#1B2842;--ink5:#2A3B5C;--silver:#E8ECF4;--silver2:#A3AEC4;--volt:#E5302B;--volt2:#FF6A5E;--fire:#1FB57A;--gold:#F2B544;--green:#2BD98C;--text:#E8ECF4;--text2:#A3AEC4;--font-display:'Archivo',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'Instrument Sans',sans-serif}
+body{font-family:'Instrument Sans',sans-serif;background:var(--ink);line-height:1.55}
+body::before,.urgency-strip,.ticker,.hero-grid,.hero-sparks,.hero-floating-avatars,.doc-seal,.floating-badge{display:none!important}
+.doc-frame::before{display:none}
+/* tipografía: una familia de titulares, una de lectura; sin mono, sin versalitas */
+.hero-title,.section-title,.nav-brand,.pkg-chances,.countdown-num,.bottom-cta-title,.course-premium-title,.auto-showcase-title,.mapa-stats b{font-family:'Archivo',sans-serif;font-style:normal;font-weight:800;font-stretch:100%;letter-spacing:-.02em;text-transform:none}
+.nav-cta,.btn-primary,.btn-secondary,.pkg-btn,.pkg-unit,.pkg-saving,.hero-progress-label,.countdown-note,.hero-badge,.hx-proof,.pkg-badge,.modal-confirm,.btn-draw,.btn-draw-sec{font-family:'Instrument Sans',sans-serif!important;text-transform:none!important;letter-spacing:0!important}
+.section-tag::before,.section-eyebrow::before{display:none}
+.section-tag{display:block;font:600 .95rem 'Instrument Sans';color:var(--volt2);text-transform:none;letter-spacing:0;margin-bottom:.7rem}
+.section-title{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.05;color:#fff}
+.section-title span{color:inherit!important}
+.section-sub{font-size:1.08rem;color:var(--silver2);max-width:60ch}
+.section-inner{padding:5rem 1.5rem}
+/* navegación */
+.nav-strip{top:0;width:100%;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(10,18,32,.86);padding:.7rem max(1.25rem,calc((100% - 1180px)/2))}
+.nav-brand{font-size:1.15rem;color:#fff}.nav-brand span{color:var(--volt2);margin-left:.35rem}
+.nav-live{text-transform:none;letter-spacing:0;font-size:.85rem}
+.nav-cta,.btn-primary{background:var(--volt);color:#fff;border-radius:10px;font-weight:700;box-shadow:0 8px 24px rgba(229,48,43,.32)}
+.nav-cta{padding:.6rem 1.2rem;font-size:.92rem}
+.btn-primary{padding:1rem 1.8rem;font-size:1.02rem}
+.btn-primary:hover{background:#ff433d;color:#fff;box-shadow:0 12px 32px rgba(229,48,43,.45)}
+.btn-secondary{border-radius:10px;padding:1rem 1.6rem;font-size:1rem;border-color:rgba(255,255,255,.28);color:#fff}
+.btn-secondary:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+/* hero */
+.hero{min-height:0;display:block;padding:6.5rem 1.5rem 4rem;text-align:left;background:radial-gradient(80% 70% at 85% 20%,rgba(229,48,43,.16),transparent 60%),linear-gradient(180deg,#0A1220,#0E1729)}
+.hx{width:min(1180px,100%);margin:0 auto;display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero-title{font-size:clamp(2.7rem,5.6vw,4.7rem);line-height:1;text-shadow:none;margin:1rem 0 1.2rem;color:#fff}
+.hx-sub{font-size:1.15rem;color:var(--silver);max-width:52ch;margin-bottom:1.8rem}
+.hero-visitor-badge{margin:0;font-size:.9rem;font-weight:600;animation:none}
+.hero-progress-container{width:100%;max-width:480px;margin:0 0 1.8rem}
+.hero-progress-label{font-size:.95rem;font-weight:600;color:var(--silver);text-transform:none}
+.hero-progress-bar{height:12px;border-radius:99px}.hero-progress-fill{border-radius:99px;background:linear-gradient(90deg,var(--volt),var(--gold));box-shadow:none}
+.hx-note{font-size:.88rem;color:var(--silver2);margin-top:.55rem}
+.hero-cta{justify-content:flex-start;margin:0 0 1.6rem}
+.hx-proof{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.4rem;max-width:520px;font-size:.95rem;color:var(--silver)}
+.hx-proof li::before{content:"✓";color:var(--green);font-weight:800;margin-right:.55rem}
+.countdown-bar{margin:1.8rem 0 0;border-radius:12px;border-color:rgba(255,255,255,.12)}
+.countdown-num{font-size:1.9rem;color:#fff}.countdown-note{color:var(--gold);font-size:.95rem;font-weight:600;margin-top:.9rem;text-transform:none}
+.hx-photo{position:relative;margin:0;border-radius:20px;overflow:hidden;background:var(--ink3);box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.hx-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3.3;object-fit:cover}
+.hx-photo figcaption{position:absolute;inset:auto 0 0 0;padding:3rem 1.4rem 1.2rem;background:linear-gradient(0deg,rgba(10,18,32,.92),transparent);display:flex;flex-direction:column;gap:.15rem}
+.hx-photo figcaption b{font:800 1.25rem 'Archivo';color:#fff}.hx-photo figcaption span{font-size:.9rem;color:var(--silver)}
+/* confianza */
+.trust-strip{background:var(--ink2);border:0;border-block:1px solid rgba(255,255,255,.07)}
+.trust-item{padding:1.4rem 1.6rem;border-color:rgba(255,255,255,.07)}
+.trust-label{font:700 1rem 'Instrument Sans';color:#fff}.trust-label::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:.6rem}
+.trust-label span{font-size:.88rem;margin-left:1.35rem}
+/* mapa */
+.mapa-section{background:linear-gradient(180deg,var(--ink),var(--ink2))}
+.mapa-grid{display:grid;grid-template-columns:minmax(260px,.8fr) 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;margin-top:2rem}
+.mapa-stage{position:relative;background:radial-gradient(60% 50% at 50% 45%,rgba(229,48,43,.1),transparent 70%),var(--ink3);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.5rem 1rem 3.4rem}
+#arMap{display:block;width:auto;height:min(72vh,640px);max-width:100%;margin:0 auto;overflow:visible}
+.prov{fill:#1E2D4B;stroke:#0A1220;stroke-width:.9;stroke-linejoin:round;transition:fill .6s}
+.prov.on{fill:rgba(229,48,43,calc(.4 + var(--l,0)*.55))}
+.prov.flash{fill:#FF7468!important}
+.prov.caba{stroke:#fff;stroke-width:1}
+.rip{fill:none;stroke:#FF7468;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rip 2s ease-out forwards}
+.rip.nuevo{stroke:var(--gold);stroke-width:3}
+.dot{fill:#fff;stroke:var(--volt);stroke-width:1.5}
+@keyframes rip{from{transform:scale(.15);opacity:1}to{transform:scale(1);opacity:0}}
+.mapa-live{position:absolute;left:1rem;right:1rem;bottom:1rem;text-align:center;font-size:.95rem;font-weight:600;color:var(--silver);min-height:1.4em}
+.mapa-live.nuevo{color:var(--gold)}
+.mapa-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.mapa-stats div{background:var(--ink3);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.1rem 1rem}
+.mapa-stats b{display:block;font-size:2.2rem;line-height:1;color:#fff}.mapa-stats span{font-size:.88rem;color:var(--silver2)}
+.mapa-side h3{font:700 1.1rem 'Instrument Sans';color:#fff;margin-bottom:1rem}
+.mapa-list{list-style:none;display:grid;gap:.75rem;margin-bottom:2rem}
+.mapa-list li{display:grid;grid-template-columns:9.5rem 1fr auto;gap:.9rem;align-items:center;font-size:.95rem;color:var(--silver)}
+.mapa-list i{display:block;height:8px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}.mapa-list i::after{content:"";display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--volt),var(--gold));border-radius:9px;transition:width 1s}
+.mapa-list b{color:#fff;font-weight:700}
+/* video, paquetes y resto */
+.pkg{border-radius:16px;background:var(--ink3);border-color:rgba(255,255,255,.1)}
+.pkg.featured{transform:translateY(-8px);border:2px solid var(--volt);background:linear-gradient(170deg,rgba(229,48,43,.14),var(--ink3) 65%)}
+.pkg-badge{color:#fff;border-radius:8px;font-weight:700;font-size:.78rem}
+.pkg-chances{font-size:3.2rem}.pkg-unit{color:var(--volt2);font-size:.85rem}
+.pkg .pkg-btn{border-radius:10px;color:#fff;border-color:rgba(255,255,255,.25);font-size:.95rem;font-weight:700;padding:.9rem}
+.pkg .pkg-btn:hover,.pkg.featured .pkg-btn{background:var(--volt);border-color:var(--volt);color:#fff}
+.packages-section,.how-section,.draw-process-section{background:var(--ink2)}
+.bottom-cta{background:radial-gradient(70% 90% at 50% 0%,rgba(229,48,43,.2),transparent 70%),var(--ink)}
+.faq-q{font-family:'Instrument Sans';font-weight:600;font-size:1.05rem}
+.modal{border-radius:18px}.modal-confirm{border-radius:10px;font-weight:700;font-size:1.05rem}
+footer{color:var(--silver2);line-height:1.8}
+@media(max-width:900px){.hx,.mapa-grid{grid-template-columns:1fr}.hx-photo{order:-1}.hero{padding-top:5.5rem}.nav-live{display:none}.pkg.featured{transform:none}#arMap{height:min(60vh,520px)}}
+@media(max-width:560px){.hx-proof{grid-template-columns:1fr}.mapa-list li{grid-template-columns:7rem 1fr auto}.hero-cta .btn-primary,.hero-cta .btn-secondary{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.rip{animation:none;opacity:0}*{scroll-behavior:auto!important}}
+</style>
+<style id="fix-final">
+/* ===== Capa final: legibilidad, responsive y mapa ===== */
+html,body{overflow-x:hidden;max-width:100%}
+img,svg,video{max-width:100%}
+:root{--txt:#E8ECF4;--muted:#A3AEC4;--white:#fff;--navy8:#fff;--navy9:#0A1220;--line:rgba(255,255,255,.12);--line2:rgba(255,255,255,.22)}
+/* Hero: textos que quedaban oscuros sobre fondo oscuro */
+.hero-title,.hero-title .title-model{color:#fff}
+.hero-progress-label,.hero-progress-label *{color:#E8ECF4!important}
+.hero-progress-bar{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.hero-visitor-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;box-shadow:none}
+.hero-visitor-badge *{color:#fff}
+.btn-secondary{background:rgba(255,255,255,.06);color:#fff!important;border:1px solid rgba(255,255,255,.3);box-shadow:none}
+.btn-secondary:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.hx-proof,.hx-proof li{color:#E8ECF4}
+.hx-sub{color:#E8ECF4}
+/* Reloj */
+.countdown-bar{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;max-width:100%;padding:1rem 1.4rem;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(242,181,68,.45);box-shadow:0 14px 40px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)}
+.countdown-unit{min-width:3.6rem}
+.countdown-num{color:#fff!important;font-size:clamp(1.7rem,6vw,2.4rem)!important;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(229,48,43,.55)}
+.countdown-label{color:#F2B544!important;font-size:.68rem;letter-spacing:.12em}
+.countdown-sep{color:rgba(255,255,255,.55)!important;font-size:1.7rem;padding-bottom:.9rem;animation:cdBlink 1s steps(2,start) infinite}
+@keyframes cdBlink{50%{opacity:.25}}
+.countdown-note{color:#F2B544!important}
+/* Textos en secciones oscuras */
+.section-title,.section-title span{color:#fff!important}
+.section-sub,.section-subtitle{color:#C7D0E2}
+.section-tag,.section-eyebrow{background:rgba(229,48,43,.14);color:#FF8A80;border:1px solid rgba(229,48,43,.35)}
+.nav-brand,.nav-strip *{color:inherit}.nav-brand{color:#fff}.nav-brand span{color:#FF8A80}
+.nav-strip{background:rgba(10,18,32,.9)!important;border-bottom:1px solid rgba(255,255,255,.1)!important}
+.pkg,.faq-q,.step-desc,.trust-item{color:#E8ECF4}
+/* ===== MAPA ===== */
+.mapa-grid{grid-template-columns:minmax(280px,.9fr) 1fr;align-items:center}
+.mapa-stage{overflow:hidden;background:radial-gradient(70% 55% at 50% 45%,rgba(229,48,43,.18),transparent 70%),linear-gradient(180deg,#101a2e,#0A1220);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.06);padding:1.5rem 1rem 3.6rem}
+.mapa-stage::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent);mask-image:radial-gradient(closest-side,#000 40%,transparent);pointer-events:none}
+#arMap{position:relative;height:min(74vh,660px);filter:drop-shadow(0 18px 28px rgba(0,0,0,.55))}
+.mp-aura{animation:mpAura 5s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes mpAura{50%{opacity:.55;transform:scale(1.06)}}
+.mp-sweep{display:none}
+@keyframes mpSweep{0%{transform:translateX(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(520px);opacity:0}}
+.prov{fill:rgba(255,120,110,.20);stroke:rgba(255,255,255,.55);stroke-width:.8;cursor:pointer;transition:fill .5s,filter .3s,transform .3s}
+.prov.on{fill:rgba(229,48,43,calc(.55 + var(--l,0)*.45));stroke:#fff;stroke-width:1;animation:provBreath 3.6s ease-in-out infinite}
+.prov:nth-child(3n).on{animation-delay:-1.2s}.prov:nth-child(3n+1).on{animation-delay:-2.4s}
+@keyframes provBreath{0%,100%{filter:drop-shadow(0 0 2px rgba(255,90,80,.35))}50%{filter:drop-shadow(0 0 9px rgba(255,90,80,.95))}}
+.prov:hover{fill:rgba(255,140,128,.55);filter:drop-shadow(0 0 10px rgba(255,120,110,.9))}
+.prov.on:hover{fill:#FF5A50}
+.prov.flash{fill:#FFB4AC!important}
+.prov.caba{fill:#fff;stroke:#E5302B;stroke-width:1.4}
+.rip{stroke:#FF7468;stroke-width:2.5}.rip.nuevo{stroke:#F2B544;stroke-width:3.5}
+.dot{fill:#fff;stroke:#E5302B;stroke-width:2}
+.mapa-live{font-size:1rem;color:#E8ECF4;padding:.55rem 1rem;background:rgba(10,18,32,.75);border:1px solid rgba(255,255,255,.1);border-radius:999px;left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 2rem);bottom:1rem}
+.mapa-live.nuevo{color:#F2B544;border-color:rgba(242,181,68,.5)}
+.mp-tip{position:absolute;z-index:5;pointer-events:none;padding:.35rem .7rem;border-radius:8px;background:#fff;color:#0A1220;font:700 .85rem 'Instrument Sans',sans-serif;box-shadow:0 8px 20px rgba(0,0,0,.4);transform:translate(-50%,-130%);opacity:0;transition:opacity .15s;white-space:nowrap}
+.mp-tip.show{opacity:1}
+.mapa-pitch-title{font:800 clamp(1.5rem,3vw,2.1rem) 'Archivo',sans-serif!important;color:#fff!important;margin-bottom:.8rem;letter-spacing:-.02em}
+.mapa-pitch{color:#C7D0E2;font-size:1.08rem;line-height:1.65;margin-bottom:1.6rem;max-width:46ch}
+.mapa-legend{list-style:none;display:grid;gap:.7rem;margin-bottom:2rem;color:#E8ECF4;font-size:.98rem}
+.mapa-legend li{display:flex;align-items:center;gap:.75rem}
+.lg{width:18px;height:18px;border-radius:5px;flex:none;border:1px solid rgba(255,255,255,.6)}
+.lg-on{background:#E5302B;box-shadow:0 0 10px rgba(229,48,43,.8)}
+.lg-off{background:rgba(255,120,110,.25)}
+.lg-new{background:#F2B544;border-radius:50%;box-shadow:0 0 12px rgba(242,181,68,.9)}
+.mapa-side .btn-primary{display:inline-flex;align-items:center;justify-content:center}
+/* Responsive */
+@media(max-width:900px){
+  .mapa-grid{grid-template-columns:1fr;gap:2rem}
+  #arMap{height:min(62vh,540px)}
+  .mapa-side{text-align:center}.mapa-pitch{margin-inline:auto}
+  .mapa-legend{justify-items:center}
+}
+@media(max-width:560px){
+  .section-inner{padding:3.5rem 1.1rem}
+  .hero{padding:5.5rem 1.1rem 3rem}
+  .countdown-bar{width:100%;padding:.8rem .6rem;gap:.15rem}
+  .countdown-unit{min-width:0;flex:1}
+  .mapa-stage{padding:1rem .5rem 4.2rem}
+  #arMap{height:min(56vh,460px)}
+  .mapa-live{font-size:.85rem}
+  .mapa-side .btn-primary{width:100%}
+  .hero-cta{flex-direction:column;align-items:stretch}
+}
+@media(prefers-reduced-motion:reduce){.mp-aura,.mp-sweep,.prov.on,.countdown-sep{animation:none!important}}
+
+/* ===== Tarjetas en tema oscuro (legibilidad) ===== */
+:root{--card:#131E34;--card2:#1B2842;--sky:rgba(255,255,255,.07);--blue:#FF6A5E;--paper2:#0E1729}
+.pkg,.proof-card,.draw-card,.step,.course-premium-card,.draw-showcase-panel,.draw-featured-card,.faq-item,.participants-table-wrap,.payment-status-card,.live-feed-card{
+  background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid rgba(255,255,255,.12);border-radius:var(--r);box-shadow:0 18px 40px -22px rgba(0,0,0,.7);color:#E8ECF4}
+.pkg *,.proof-card *,.draw-card *,.step *,.course-premium-card *,.draw-showcase-panel *,.draw-featured-card *,.faq-item *,.participants-table-wrap *,.payment-status-card *,.live-feed-card *{--txt:#E8ECF4;--text:#E8ECF4;--muted:#B6C0D6}
+.pkg-chances,.pkg-price,.course-premium-title,.step-title,.draw-card-title,.proof-card h3,.proof-card h4,.faq-q{color:#fff}
+.pkg-unit,.pkg-price-unit,.step-desc,.draw-card-copy,.faq-a{color:#B6C0D6}
+.pkg:hover{border-color:rgba(255,106,94,.6)}
+.pkg-progress{background:rgba(255,255,255,.12)}
+.pkg-saving{color:#2BD98C}
+.pkg.featured{background:linear-gradient(165deg,rgba(229,48,43,.28),var(--card));border:1px solid rgba(242,181,68,.7)}
+.pkg-badge,.course-premium-tag{background:linear-gradient(145deg,#F8E3A3,#E0B04A);color:#1B1415}
+.step-num{background:linear-gradient(145deg,#FF5A50,#E5302B);color:#fff;box-shadow:0 0 0 4px rgba(229,48,43,.22),0 8px 18px -6px rgba(229,48,43,.7);font-variant-numeric:tabular-nums}
+.course-premium-title span{color:#FF8A80}
+.table-header-gp{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.participant-row{border-color:rgba(255,255,255,.1);color:#E8ECF4}
+.participant-row:hover{background:rgba(255,255,255,.07)}
+.search-wrapper input,.form-input,.form-textarea{background:#0E1729;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.search-wrapper input::placeholder,.form-input::placeholder,.form-textarea::placeholder{color:#8F9BB5}
+.form-input:focus,.form-textarea:focus,.search-wrapper input:focus{border-color:#FF6A5E;box-shadow:0 0 0 4px rgba(255,106,94,.25)}
+.gallery-section{background:var(--ink2)}
+
+/* ===== Modal y botones en tema oscuro ===== */
+.modal{background:linear-gradient(170deg,#1B2842,#101a2e);color:#E8ECF4;border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px -20px rgba(0,0,0,.8)}
+.modal *{--txt:#E8ECF4;--text:#E8ECF4}
+.modal-title,.modal strong,.form-check-title,.modal-trust-text,.form-label{color:#fff}
+.modal-sub,.form-help,.file-upload-help,.form-check-sub,.modal-close{color:#B6C0D6}
+.modal-close:hover{color:#fff}
+.modal select,.modal option{background:#0E1729;color:#fff}
+.btn-draw-sec{background:rgba(255,255,255,.08)!important;color:#fff!important;border:1px solid rgba(255,255,255,.3)!important;box-shadow:none}
+.btn-draw-sec:hover{background:rgba(255,255,255,.16)!important;border-color:#fff!important}
+.whatsapp-float{background:#0E8A3B!important;color:#fff}
+</style>
+
 </head>
    <!-- Meta Pixel Code -->
 <script>
@@ -2733,98 +2939,31 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-sparks" id="sparks"></div>
-  <div class="hero-floating-avatars" id="floatingAvatarsContainer"></div>
-
-  <div class="hero-split">
-    <div class="hero-content doc-frame"><span class="doc-seal" aria-hidden="true"></span>
-      <div class="hero-eyebrow-row">
-        <div class="hero-visitor-badge">
-          <div class="hero-visitor-dot"></div>
-          <span id="visitorCount">Cargando visitantes...</span>
-        </div>
-        <div class="hero-badge">⚡ SORTEO · ARGENTINA</div>
+<header class="hero">
+  <div class="hero-grid"></div><div class="hero-sparks" id="sparks"></div><div class="hero-floating-avatars" id="floatingAvatarsContainer"></div>
+  <div class="hx">
+    <div class="hx-copy">
+      <div class="hero-visitor-badge"><div class="hero-visitor-dot"></div><span id="visitorCount">Cargando visitantes...</span></div>
+      <h1 class="hero-title">Ganate un Volkswagen Gol Trend</h1>
+      <p class="hx-sub">Un solo auto y un solo ganador, elegido al azar entre todas las chances activas. Mirás quién participa, desde qué provincia y con cuántas chances, en una lista pública que se actualiza en vivo.</p>
+      <div class="hero-progress-container">
+        <div class="hero-progress-label"><span>Chances reservadas</span><span id="heroProgressText">86% completado</span></div>
+        <div class="hero-progress-bar"><div class="hero-progress-fill" id="heroProgressFill" style="width: 86%"></div></div>
+        <p class="hx-note">El sorteo se realiza cuando se agotan las chances.</p>
       </div>
-
-      <h1 class="hero-title">
-        GRAN
-        <span class="title-highlight">SORTEO</span>
-        <span class="title-model">Volkswagen Gol Trend</span>
-      </h1>
-
-      <p class="hero-subtitle">Impecable · Listo para transferir · ¡Puede ser tuyo hoy!</p>
-
-      <div class="hero-visual">
-        <div class="hero-car-featured reveal">
-          <img src="./assets/premios/gol-trend-rojo-34-frontal.jpg" alt="Volkswagen Gol Trend" loading="lazy">
-          <div class="hero-visual-plate">VOLKSWAGEN · GOL TREND</div>
-          <div class="floating-badge">
-            <span>Últimas</span>
-            <strong>CHANCES</strong>
-            <span>disponibles</span>
-          </div>
-        </div>
+      <div class="hero-cta"><a href="#paquetes" class="btn-primary">Quiero participar</a><a href="#participantes" class="btn-secondary">Ver la lista pública</a></div>
+      <ul class="hx-proof"><li>Lista pública en tiempo real</li><li>Selección aleatoria de 1 ganador</li><li>Entrega coordinada en 48 hs</li><li>Participan de toda Argentina</li></ul>
+      <div class="countdown-bar hidden-until-thirty" id="countdownBar">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-d">00</span><span class="countdown-label">Días</span></div><div class="countdown-sep">:</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-h">00</span><span class="countdown-label">Horas</span></div><div class="countdown-sep">:</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-m">00</span><span class="countdown-label">Min</span></div><div class="countdown-sep">:</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-label">Seg</span></div>
       </div>
-
-      <p class="hero-lead">Participá por un hermoso Volkswagen Gol Trend. <strong>Seguridad garantizada, lista pública en tiempo real</strong> y un beneficio exclusivo: con 3+ chances te llevás gratis el curso guía para comprar usados.</p>
-
-      <div class="hero-progress-container reveal">
-        <div class="hero-progress-label">
-          <span>Chances reservadas</span>
-          <span id="heroProgressText">86% completado</span>
-        </div>
-        <div class="hero-progress-bar">
-          <div class="hero-progress-fill" id="heroProgressFill" style="width: 86%"></div>
-        </div>
-      </div>
-
-      <div class="hero-cta reveal" style="transition-delay:0.2s">
-        <a href="#paquetes" class="btn-primary">¡QUIERO PARTICIPAR AHORA!</a>
-        <a href="#participantes" class="btn-secondary">Ver la lista</a>
-      </div>
-
-      <div class="hero-trust-badges reveal" style="transition-delay:0.35s">
-        <div class="hero-trust-badge">
-          <img src="https://img.icons8.com/color/48/000000/shield.png" alt="Seguro">
-          <span>Pago 100% Protegido</span>
-        </div>
-        <div class="hero-trust-badge">
-          <img src="https://img.icons8.com/color/48/000000/checked-user-male.png" alt="Verificado">
-          <span>Sorteo Transparente</span>
-        </div>
-        <div class="hero-trust-badge">
-          <img src="https://img.icons8.com/color/48/000000/clock--v1.png" alt="Rápido">
-          <span>Registro Inmediato</span>
-        </div>
-      </div>
-
-      <div class="countdown-bar reveal hidden-until-thirty" id="countdownBar" style="transition-delay:0.4s;">
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-d">00</span>
-          <span class="countdown-label">Días</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-h">00</span>
-          <span class="countdown-label">Horas</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-m">00</span>
-          <span class="countdown-label">Min</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-s">00</span>
-          <span class="countdown-label">Seg</span>
+      <div class="countdown-note" id="countdownNote">Quedan pocos lugares para hacer el sorteo.</div>
     </div>
-      </div>
-      <div class="countdown-note reveal" id="countdownNote" style="transition-delay:0.45s">Quedan pocos lugares para hacer el sorteo antes.</div>
-    </div>
+    <figure class="hx-photo"><img src="./assets/premios/gol-trend-rojo-34-frontal.jpg" alt="Volkswagen Gol Trend rojo, vista frontal"><figcaption><b>Volkswagen Gol Trend</b><span>Impecable · Documentación al día · Listo para transferir</span></figcaption></figure>
   </div>
-</div>
+</header>
 
 <!-- URGENCY STRIP -->
 <div class="urgency-strip">
@@ -2833,22 +2972,10 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
 <!-- TRUST STRIP -->
 <div class="trust-strip">
-  <div class="trust-item reveal">
-    <div class="trust-icon">🔒</div>
-    <span class="trust-label">Reserva Segura<span>Tus datos y pago protegidos</span></span>
-  </div>
-  <div class="trust-item reveal" style="transition-delay:0.1s">
-    <div class="trust-icon">📊</div>
-    <span class="trust-label">Transparencia Real<span>Lista pública actualizada en vivo</span></span>
-  </div>
-  <div class="trust-item reveal" style="transition-delay:0.2s">
-    <div class="trust-icon">🇦🇷</div>
-    <span class="trust-label">Alcance Nacional<span>Participantes de toda Argentina</span></span>
-  </div>
-  <div class="trust-item reveal" style="transition-delay:0.3s">
-    <div class="trust-icon">✓</div>
-    <span class="trust-label">Entrega Pactada<span>Coordinación directa con el ganador</span></span>
-  </div>
+  <div class="trust-item"><span class="trust-label">Reserva segura<span>Tus datos y tu pago, protegidos</span></span></div>
+  <div class="trust-item"><span class="trust-label">Transparencia real<span>Cada pago aprobado aparece en la lista</span></span></div>
+  <div class="trust-item"><span class="trust-label">Alcance nacional<span>Participantes de todo el país</span></span></div>
+  <div class="trust-item"><span class="trust-label">Entrega pactada<span>Coordinación directa con el ganador</span></span></div>
 </div>
 
 <!-- TICKER -->
@@ -2875,7 +3002,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <section id="video" class="video-section">
   <div class="video-wrap">
     <div class="video-copy reveal">
-      <span class="section-tag">🎥 Recorrido en video</span>
+      <span class="section-tag">Recorrido en video</span>
       <h2 class="section-title">Conocelo <span>por fuera y por dentro</span></h2>
       <p class="section-sub">Dos recorridos cortos por la carrocería y el habitáculo del Volkswagen Gol Trend. Elegí qué querés ver.</p>
       <div class="tour-tabs" role="tablist">
@@ -2932,9 +3059,29 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 })();
 </script>
 
+<section id="mapa" class="mapa-section"><div class="section-inner">
+  <span class="section-tag">Participación en vivo</span>
+  <h2 class="section-title">Argentina entera<br>ya está participando</h2>
+  <p class="section-sub">Cada provincia que se ilumina tiene participantes con chances activas. Cuando alguien nuevo se suma, la señal aparece en el mapa.</p>
+  <div class="mapa-grid">
+    <div class="mapa-stage"><svg id="arMap" viewBox="0 0 401 816" role="img" aria-label="Mapa de Argentina con las provincias que participan"><defs><radialGradient id="mpGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E5302B" stop-opacity=".35"/><stop offset="1" stop-color="#E5302B" stop-opacity="0"/></radialGradient><linearGradient id="mpSweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="mpClip"><rect x="-20" y="0" width="441" height="816"/></clipPath></defs><ellipse cx="200" cy="400" rx="190" ry="380" fill="url(#mpGlow)" class="mp-aura"/><rect class="mp-sweep" x="-80" y="0" width="80" height="816" fill="url(#mpSweep)" clip-path="url(#mpClip)"/><path class="prov" data-k="buenos aires" d="M206.3 463.8L203.1 458.8L199.0 456.5L195.2 456.3L194.9 304.5L226.3 304.1L241.9 285.3L246.7 285.3L249.4 286.8L251.3 284.6L254.5 278.0L259.1 282.7L262.7 284.2L263.6 285.8L265.4 286.0L266.6 287.7L268.7 286.8L269.9 288.7L273.1 288.7L273.6 290.7L274.6 290.6L275.7 291.6L278.0 291.4L281.1 294.1L282.9 294.0L284.6 296.1L289.7 295.5L290.2 300.2L287.7 301.8L288.4 304.1L287.5 306.1L288.3 308.0L290.1 308.9L290.6 310.7L293.5 312.9L296.8 314.1L298.2 315.3L299.2 315.1L306.1 319.9L311.1 325.4L313.4 330.1L309.4 336.2L308.4 340.4L308.8 342.5L313.2 349.5L316.0 351.3L320.9 350.8L321.7 354.8L322.0 364.0L315.7 374.6L313.4 379.2L306.7 386.3L305.5 393.5L304.3 394.6L301.2 397.2L293.3 401.4L276.0 407.9L263.1 411.0L242.6 414.7L229.3 415.2L227.0 414.4L225.0 415.0L221.4 413.9L219.6 412.9L217.9 410.5L215.6 410.0L214.6 408.4L212.4 409.0L211.7 408.4L210.8 410.0L211.5 410.9L215.0 411.5L214.9 414.0L215.6 415.9L214.5 417.9L215.2 419.9L216.9 421.2L215.3 421.2L215.4 421.8L219.6 422.6L221.1 424.3L219.3 424.2L218.2 423.0L215.9 422.5L216.7 423.7L220.4 426.0L218.9 431.5L219.1 435.4L218.3 436.3L216.7 435.8L215.1 436.9L215.1 443.4L212.9 445.1L212.2 446.7L213.8 450.8L218.0 453.2L218.1 454.3L215.3 460.2L207.8 463.8Z"><title>Buenos Aires</title></path><path class="prov" data-k="catamarca" d="M161.0 149.6L162.5 156.3L162.8 161.5L161.7 166.7L162.1 168.5L164.2 168.9L166.5 171.5L166.1 172.1L167.4 180.1L168.6 181.6L167.5 182.5L167.6 183.3L168.6 185.2L167.7 186.8L168.0 188.7L164.7 189.6L165.7 196.6L161.9 200.5L156.4 202.1L150.4 182.0L149.1 182.0L149.1 179.8L143.6 173.9L138.3 172.0L138.0 170.3L139.1 168.5L136.3 166.3L136.0 164.0L135.2 164.0L135.9 163.0L134.6 158.3L126.5 157.2L125.6 157.6L124.0 160.0L120.6 160.5L113.8 158.6L110.9 160.2L108.9 153.5L105.8 155.8L104.5 153.3L102.2 153.7L102.1 151.6L100.1 151.2L99.5 152.1L99.2 148.0L97.3 146.4L95.0 146.6L92.7 145.0L86.9 145.7L88.8 141.0L90.9 138.9L88.4 138.2L90.2 136.8L90.7 134.7L91.9 133.8L93.4 134.5L91.1 132.1L93.8 129.3L96.5 131.9L97.3 128.6L101.3 128.4L103.1 126.5L97.1 115.4L97.3 109.8L100.6 106.7L98.3 95.5L97.1 93.6L98.6 92.9L97.3 91.3L98.1 87.5L97.1 85.8L99.2 82.7L109.8 85.1L128.7 85.1L133.7 84.4L134.5 85.5L134.5 87.9L136.6 88.4L135.1 94.6L134.1 96.3L129.9 96.0L130.3 103.1L134.5 106.2L136.0 111.4L139.1 112.8L138.9 110.0L140.5 107.4L142.6 106.9L143.4 108.4L143.6 112.5L142.6 113.1L142.3 115.1L143.2 115.8L142.0 117.1L142.6 118.4L145.0 117.8L149.1 121.2L147.6 123.4L148.6 125.8L145.7 128.7L146.6 128.7L144.3 131.9L143.3 131.8L143.1 133.0L146.2 135.2L147.2 143.0L148.9 146.9L149.8 145.6L150.7 146.3L151.6 149.4L154.0 151.6L154.7 149.1L157.6 147.5Z"><title>Catamarca</title></path><path class="prov" data-k="chaco" d="M214.7 57.2L217.6 58.7L218.9 60.4L219.5 59.9L223.1 61.7L223.3 62.8L225.8 62.7L227.0 63.5L227.0 65.3L229.2 65.8L231.1 69.6L236.5 71.1L237.8 75.0L241.8 79.3L247.0 83.0L249.1 83.5L250.7 85.5L255.2 91.5L254.7 92.8L255.4 94.2L260.5 97.8L263.4 101.1L265.0 103.9L265.5 106.6L269.4 106.9L270.6 107.9L271.0 111.4L273.1 111.5L275.0 110.2L277.1 112.4L278.7 112.9L281.6 116.1L281.9 115.6L282.6 116.3L282.8 117.8L284.0 117.7L284.4 118.9L287.7 121.7L287.7 122.7L290.0 124.2L288.6 125.3L287.4 125.4L287.9 126.8L287.8 127.7L287.2 127.3L287.4 128.7L286.6 128.2L286.4 129.6L284.6 130.4L284.6 132.1L285.6 132.9L285.4 134.1L286.0 134.6L282.3 136.1L280.6 138.7L279.9 141.5L281.6 145.5L280.8 151.5L226.7 151.2L226.7 94.8L194.4 94.7L214.8 64.6Z"><title>Chaco</title></path><path class="prov" data-k="corrientes" d="M300.1 216.9L296.6 213.1L292.9 205.5L286.8 203.3L283.9 203.4L281.6 204.4L280.7 205.6L278.2 204.4L272.5 208.3L269.6 206.9L267.9 207.5L267.2 210.0L265.2 207.2L267.7 198.9L265.3 195.4L266.3 193.7L265.8 191.4L266.7 189.3L266.1 188.0L266.9 186.1L266.4 184.9L268.3 182.5L268.3 181.5L271.3 179.4L270.6 178.4L274.4 175.5L274.0 173.5L276.6 167.5L275.7 164.3L277.3 162.2L275.8 157.1L277.4 154.4L279.2 154.0L281.6 148.5L280.0 141.2L280.9 138.5L285.6 134.1L293.8 133.8L295.8 133.0L305.9 137.1L309.9 137.3L318.1 141.2L321.3 140.1L321.8 138.0L323.9 137.4L326.5 137.8L333.6 134.6L334.2 134.8L333.6 137.8L334.3 139.4L338.0 146.5L338.3 150.3L339.4 153.0L340.0 152.6L342.1 154.8L338.8 157.3L341.0 159.1L340.6 161.2L339.6 160.1L337.1 159.8L336.6 160.7L336.9 162.8L334.7 163.3L334.0 164.4L334.7 165.1L329.9 169.6L328.7 173.5L326.4 175.0L326.5 177.0L323.8 177.9L322.7 179.2L321.4 184.0L320.5 184.3L314.0 193.3L310.7 194.2L309.9 195.1L309.7 199.0L305.7 202.1L303.4 204.8L303.4 207.2L299.1 211.0L300.5 214.9Z"><title>Corrientes</title></path><path class="prov" data-k="cordoba" d="M203.5 304.5L194.8 303.9L194.8 319.1L162.8 318.8L161.3 275.8L163.2 274.1L166.2 261.1L167.3 260.5L165.8 254.1L160.8 255.0L160.1 250.0L158.8 248.0L153.5 244.5L150.1 244.5L150.0 223.9L156.7 201.9L161.7 200.5L165.8 196.6L164.6 189.7L167.7 188.5L177.3 187.1L184.2 188.3L184.2 189.8L185.7 190.0L186.4 188.6L187.4 188.8L188.2 190.6L193.2 190.8L194.0 194.0L206.7 194.6L206.1 195.6L206.5 196.9L210.6 201.3L210.3 204.5L211.6 207.0L217.5 206.7L219.1 208.9L218.5 213.5L224.2 217.1L219.2 237.9L217.1 240.0L217.0 244.0L218.4 247.2L217.3 250.5L220.4 253.6L222.6 258.7L222.7 261.2L223.4 261.5L222.2 263.5L223.9 263.8L225.2 266.1L225.4 271.1L224.2 273.1L223.0 273.6L204.5 304.5Z"><title>Córdoba</title></path><path class="prov" data-k="chubut" d="M162.9 486.8L163.5 488.9L167.6 492.3L175.0 493.0L172.6 494.3L172.1 496.4L172.0 497.3L174.3 497.8L177.5 496.7L181.6 497.3L182.6 494.6L181.5 492.8L176.9 493.1L187.8 489.0L191.0 494.4L190.6 496.7L191.2 502.3L190.0 505.8L181.8 508.1L180.4 507.9L179.0 506.2L178.7 504.6L179.7 502.3L178.7 502.1L178.7 501.2L177.6 501.0L177.2 499.9L172.7 499.0L167.3 502.0L165.7 501.8L163.8 505.3L171.1 509.2L173.5 509.3L174.4 510.2L177.2 509.7L177.4 510.8L164.0 518.1L163.4 519.1L163.8 520.4L158.5 526.3L157.6 529.6L158.9 530.3L158.3 532.8L160.8 534.6L159.6 535.2L160.0 535.9L161.7 536.0L160.3 536.5L160.5 538.7L159.4 538.7L158.9 539.7L158.9 541.2L160.5 544.4L159.6 544.5L158.7 545.9L159.3 546.4L159.0 547.6L157.4 548.2L157.6 549.1L156.9 549.6L156.0 548.7L152.7 551.0L151.7 554.1L150.9 554.3L151.7 556.7L154.5 556.8L152.5 558.7L153.2 560.1L151.3 560.6L150.0 559.6L149.3 560.3L148.5 558.9L147.8 559.0L147.5 560.5L144.8 558.9L142.2 558.6L141.6 559.8L135.9 561.4L135.3 561.9L136.9 562.8L136.8 563.5L135.4 562.6L134.2 563.2L135.7 564.7L130.6 564.5L126.2 566.6L122.4 571.9L120.1 574.0L119.9 578.2L118.9 578.2L117.5 579.6L115.6 583.1L38.9 583.0L39.4 581.8L36.5 578.9L37.2 577.7L35.7 576.0L36.7 575.5L35.3 574.2L37.4 573.4L36.0 572.8L39.2 571.4L41.0 571.7L42.2 570.7L41.2 570.1L41.6 568.7L42.9 568.9L45.8 566.0L43.7 563.2L41.8 562.1L40.0 558.5L35.0 557.2L34.1 558.5L31.2 556.1L31.0 553.9L35.6 554.8L36.0 553.3L38.9 554.4L41.6 552.9L45.8 554.8L47.4 551.1L46.6 549.4L48.9 549.2L47.4 546.2L44.5 545.0L40.0 545.0L37.7 543.9L36.4 545.4L35.6 543.5L36.4 542.4L36.4 540.7L37.5 540.3L34.8 538.1L36.4 537.9L38.7 533.9L37.1 532.0L40.4 529.1L40.8 526.5L35.8 524.7L33.9 524.9L35.4 523.6L33.3 520.5L35.0 518.4L37.1 518.8L36.6 514.6L34.8 514.8L28.7 507.6L29.2 505.7L28.3 504.0L30.2 504.0L31.4 499.9L31.2 497.0L28.7 495.2L28.3 490.1L31.0 490.5L30.4 489.4L34.8 491.1L36.6 489.8L35.6 486.8Z"><title>Chubut</title></path><path class="prov" data-k="jujuy" d="M123.7 48.6L128.1 55.4L128.7 53.7L129.7 56.8L132.0 58.2L136.0 59.0L137.4 58.5L139.1 55.1L138.2 53.7L139.3 51.5L138.2 47.6L140.1 46.2L140.7 43.8L142.4 41.6L144.7 41.8L145.9 42.8L146.3 45.0L145.5 49.1L145.7 52.9L147.8 55.4L149.3 55.4L150.7 57.5L152.4 63.0L155.3 65.2L160.7 66.4L165.3 70.0L166.7 69.8L166.9 65.5L168.0 65.9L169.6 68.6L173.1 68.8L173.6 66.7L175.2 65.5L177.3 65.5L180.6 62.1L180.6 43.8L179.2 43.3L177.1 43.8L175.8 44.5L175.8 46.2L174.4 45.2L171.5 42.3L168.2 42.8L166.9 41.6L166.3 38.2L163.6 36.5L163.0 34.8L163.4 33.4L159.4 28.3L158.4 25.3L159.8 23.9L157.8 21.9L158.8 17.1L160.3 14.9L160.9 10.0L159.4 9.5L158.0 10.2L150.1 10.0L147.0 6.1L144.3 5.6L144.9 3.1L142.0 2.4L140.7 4.4L140.7 7.5L139.9 9.7L131.0 13.4L130.6 17.3L126.6 19.7L125.4 23.6L123.1 26.6L126.8 29.2L127.2 30.7L122.7 45.9L122.4 47.9Z"><title>Jujuy</title></path><path class="prov" data-k="formosa" d="M303.8 88.4L301.3 83.5L299.5 81.4L297.4 81.1L292.4 77.6L290.7 79.1L288.4 76.2L284.5 75.0L273.3 68.0L268.6 63.3L258.5 55.5L255.7 56.1L252.7 55.7L245.4 52.1L243.1 52.0L240.6 50.8L238.9 48.5L238.4 45.9L231.0 41.2L228.8 38.0L227.6 38.1L222.5 32.5L214.7 19.5L214.8 57.2L217.5 58.5L218.8 60.4L219.5 59.9L220.0 60.7L223.1 61.6L223.4 62.9L225.8 62.7L227.0 65.3L229.3 65.8L231.1 69.7L236.5 71.1L237.8 74.9L241.8 79.2L246.1 81.7L246.7 82.9L249.1 83.4L255.2 91.4L254.7 92.7L255.4 94.3L260.9 98.0L263.5 101.3L265.1 103.9L265.4 106.6L269.3 106.9L270.6 107.9L270.9 109.4L271.0 111.4L274.4 111.2L275.0 110.2L277.0 112.3L277.9 112.3L281.4 115.9L282.7 116.3L282.8 117.5L283.5 117.3L286.1 119.9L287.7 121.7L287.8 122.7L291.0 124.1L290.5 122.4L292.0 121.4L292.0 118.6L293.3 118.6L292.5 114.5L293.3 114.2L292.8 112.9L294.0 111.2L293.8 109.6L295.0 108.9L294.8 106.7L299.7 103.4L299.0 102.0L300.0 100.9L299.5 99.8L300.9 98.9L300.7 97.4L302.2 96.1L301.4 95.8L302.1 94.8L303.0 95.0L303.4 93.6L304.4 94.2L305.1 92.4L305.3 90.1Z"><title>Formosa</title></path><path class="prov" data-k="entre rios" d="M265.7 207.2L267.3 209.9L267.5 207.8L268.3 207.1L270.5 206.7L273.3 207.9L276.2 205.1L277.8 204.5L280.7 205.4L281.8 204.2L284.4 203.1L286.6 203.1L290.4 205.5L292.0 205.2L293.3 206.2L296.1 213.0L300.1 216.4L300.6 219.8L300.4 221.5L299.4 221.0L298.6 221.5L299.6 224.2L299.5 225.0L298.8 224.9L298.6 229.1L295.5 234.2L297.3 236.3L297.6 238.1L295.3 243.3L294.0 242.8L293.3 243.6L294.3 248.6L293.6 250.7L295.1 253.9L293.4 257.4L294.8 268.8L295.5 271.1L293.2 273.2L289.6 273.6L289.6 276.9L287.8 281.4L287.7 288.6L289.7 295.2L285.1 296.1L284.2 296.0L283.1 294.1L281.4 294.5L278.4 291.2L277.4 291.5L273.6 290.6L273.5 288.8L270.1 288.7L268.7 286.7L266.9 287.3L264.7 285.6L264.5 286.1L262.9 285.3L262.8 284.3L254.8 278.3L253.6 276.7L253.6 275.1L250.9 275.4L246.3 268.8L247.0 267.1L245.6 266.0L245.9 264.1L244.5 259.7L245.2 258.1L245.1 255.3L246.6 254.0L245.8 251.3L246.5 249.6L246.0 245.8L247.0 241.6L248.2 240.0L249.8 239.9L252.0 238.5L252.4 236.4L254.6 235.6L257.1 232.7L257.6 231.7L256.9 230.3L259.2 228.6L266.0 215.6L265.5 211.2L264.6 209.5Z"><title>Entre Ríos</title></path><path class="prov" data-k="la pampa" d="M195.1 423.1L192.1 422.3L191.4 421.1L190.4 421.2L190.4 420.5L188.5 419.7L187.4 417.6L186.4 418.4L186.7 417.9L184.8 417.4L183.5 415.5L178.0 412.7L177.4 413.1L176.7 412.2L176.0 412.6L176.3 412.0L168.3 410.8L166.3 411.3L162.7 410.1L161.9 410.8L160.8 410.6L160.7 411.3L159.5 410.7L157.6 411.6L154.7 409.8L152.8 410.0L153.3 410.3L151.6 411.1L149.1 410.1L148.1 410.4L146.8 409.1L144.2 409.1L144.1 408.5L143.4 409.1L139.8 409.0L139.8 409.5L135.7 408.9L133.3 407.0L134.1 403.5L125.6 400.8L123.3 396.3L120.8 397.5L117.9 397.3L114.6 396.1L113.1 392.8L111.2 392.8L110.2 391.5L110.4 389.9L112.1 389.4L113.3 387.4L111.4 382.6L102.9 380.9L102.3 342.2L163.2 343.1L163.2 319.1L194.8 319.3Z"><title>La Pampa</title></path><path class="prov" data-k="la rioja" d="M156.7 202.1L150.0 223.8L149.9 244.6L136.5 246.7L133.3 245.4L130.4 242.8L129.0 238.4L127.7 238.3L124.5 232.6L125.3 229.2L124.3 227.1L124.9 221.1L121.8 216.3L118.7 214.1L117.0 211.4L115.6 208.7L115.7 206.3L105.8 196.2L104.3 195.8L104.5 193.9L102.9 193.9L102.9 193.2L99.1 190.5L91.4 190.4L91.3 189.4L89.6 191.0L88.5 190.1L88.3 188.1L89.5 186.0L88.9 184.9L89.6 182.9L88.8 179.5L89.5 178.5L89.9 179.4L90.6 178.0L90.7 175.9L89.6 174.2L90.6 171.9L85.8 169.5L84.8 167.3L85.0 165.7L82.9 161.1L80.7 162.0L79.9 160.9L79.2 161.4L76.8 160.6L79.1 158.7L80.2 155.6L81.5 156.5L84.2 150.5L85.5 150.5L86.4 149.5L87.0 145.6L92.7 144.7L95.1 146.4L97.6 146.4L97.6 147.5L99.4 148.3L99.5 152.0L100.3 151.2L101.3 152.0L101.7 151.2L102.1 153.6L103.4 152.9L104.7 153.3L105.9 155.6L108.4 153.2L110.9 158.4L111.1 160.5L113.8 158.4L120.5 160.4L124.2 159.9L126.1 157.3L134.6 158.0L136.0 162.9L135.1 164.2L136.1 163.8L136.3 166.0L139.4 169.3L137.7 170.5L138.6 172.3L143.5 173.8L149.7 179.9L148.9 182.2L151.2 182.2L150.8 185.3Z"><title>La Rioja</title></path><path class="prov" data-k="mendoza" d="M61.8 346.9L63.2 341.2L61.4 340.1L65.1 338.2L62.2 335.6L62.8 333.0L61.8 331.3L61.8 327.2L60.3 326.6L59.1 323.6L61.6 323.6L63.4 321.9L63.4 317.1L65.9 314.5L64.7 313.6L65.9 308.9L69.5 305.6L69.1 301.0L71.3 301.7L73.8 300.0L73.2 293.4L71.8 293.8L72.8 292.1L72.0 290.8L72.8 287.7L72.0 283.5L74.2 280.0L74.2 278.3L72.0 276.0L70.5 278.0L68.8 277.6L68.8 272.1L70.9 269.9L67.4 264.3L67.0 261.2L68.6 261.9L70.3 259.0L71.5 260.5L75.9 258.3L74.9 256.1L78.4 250.1L79.9 248.5L81.5 248.5L82.8 250.1L83.6 248.3L85.9 247.4L88.4 249.4L90.5 249.6L90.5 254.5L94.0 255.0L99.0 252.5L99.4 250.5L102.7 249.6L104.0 250.5L107.5 248.7L107.9 250.3L109.6 251.4L113.9 252.8L117.0 252.5L117.0 253.6L117.7 255.0L120.4 254.8L121.1 259.5L121.8 260.2L121.3 261.2L122.6 261.5L121.8 263.0L123.8 264.3L123.3 267.1L122.0 268.2L123.6 274.5L123.7 280.9L125.9 285.7L129.2 290.4L129.1 291.4L130.4 291.5L133.0 294.4L132.3 295.0L131.5 300.2L130.8 300.6L130.9 302.7L130.1 303.3L133.8 313.0L132.8 313.2L134.7 314.2L136.0 317.8L135.4 318.7L136.9 325.1L136.0 326.0L136.8 326.7L135.5 328.6L136.1 331.8L133.7 342.7L102.3 342.2L103.1 380.9L101.0 381.1L93.8 376.1L88.8 376.9L89.0 374.4L88.0 372.3L85.0 370.6L82.3 371.0L79.6 372.7L78.4 372.5L77.8 371.0L75.3 369.2L74.7 365.2L67.2 357.3L65.5 351.8L62.8 352.7L62.6 347.4Z"><title>Mendoza</title></path><path class="prov" data-k="misiones" d="M334.8 135.4L336.6 135.4L339.5 138.2L340.6 136.5L342.5 135.4L342.7 133.1L341.9 130.6L343.0 131.4L343.2 129.0L345.3 129.8L345.9 127.0L348.3 125.8L351.7 125.4L351.0 124.6L351.2 123.6L354.3 121.8L354.7 119.4L356.0 118.9L356.3 119.6L357.3 118.9L358.0 118.0L357.2 116.4L359.3 113.9L360.5 110.5L359.9 109.5L361.2 108.2L360.3 107.0L360.8 105.4L359.9 103.7L360.0 102.7L361.3 102.8L361.5 99.3L360.2 94.7L361.1 95.1L361.9 93.2L362.4 94.5L362.8 93.4L364.5 96.0L365.2 93.6L367.1 92.5L367.5 93.3L368.2 92.6L369.2 93.3L368.9 91.7L370.1 91.6L370.5 90.9L370.5 94.0L371.7 92.8L372.6 93.1L373.6 95.0L373.9 94.1L374.7 94.3L375.6 95.5L375.1 96.3L376.0 99.1L375.9 102.8L377.8 104.5L377.4 105.9L379.5 108.5L378.1 112.4L378.4 113.9L377.3 118.3L377.3 120.8L378.9 123.8L378.2 124.2L378.9 124.6L377.6 127.2L377.8 127.7L376.9 128.0L377.6 129.0L376.6 128.7L375.9 131.2L375.2 130.3L374.5 131.3L373.6 131.0L373.5 132.0L372.6 132.0L370.7 134.4L368.9 133.6L368.2 136.4L367.1 138.0L366.1 136.8L365.8 138.3L364.8 136.9L363.7 137.4L364.1 138.7L362.7 139.2L361.5 138.2L360.7 140.3L359.8 139.5L359.8 140.9L358.3 140.5L358.1 141.3L357.3 140.0L356.7 142.4L355.6 142.3L354.9 145.6L353.5 146.4L352.1 146.1L353.2 147.7L351.9 147.6L351.3 148.4L349.8 147.9L348.6 149.5L347.4 149.4L347.1 150.7L346.5 150.7L346.6 152.2L345.4 152.7L345.1 153.8L344.2 153.2L343.3 155.2L342.4 153.9L341.9 154.7L339.9 152.6L339.5 153.2L337.9 146.4L333.8 138.3L334.1 135.2Z"><title>Misiones</title></path><path class="prov" data-k="neuquen" d="M102.9 380.9L102.7 407.2L107.9 413.6L98.3 416.9L96.5 420.8L94.0 421.8L90.5 426.3L85.0 429.3L84.0 431.6L80.7 434.2L70.5 438.7L70.9 442.7L68.4 445.1L68.4 447.9L67.0 450.1L67.4 451.7L64.5 451.3L62.8 452.1L59.5 451.3L57.8 453.7L52.8 453.7L50.8 455.1L51.0 456.7L49.1 457.5L50.1 462.3L47.7 464.7L44.7 465.9L41.6 463.7L34.8 463.3L34.4 462.3L35.2 460.7L33.7 459.1L33.1 457.1L33.7 455.3L35.4 454.5L36.0 453.3L34.4 452.9L35.4 449.3L37.3 449.3L38.9 447.3L36.8 444.7L36.6 445.9L35.4 442.9L35.6 440.9L39.5 441.5L38.1 439.3L39.8 436.4L39.8 435.0L38.3 434.6L37.9 433.2L39.3 431.8L37.9 430.5L36.8 428.1L39.5 429.5L41.2 431.4L43.1 429.9L42.7 428.3L41.0 427.9L44.7 422.0L43.1 419.8L42.7 415.3L42.0 413.4L45.6 411.6L45.4 409.5L47.2 410.7L48.7 409.3L53.7 407.9L54.3 404.6L53.5 402.7L51.6 402.1L51.0 399.8L51.6 397.5L50.1 394.0L52.2 393.8L48.9 390.1L48.3 387.6L47.2 387.8L49.1 385.5L47.2 383.0L48.7 380.1L48.7 378.4L46.6 375.5L49.7 370.6L47.9 366.4L49.1 366.2L48.1 363.5L49.1 360.7L51.0 360.1L50.8 358.2L49.3 356.9L53.7 352.7L56.2 353.7L57.2 352.9L56.4 349.7L59.9 346.7L61.4 348.0L62.2 346.5L62.8 347.6L62.8 352.0L65.5 351.4L66.3 355.4L74.9 365.8L74.5 368.9L77.4 370.2L78.6 372.1L83.4 370.6L85.7 371.3L88.2 372.9L88.0 376.5L89.8 376.9L92.1 376.1L96.9 378.0L100.4 380.7Z"><title>Neuquén</title></path><path class="prov" data-k="rio negro" d="M102.9 380.5L111.9 382.6L113.7 387.2L112.7 389.0L110.4 388.8L110.2 390.3L111.4 393.2L113.5 392.1L114.8 395.9L120.0 398.0L123.3 395.9L125.8 400.2L129.3 402.5L134.7 403.7L133.3 407.4L137.6 409.5L140.9 409.7L144.3 407.9L146.3 408.3L149.5 410.9L151.3 411.6L154.2 409.5L159.4 412.0L161.1 410.9L161.5 409.1L166.5 411.6L173.1 411.1L176.7 412.2L186.2 417.5L188.3 417.7L188.5 419.5L195.0 422.8L195.4 456.5L197.9 456.1L201.0 456.9L206.6 462.9L201.4 466.5L198.9 467.1L186.3 466.6L182.3 464.0L181.4 462.5L180.7 463.6L170.7 458.9L167.2 459.1L166.6 458.4L168.9 457.8L168.3 456.8L166.0 456.6L166.4 457.6L164.9 457.3L163.1 458.0L161.7 461.6L161.8 468.0L164.9 476.8L164.1 477.9L164.0 480.5L164.4 482.7L163.6 482.7L163.5 486.9L36.3 486.7L36.0 483.5L36.8 482.8L36.8 481.4L34.6 478.0L35.4 476.6L35.2 473.7L33.8 469.4L34.9 468.3L34.0 467.1L35.2 466.1L34.6 463.3L40.6 463.7L43.0 464.3L44.3 465.5L46.2 465.6L48.1 464.7L50.6 462.1L48.8 457.5L49.3 456.6L50.6 456.7L51.5 454.8L55.7 453.0L57.9 453.2L60.3 451.1L62.0 451.9L64.5 451.1L65.8 451.5L66.8 450.7L66.5 449.5L68.2 448.1L68.4 444.7L70.9 442.9L69.9 438.9L72.6 436.8L80.5 434.2L85.0 429.3L92.1 424.2L98.8 416.7L102.1 415.3L107.8 414.6L104.6 408.7L102.7 407.2Z"><title>Río Negro</title></path><path class="prov" data-k="salta" d="M100.4 82.9L108.3 84.8L117.9 85.3L133.5 84.6L134.5 85.3L137.0 88.9L134.1 96.7L130.8 96.7L130.8 102.4L134.1 105.5L136.0 110.5L139.1 112.8L139.1 110.2L142.4 106.7L150.5 111.7L151.3 110.0L151.1 107.9L152.6 105.0L158.4 104.8L160.1 106.0L160.9 107.9L163.6 108.8L164.4 111.2L174.4 107.4L179.2 96.7L183.1 96.7L183.3 94.8L193.9 96.0L214.5 64.5L214.9 19.5L214.1 17.8L206.2 10.2L206.0 7.8L190.0 7.3L189.6 8.8L188.7 6.8L184.8 7.8L179.9 18.5L178.2 27.3L177.3 29.1L177.1 25.1L175.3 22.4L175.7 20.0L173.9 17.7L173.1 17.7L172.6 14.6L173.7 13.8L171.1 11.5L168.3 11.3L168.2 10.2L161.4 9.1L160.2 14.8L157.8 20.8L157.8 21.8L159.3 22.8L158.5 24.9L159.3 28.5L163.0 32.2L163.5 36.6L164.7 37.9L166.0 38.1L167.3 42.9L170.6 42.1L173.8 44.4L175.3 46.4L176.0 45.8L175.9 44.6L177.4 43.6L180.6 43.4L180.4 60.8L177.7 65.1L176.6 65.6L175.3 64.9L172.7 68.7L171.4 69.5L167.5 65.9L166.4 69.5L164.7 69.4L160.7 66.4L157.9 67.0L157.4 65.8L156.7 66.2L155.6 65.2L154.3 65.7L152.6 64.0L149.8 55.8L146.6 55.2L146.7 54.3L145.6 53.7L145.7 43.7L142.3 41.1L138.5 47.9L138.8 55.1L139.4 54.8L138.6 57.9L137.7 57.9L137.7 59.0L136.8 59.1L136.6 60.1L133.3 59.0L131.6 57.3L129.7 57.0L129.0 54.6L128.0 54.9L122.7 47.8L120.5 56.1L102.9 64.7L101.9 67.1L100.3 66.8L99.7 69.9L98.4 69.8L97.1 74.4L98.4 76.5L99.6 77.1L101.2 82.0Z"><title>Salta</title></path><path class="prov" data-k="san juan" d="M77.4 161.1L79.8 161.2L81.0 162.0L82.3 161.5L85.3 165.5L84.8 167.0L85.5 168.5L90.7 171.8L89.8 174.2L90.0 175.6L91.0 176.4L90.3 177.2L90.8 178.5L90.2 179.5L89.5 178.6L88.7 179.4L89.5 180.8L89.0 181.4L89.8 181.4L88.8 190.6L89.9 191.1L91.7 189.2L91.6 190.2L99.1 190.6L102.9 193.7L104.5 193.5L104.3 195.8L106.1 196.3L115.7 206.3L115.8 208.9L118.7 214.2L122.0 216.4L125.3 220.9L124.5 227.3L125.4 229.1L124.7 232.7L127.9 238.3L129.0 238.3L130.4 242.6L132.7 244.9L123.9 243.0L122.0 244.4L118.4 243.8L117.8 249.9L122.1 256.0L120.5 255.4L120.5 254.6L117.8 255.1L116.8 252.6L114.4 253.1L109.5 251.6L107.7 250.3L107.5 249.3L104.5 250.4L102.9 249.9L99.8 250.7L99.2 252.8L94.1 255.0L90.8 254.6L90.5 250.1L88.5 249.5L86.2 247.7L83.9 248.3L83.2 250.1L80.3 248.7L78.6 250.1L75.9 254.8L75.4 256.4L76.0 258.3L71.7 260.7L70.5 259.3L68.7 261.7L67.2 261.2L67.6 259.0L65.6 257.5L65.9 255.1L63.8 253.4L64.2 252.5L64.5 252.0L63.8 251.1L64.2 250.6L62.7 248.0L64.3 248.4L66.0 246.3L65.0 244.3L61.5 243.8L61.2 239.4L60.3 239.4L59.2 236.4L60.0 231.8L59.6 230.3L61.3 225.3L62.4 225.9L62.2 227.6L63.4 226.6L63.2 224.6L65.1 223.3L63.9 221.5L66.0 211.9L67.6 209.4L66.8 208.0L68.0 207.5L69.1 208.7L72.1 207.8L72.0 205.8L73.3 203.5L73.0 201.4L71.1 202.2L70.8 201.4L72.0 198.1L72.3 191.9L71.1 191.0L70.7 185.3L69.8 184.5L71.1 179.1L74.1 178.4L74.3 172.6L76.2 169.6L75.0 168.7L74.9 167.7L76.5 164.1L76.5 162.6L75.8 161.8Z"><title>San Juan</title></path><path class="prov" data-k="san luis" d="M162.9 319.1L162.9 343.4L133.6 343.2L135.2 334.7L134.7 333.5L135.9 330.7L135.3 329.8L136.6 326.7L135.6 326.1L136.5 325.2L135.2 318.6L135.9 318.0L134.5 314.1L132.5 313.1L133.9 312.6L132.1 310.6L131.2 304.9L130.3 303.4L130.7 300.4L131.5 300.4L133.0 294.2L130.6 291.7L129.0 291.4L129.0 290.1L124.8 283.5L123.8 281.0L123.2 275.5L123.7 274.4L122.1 268.1L123.3 267.3L123.6 264.4L121.9 262.8L122.4 261.7L121.5 261.5L121.8 260.1L120.9 259.5L121.1 257.7L120.2 255.3L121.7 255.9L121.5 254.6L118.4 251.4L117.9 249.7L118.2 243.7L121.4 244.3L123.8 243.0L132.6 244.8L136.1 246.7L153.9 244.4L159.8 248.7L160.7 255.0L166.0 253.9L165.8 256.4L167.4 260.5L166.4 261.1L165.1 268.4L163.3 274.3L161.3 275.6Z"><title>San Luis</title></path><path class="prov" data-k="santa cruz" d="M115.5 583.0L114.7 585.7L115.2 588.5L118.7 597.0L120.2 598.6L122.0 598.7L124.4 600.4L130.3 606.7L132.6 608.0L138.0 608.4L143.3 609.8L146.4 609.1L148.2 609.4L150.5 611.8L150.2 613.2L151.1 616.5L150.2 620.9L147.9 625.6L148.8 628.7L150.4 629.2L149.7 629.3L149.6 630.5L147.3 629.3L146.7 629.6L147.2 631.0L146.0 632.4L147.2 633.0L147.3 634.3L145.5 633.4L143.4 633.8L142.5 635.6L141.0 636.0L138.6 638.5L139.1 639.6L136.8 639.7L137.1 640.8L133.6 641.5L129.9 643.5L129.0 644.4L129.6 645.1L126.5 646.0L124.1 647.6L122.9 651.0L118.9 652.7L116.4 655.2L114.6 658.1L115.2 659.7L113.7 660.1L115.6 661.5L113.9 665.4L112.5 673.6L110.6 678.2L104.0 681.8L101.0 681.8L100.8 683.3L90.5 687.5L86.1 694.5L86.3 700.9L84.8 702.2L86.1 703.2L89.8 715.7L89.2 718.2L93.4 726.3L101.5 735.6L100.2 735.9L98.6 734.6L92.7 734.1L89.4 733.0L87.8 731.2L85.7 730.6L79.4 731.1L69.9 727.0L34.8 727.3L32.5 726.7L33.7 724.7L32.7 722.8L30.8 720.8L27.3 720.0L25.8 716.9L23.5 717.0L25.6 715.6L26.5 713.9L26.2 712.3L25.0 711.6L26.7 709.8L27.1 708.0L25.2 707.7L24.4 705.9L25.0 703.7L26.9 703.5L27.1 699.2L25.2 696.9L26.5 695.4L25.2 694.0L23.3 693.5L21.9 693.4L21.3 695.9L18.4 693.9L16.5 693.9L13.0 697.7L8.8 698.9L7.8 697.7L8.6 696.2L10.5 695.0L8.6 694.4L4.4 688.3L4.8 687.2L2.8 684.6L2.8 682.6L4.6 680.9L2.8 679.2L4.0 677.7L2.6 677.5L4.2 674.5L12.1 670.2L8.6 667.3L12.3 666.8L10.9 664.5L13.4 661.3L11.9 659.9L10.3 659.6L10.3 658.0L12.3 657.1L14.0 654.6L15.9 653.9L16.9 654.9L19.0 651.3L20.6 651.3L21.9 649.7L21.3 642.4L23.8 643.2L25.8 640.1L29.2 639.0L25.8 636.6L25.0 630.6L22.1 629.5L20.4 627.4L22.9 626.7L21.7 624.6L25.4 622.5L26.5 619.8L24.6 618.2L26.9 616.6L29.0 616.8L32.1 613.7L30.8 611.2L34.1 613.0L35.0 610.0L32.7 608.3L34.6 607.8L32.7 606.0L33.5 602.8L32.1 602.0L36.0 602.6L38.7 599.5L38.9 598.1L37.9 597.0L37.1 592.3L37.7 590.1L36.4 588.1L33.9 586.4L37.7 585.3L38.9 583.1Z"><title>Santa Cruz</title></path><path class="prov" data-k="santa fe" d="M254.0 277.5L252.5 281.4L251.2 282.7L250.4 286.3L248.8 286.7L243.7 284.2L242.0 284.9L241.4 286.9L226.6 304.4L204.5 304.4L222.6 274.2L225.2 271.5L225.6 269.2L225.2 265.8L223.9 263.9L222.3 263.5L223.3 261.4L222.7 261.1L222.9 259.2L220.5 253.4L217.9 251.0L218.1 246.9L217.1 244.5L216.7 240.1L218.8 238.1L223.9 216.9L218.5 213.4L226.3 151.1L279.9 151.3L279.4 153.8L276.9 154.4L276.2 155.8L275.9 157.0L277.2 162.0L275.9 165.1L276.4 167.1L274.2 173.8L274.2 175.9L271.4 178.1L271.2 179.3L271.0 180.2L268.3 181.6L268.1 183.4L266.7 184.7L266.9 186.1L265.9 188.1L266.6 189.1L266.4 193.3L265.4 195.3L267.2 199.4L264.8 209.5L265.5 210.7L266.1 216.4L259.0 228.8L257.6 230.2L256.5 233.5L254.6 235.8L253.0 236.3L252.7 237.9L250.4 239.9L248.3 240.0L247.1 241.0L246.0 246.1L246.6 249.2L245.7 251.3L246.3 254.9L245.2 255.6L245.4 257.6L244.6 259.5L245.5 265.2L246.7 267.1L246.1 268.4L249.8 274.2L251.6 275.7L253.3 275.7Z"><title>Santa Fe</title></path><path class="prov" data-k="santiago del estero" d="M219.2 208.7L217.5 206.6L211.9 207.0L210.9 205.9L210.0 203.9L210.8 201.3L206.0 195.8L206.7 194.5L194.1 193.8L193.9 192.2L193.2 192.2L193.3 190.7L187.8 190.2L187.1 188.4L185.3 189.9L184.4 189.7L184.6 188.3L178.1 187.0L167.8 188.6L166.3 181.8L167.3 175.6L165.3 170.8L160.5 166.2L162.3 164.1L162.1 153.6L160.5 148.5L163.0 148.0L164.0 145.7L165.5 145.0L164.2 143.1L164.0 141.3L164.6 135.9L166.7 134.5L167.5 132.6L170.0 123.4L172.7 118.5L174.0 118.7L173.6 113.8L174.6 109.8L174.4 107.2L179.6 95.8L183.1 96.7L182.9 94.8L192.9 96.0L194.3 94.6L226.8 94.4L226.5 151.5Z"><title>Santiago del Estero</title></path><path class="prov" data-k="tierra del fuego" d="M186.6 792.6L187.3 792.6L187.3 793.3L186.4 794.2L184.3 794.6L184.3 793.6L182.9 794.6L182.1 794.0L181.3 795.2L181.3 794.6L180.0 795.4L179.6 795.0L179.2 795.8L179.0 794.0L178.4 794.5L177.6 794.1L177.0 795.2L176.0 795.0L174.4 796.2L174.5 795.0L171.8 797.1L170.2 797.1L171.2 796.6L170.5 795.8L170.9 795.4L169.2 795.4L170.7 794.4L170.3 794.0L171.3 793.9L172.2 794.9L173.7 794.3L173.2 792.7L174.4 793.6L175.6 793.9L176.0 793.2L176.3 794.7L176.3 793.2L177.0 792.4L180.5 793.7L181.0 792.6L181.3 793.5L182.6 792.8L182.5 793.9L183.6 792.9L185.7 792.5L186.1 793.3ZM96.4 743.0L102.4 749.9L104.1 755.0L102.7 751.6L101.9 751.2L100.1 751.9L97.3 755.0L96.9 756.6L99.5 758.6L105.4 759.3L107.1 764.6L113.6 770.3L116.5 771.7L115.8 772.0L116.3 773.6L124.6 778.7L125.3 778.3L128.2 780.5L131.3 781.2L136.8 786.9L138.4 786.9L148.8 790.8L152.1 791.4L153.8 790.8L154.5 791.4L156.3 790.5L156.5 791.3L160.3 790.2L159.8 791.3L162.1 791.0L161.1 791.8L160.5 793.7L160.6 794.3L159.5 794.3L160.4 795.1L159.0 795.4L157.0 797.8L155.5 796.4L154.9 796.6L155.0 797.5L152.1 798.4L149.8 796.8L144.9 796.9L146.3 797.9L145.9 798.4L144.0 799.0L138.8 799.0L138.3 800.4L135.6 800.5L131.3 798.4L122.4 796.2L119.0 796.3L118.8 797.1L116.8 796.4L118.2 795.8L113.5 796.3L103.6 794.5L102.1 794.5L103.2 795.6L101.3 794.9L99.8 795.7L97.5 795.3L96.4 796.9Z"><title>Tierra del Fuego</title></path><path class="prov" data-k="tucuman" d="M160.3 149.2L158.4 147.3L156.9 147.7L154.0 150.3L153.8 151.5L153.1 150.4L151.7 149.9L150.9 146.3L149.8 145.5L149.3 146.9L148.8 146.5L147.9 143.3L146.9 142.7L146.1 135.3L143.1 133.1L148.3 125.5L147.3 123.3L148.8 121.0L144.8 117.6L142.1 118.4L142.6 112.9L143.6 111.7L143.4 109.2L143.8 108.5L150.9 111.6L151.5 106.0L155.1 105.3L156.3 105.8L157.8 104.7L158.9 105.1L159.4 107.4L163.8 108.8L163.9 110.1L165.2 109.9L165.4 110.5L168.5 108.6L171.1 109.1L174.1 108.4L174.7 109.8L173.6 113.8L174.0 118.7L172.8 118.4L170.0 123.4L166.9 134.4L164.8 135.6L164.1 142.2L165.6 145.1L164.1 145.5L162.9 147.9L160.5 148.5L160.8 149.6Z"><title>Tucumán</title></path><circle class="prov caba" data-k="caba" cx="288.6" cy="309.8" r="3.6"><title>Ciudad de Buenos Aires</title></circle><g id="arFx"></g></svg><div class="mapa-live" id="mpLive" aria-live="polite">Cargando participantes…</div></div>
+    <div class="mapa-side">
+      <div class="mapa-stats-hidden" hidden aria-hidden="true"><b id="mpN">0</b><b id="mpP">0</b><b id="mpC">0</b><ol class="mapa-list" id="mpList"></ol></div>
+      <h3 class="mapa-pitch-title">Tu provincia también cuenta</h3>
+      <p class="mapa-pitch">Cada chance activa enciende un punto en el mapa. Sumate hoy y aparecé en la lista pública con tu provincia, a la vista de todo el país.</p>
+      <ul class="mapa-legend">
+        <li><span class="lg lg-on"></span>Provincia con participantes</li>
+        <li><span class="lg lg-off"></span>Esperando su primer participante</li>
+        <li><span class="lg lg-new"></span>Nuevo participante en vivo</li>
+      </ul>
+      <a href="#paquetes" class="btn-primary">Sumar mi provincia</a>
+    </div>
+  </div>
+</div></section>
+
 <section id="paquetes" class="packages-section">
   <div class="section-inner">
-    <span class="section-tag">💎 Elegí tu pack</span>
+    <span class="section-tag">Elegí tu pack</span>
     <h2 class="section-title">Más chances,<br><span style="color:var(--volt)">más posibilidades</span></h2>
     <p class="section-sub">Cada chance suma una participación real dentro del sistema de selección. Mientras más chances tengas, más posibilidades acumulás de quedarte con el Volkswagen Gol Trend.</p>
 
@@ -2947,7 +3094,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- PARTICIPANTS -->
 <section id="participantes" class="participants-section">
   <div class="section-inner">
-    <span class="section-tag">👥 Transparencia total</span>
+    <span class="section-tag">Transparencia total</span>
     <h2 class="section-title">Lista de<br><span style="color:var(--volt)">participantes</span></h2>
     <p class="section-sub">Lista pública en tiempo real. Cada pago aprobado aparece acá con nombre, provincia y cantidad de chances activas.</p>
 
@@ -3019,7 +3166,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- GALLERY -->
 <section id="galeria" class="gallery-section">
   <div class="section-inner">
-    <span class="section-tag">📸 Estado Impecable</span>
+    <span class="section-tag">Estado Impecable</span>
     <h2 class="section-title">Explorá tu próximo<br><span style="color:var(--volt)">Volkswagen Gol Trend</span></h2>
     <p class="section-sub">El vehículo se encuentra en excelentes condiciones, listo para que lo disfrutes desde el primer día.</p>
     
@@ -3096,7 +3243,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- HOW IT WORKS -->
 <section class="how-section">
   <div class="section-inner">
-    <span class="section-tag">❓ ¿Cómo funciona?</span>
+    <span class="section-tag">¿Cómo funciona?</span>
     <h2 class="section-title">Simple,<br><span style="color:var(--volt)">transparente, real</span></h2>
     <div class="steps-grid">
       <div class="step reveal">
@@ -3130,7 +3277,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- DRAW PROCESS -->
 <section class="draw-process-section">
   <div class="section-inner">
-    <span class="section-tag">🎲 Selección transparente</span>
+    <span class="section-tag">Selección transparente</span>
     <h2 class="section-title">Como se elige<br><span style="color:var(--volt)">al ganador</span></h2>
     <p class="section-sub">El proceso está pensado para que cada chance cuente como una participación dentro de una selección aleatoria. No importa de dónde participés: si tu chance está activa, entra en el sorteo.</p>
 
@@ -3162,7 +3309,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- DRAW SHOWCASE -->
 <section class="draw-showcase-section">
   <div class="section-inner">
-    <span class="section-tag">🎮 Demo en tiempo real</span>
+    <span class="section-tag">Demo en tiempo real</span>
     <h2 class="section-title">Así funciona<br><span style="color:var(--volt)">la selección</span></h2>
     <div style="margin-bottom:1rem">
       <button class="btn-draw-sec" id="toggleDemoBtn" type="button">Mostrar / Ocultar demo</button>
@@ -3287,7 +3434,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- PROOF (TESTIMONIALS) -->
 <section class="proof-section">
   <div class="section-inner">
-    <span class="section-tag">💬 Opiniones y expectativas</span>
+    <span class="section-tag">Opiniones y expectativas</span>
     <h2 class="section-title">Mensajes que suman<br><span style="color:var(--volt)">confianza</span></h2>
     <p class="section-sub">Compartimos opiniones y expectativas frecuentes de personas que valoran la claridad del proceso, la lista pública y la coordinación de la entrega con cada ganador.</p>
 
@@ -3298,7 +3445,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- FAQ -->
 <section style="background:var(--ink)">
   <div class="section-inner">
-    <span class="section-tag">❓ Preguntas frecuentes</span>
+    <span class="section-tag">Preguntas frecuentes</span>
     <h2 class="section-title">Todo lo que<br><span style="color:var(--volt)">necesitás saber</span></h2>
     <div class="faq-list">
       <div class="faq-item">
@@ -3536,7 +3683,7 @@ const DEFAULT_SHARE_TITLE = 'Gran Sorteo - Volkswagen Gol Trend';
 const DEFAULT_SHARE_DESCRIPTION = 'Participa de este sorteo. ¡Últimas chances disponibles!';
 const COURSE_PAGE_PATH = './curso-guia-auto-argentina.html';
 const COURSE_MIN_ENTRIES = 3;
-const DRAW_TARGET_ISO = '2026-11-04T14:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
+const DRAW_TARGET_ISO = '2026-11-04T15:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
 
 let activeCampaign = null;
 let packages = [];
@@ -5483,6 +5630,52 @@ async function bootLanding(){
 }
 
 bootLanding();
+</script>
+
+<script>
+(function(){
+var CENT={"buenos aires": [248.5, 359.3], "catamarca": [127.8, 135.1], "chaco": [244.6, 112.5], "corrientes": [300.6, 169.7], "cordoba": [187.2, 250.4], "chubut": [97.9, 529.9], "jujuy": [150.1, 38.9], "formosa": [260.5, 76.8], "entre rios": [274.2, 248.4], "la pampa": [155.7, 370.3], "la rioja": [123.2, 191.5], "mendoza": [96.7, 310.1], "misiones": [360.2, 124.3], "neuquen": [67.8, 406.8], "rio negro": [122.5, 448.6], "salta": [168.2, 62.2], "san juan": [91.0, 219.8], "san luis": [145.1, 289.3], "santa cruz": [71.2, 650.6], "santa fe": [241.0, 216.1], "santiago del estero": [197.4, 145.7], "tierra del fuego": [177.8, 794.3], "tucuman": [157.5, 125.7], "caba": [288.6, 309.8]},NAMES={"buenos aires": "Buenos Aires", "catamarca": "Catamarca", "chaco": "Chaco", "corrientes": "Corrientes", "cordoba": "Córdoba", "chubut": "Chubut", "jujuy": "Jujuy", "formosa": "Formosa", "entre rios": "Entre Ríos", "la pampa": "La Pampa", "la rioja": "La Rioja", "mendoza": "Mendoza", "misiones": "Misiones", "neuquen": "Neuquén", "rio negro": "Río Negro", "salta": "Salta", "san juan": "San Juan", "san luis": "San Luis", "santa cruz": "Santa Cruz", "santa fe": "Santa Fe", "santiago del estero": "Santiago del Estero", "tierra del fuego": "Tierra del Fuego", "tucuman": "Tucumán", "caba": "Ciudad de Buenos Aires"},svg=document.getElementById('arMap');if(!svg)return;
+var fx=document.getElementById('arFx'),live=document.getElementById('mpLive'),seen=null,agg={},keys=[],nodes={};
+svg.querySelectorAll('[data-k]').forEach(function(n){nodes[n.dataset.k]=n});
+function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+function slug(p){var n=norm(p);if(!n||n==='argentina')return null;
+ if(/caba|capital federal|ciudad aut|ciudad de buenos|c\.a\.b\.a/.test(n))return'caba';
+ for(var k in CENT)if(k!=='caba'&&n.indexOf(k)>-1)return k;return null}
+function fmt(n){return Number(n).toLocaleString('es-AR')}
+function snap(){var l=(typeof participants!=='undefined'&&participants)||[];var a={},ids={};
+ l.forEach(function(p){var k=slug(p.province)||slug(p.city);if(!k)return;
+  a[k]=a[k]||{p:0,c:0};a[k].p++;a[k].c+=Number(p.chances||p.purchasedChances||1)});
+ return {a:a,n:l.length,l:l}}
+function render(s){agg=s.a;keys=Object.keys(agg);var max=0,tp=0,tc=0;
+ keys.forEach(function(k){max=Math.max(max,agg[k].p);tp+=agg[k].p;tc+=agg[k].c});
+ Object.keys(nodes).forEach(function(k){var n=nodes[k],a=agg[k];n.classList.toggle('on',!!a);if(a)n.style.setProperty('--l',(a.p/Math.max(max,1)).toFixed(2))});
+ document.getElementById('mpN').textContent=keys.length;document.getElementById('mpP').textContent=fmt(tp);document.getElementById('mpC').textContent=fmt(tc);
+ var top=keys.sort(function(a,b){return agg[b].p-agg[a].p}).slice(0,6);
+ document.getElementById('mpList').innerHTML=top.map(function(k){return'<li><span>'+NAMES[k]+'</span><i style="--w:'+Math.round(agg[k].p/Math.max(max,1)*100)+'%"></i><b>'+agg[k].p+'</b></li>'}).join('');
+ if(!keys.length)live.textContent='Todavía no hay provincias para mostrar.'}
+function ping(k,nuevo){var c=CENT[k];if(!c||!fx)return;var ns='http://www.w3.org/2000/svg';
+ var r=document.createElementNS(ns,'circle');r.setAttribute('cx',c[0]);r.setAttribute('cy',c[1]);r.setAttribute('r',nuevo?44:30);r.setAttribute('class','rip'+(nuevo?' nuevo':''));fx.appendChild(r);
+ var d=document.createElementNS(ns,'circle');d.setAttribute('cx',c[0]);d.setAttribute('cy',c[1]);d.setAttribute('r',3);d.setAttribute('class','dot');fx.appendChild(d);
+ var n=nodes[k];if(n){n.classList.add('flash');setTimeout(function(){n.classList.remove('flash')},1400)}
+ setTimeout(function(){r.remove();d.remove()},2100)}
+function say(t,nuevo){live.textContent=t;live.classList.toggle('nuevo',!!nuevo)}
+function poll(){var s=snap();if(!s.n)return;
+ if(seen===null){seen=s.n;render(s);return}
+ if(s.n!==seen){var add=s.l.slice(0,Math.max(0,s.n-seen)).concat([]);seen=s.n;render(s);
+  var p=s.l.reduce(function(m,x){return(!m||x.joinedAt>m.joinedAt)?x:m},null),k=p&&(slug(p.province)||slug(p.city));
+  if(k){ping(k,true);say('Nuevo participante en '+NAMES[k],true)}}else render(s)}
+var i=0;function cycle(){if(document.hidden||!keys.length)return;
+ var k=keys[Math.floor(Math.random()*keys.length)];ping(k,false);say('Participan desde '+NAMES[k],false)}
+setInterval(poll,4000);setTimeout(poll,1500);setInterval(cycle,2600);
+})();
+</script>
+
+<script>
+(function(){var svg=document.getElementById('arMap');if(!svg)return;var st=svg.parentNode,t=document.createElement('div');t.className='mp-tip';st.appendChild(t);
+svg.addEventListener('mousemove',function(e){var n=e.target.closest&&e.target.closest('[data-k]');if(!n){t.classList.remove('show');return}
+t.textContent=n.getAttribute('data-name')||'';var r=st.getBoundingClientRect();t.style.left=(e.clientX-r.left)+'px';t.style.top=(e.clientY-r.top)+'px';t.classList.add('show')});
+svg.addEventListener('mouseleave',function(){t.classList.remove('show')});
+svg.querySelectorAll('[data-k]').forEach(function(n){var ti=n.querySelector('title');if(ti){n.setAttribute('data-name',ti.textContent);ti.remove()}});})();
 </script>
 </body>
 </html>
