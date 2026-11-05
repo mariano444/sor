@@ -2806,16 +2806,14 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
         <div class="hero-duo reveal">
           <figure class="duo-car">
             <img src="./assets/premios/palio-34-frontal.jpg" alt="Fiat Palio rojo" loading="lazy">
-            <span class="duo-num">Premio 1</span>
             <figcaption class="duo-name">Fiat Palio · Rojo</figcaption>
           </figure>
           <figure class="duo-car">
             <img src="./assets/premios/gol-trend-34-frontal.jpg" alt="Volkswagen Gol Trend rojo" loading="lazy">
-            <span class="duo-num">Premio 2</span>
             <figcaption class="duo-name">VW Gol Trend · Rojo</figcaption>
           </figure>
           <div class="duo-cash">
-            <span class="duo-cash-label">Premio 3<small>En efectivo</small></span>
+            <span class="duo-cash-label">Premio<small>En efectivo</small></span>
             <strong class="duo-cash-amount">$2.000.000</strong>
           </div>
         </div>
@@ -2940,23 +2938,23 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
     <div class="video-duo">
       <div class="video-item video-item--land reveal" style="transition-delay:.08s">
         <div class="video-frame video-frame--land" data-gp-video>
-          <video src="./assets/premios/palio-video.mp4#t=0.1" muted loop playsinline preload="metadata" aria-label="Video del Fiat Palio"></video>
+          <video src="./assets/premios/palio-video.mp4" poster="./assets/premios/palio-video-poster.jpg" muted loop playsinline preload="auto" aria-label="Video del Fiat Palio"></video>
           <span class="video-chip"><i></i> Palio</span>
           <button type="button" class="video-sound" data-gp-sound aria-label="Activar sonido">🔇</button>
           <button type="button" class="video-play" data-gp-play aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
           <div class="video-bar"><div class="video-bar-fill" data-gp-bar></div></div>
         </div>
-        <div class="video-caption"><b>Premio 1 · Fiat Palio</b><span>Rojo</span></div>
+        <div class="video-caption"><b>Fiat Palio</b><span>Rojo</span></div>
       </div>
       <div class="video-item video-item--land reveal" style="transition-delay:.16s">
         <div class="video-frame video-frame--land" data-gp-video>
-          <video src="./assets/premios/gol-trend-video.mp4#t=0.1" muted loop playsinline preload="metadata" aria-label="Video del Volkswagen Gol Trend"></video>
+          <video src="./assets/premios/gol-trend-video.mp4" poster="./assets/premios/gol-trend-video-poster.jpg" muted loop playsinline preload="auto" aria-label="Video del Volkswagen Gol Trend"></video>
           <span class="video-chip"><i></i> Gol Trend</span>
           <button type="button" class="video-sound" data-gp-sound aria-label="Activar sonido">🔇</button>
           <button type="button" class="video-play" data-gp-play aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
           <div class="video-bar"><div class="video-bar-fill" data-gp-bar></div></div>
         </div>
-        <div class="video-caption"><b>Premio 2 · Volkswagen Gol Trend</b><span>Rojo</span></div>
+        <div class="video-caption"><b>Volkswagen Gol Trend</b><span>Rojo</span></div>
       </div>
     </div>
     <div class="video-cta reveal"><a class="btn-primary" href="#paquetes">¡Quiero mis chances!</a></div>
@@ -3112,13 +3110,13 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
           <figure><img src="./assets/premios/gol-trend-trasera-34.jpg" alt="Volkswagen Gol Trend vista 3/4 trasera" loading="lazy"><figcaption>Trasera</figcaption></figure>
         </div>
         <div class="ep-body">
-          <span class="ep-tag">Premio 2</span>
+          <span class="ep-tag">Premio</span>
           <h3 class="ep-title">Volkswagen Gol Trend</h3>
           <p class="ep-text">Un Gol Trend rojo, con fotos reales del exterior y del interior.</p>
         </div>
       </article>
       <article class="ep-card ep-cash reveal" style="transition-delay:.12s">
-        <span class="ep-tag">Premio 3</span>
+        <span class="ep-tag">Premio</span>
         <h3 class="ep-title">Premio en efectivo</h3>
         <div class="ep-amount">$2.000.000</div>
         <p class="ep-text">Dos millones de pesos argentinos.</p>
@@ -3624,7 +3622,7 @@ const DEFAULT_SHARE_TITLE = 'Gran Sorteo - Fiat Palio';
 const DEFAULT_SHARE_DESCRIPTION = 'Participa de este sorteo. ¡Últimas chances disponibles!';
 const COURSE_PAGE_PATH = './curso-guia-auto-argentina.html';
 const COURSE_MIN_ENTRIES = 3;
-const DRAW_TARGET_ISO = '2026-11-05T20:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
+const DRAW_TARGET_ISO = '2026-11-05T18:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
 
 let activeCampaign = null;
 let packages = [];
