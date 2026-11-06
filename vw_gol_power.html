@@ -2701,6 +2701,70 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <body>
 
+<style id="duo-layer">
+/* ===== Hero: los dos autos + premio en efectivo ===== */
+.hero .hero-visual{position:relative!important;top:auto!important}
+.hero-visual .hero-duo{display:grid;grid-template-columns:1fr;gap:.9rem}
+.hero-visual .duo-car{position:relative;margin:0;background:#fff;padding:8px;border:1px solid rgba(255,255,255,.7);border-radius:22px;box-shadow:var(--sh2)}
+.hero-visual .duo-car img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:15px;max-height:none}
+.duo-num{position:absolute;top:18px;left:18px;background:linear-gradient(145deg,var(--goldl),#B08D4A);color:var(--navy9);font-weight:800;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:.3rem .8rem;box-shadow:var(--sh1)}
+.duo-name{position:absolute;left:18px;bottom:18px;background:rgba(14,17,22,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.05em;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.3rem .8rem}
+.duo-cash{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.3rem;border-radius:18px;background:radial-gradient(420px 200px at 100% 0,rgba(47,93,138,.4),transparent 65%),linear-gradient(165deg,var(--navy7),var(--navy9));border:1px solid rgba(232,213,165,.55);box-shadow:var(--sh2)}
+.duo-cash-label{display:grid;color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.duo-cash-label small{color:#B9C2CF;font-weight:600;letter-spacing:.02em;text-transform:none;font-size:.82rem}
+.duo-cash-amount{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1;font-weight:800;letter-spacing:-.04em;background:linear-gradient(95deg,var(--goldl),#B08D4A);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+@media (max-width:640px){
+  .hero-visual .hero-duo{grid-template-columns:1fr 1fr;gap:.6rem}
+  .hero-visual .duo-car{padding:5px;border-radius:16px}
+  .hero-visual .duo-car img{aspect-ratio:4/5;border-radius:11px}
+  .duo-num{top:11px;left:11px;font-size:.6rem;padding:.22rem .6rem}
+  .duo-name{left:11px;right:11px;bottom:11px;font-size:.6rem;text-align:center;padding:.25rem .4rem}
+  .duo-cash{grid-column:1/-1;padding:.8rem 1rem}
+}
+
+/* ===== Videos: los dos juntos ===== */
+.video-wrap.video-wrap--duo{grid-template-columns:1fr;gap:2.2rem;align-items:start}
+.video-copy--center{text-align:center;display:grid;justify-items:center}
+.video-copy--center .section-sub{margin:0;max-width:40rem}
+.video-duo{display:grid;grid-template-columns:1fr;gap:2.2rem;justify-items:center;align-items:center}
+.video-item{display:grid;gap:1rem;justify-items:center;width:100%}
+.video-item--land{max-width:720px}
+.video-frame.video-frame--land{width:100%;aspect-ratio:16/9;border-radius:26px;padding:8px}
+.video-frame--land video{border-radius:19px}
+.video-caption{display:grid;gap:.15rem;text-align:center;color:#fff}
+.video-caption b{font-weight:800;font-size:1.02rem}
+.video-caption span{color:#B9C2CF;font-size:.9rem}
+.video-cta{text-align:center}
+@media (min-width:900px){
+  .video-duo{grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:3rem}
+  .video-item--land{max-width:none}
+}
+
+/* ===== Premios 2 y 3 ===== */
+.extra-prizes{padding:clamp(3rem,7vw,5.5rem) 1.2rem;background:var(--paper)}
+.extra-prizes .ep-inner{width:min(1180px,100%);margin:0 auto}
+.extra-prizes .ep-head{margin-bottom:2rem;display:grid;gap:.9rem;justify-items:start}
+.extra-prizes .ep-head .section-title{margin:0}
+.extra-prizes .ep-head .section-sub{max-width:40rem;margin:0}
+.extra-prizes .ep-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.4rem;align-items:stretch}
+.extra-prizes .ep-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh1);overflow:hidden;display:flex;flex-direction:column}
+.extra-prizes .ep-tag{display:inline-block;align-self:flex-start;background:linear-gradient(145deg,var(--goldl),#B08D4A);color:var(--navy9);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:.35rem .85rem}
+.extra-prizes .ep-body{padding:1.3rem 1.5rem 1.6rem;display:grid;gap:.6rem}
+.extra-prizes .ep-title{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.08;color:var(--navy8);font-weight:800;letter-spacing:-.03em}
+.extra-prizes .ep-text{color:var(--muted);line-height:1.65}
+.extra-prizes .ep-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:6px 6px 0}
+.extra-prizes .ep-photos figure{position:relative;margin:0;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--navy9)}
+.extra-prizes .ep-photos figure:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.extra-prizes .ep-photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.extra-prizes .ep-photos figcaption{position:absolute;left:.6rem;bottom:.6rem;background:rgba(14,17,22,.72);color:#fff;font-weight:700;font-size:.72rem;border-radius:999px;padding:.25rem .7rem}
+.extra-prizes .ep-cash{background:radial-gradient(520px 300px at 90% 0,rgba(47,93,138,.38),transparent 65%),linear-gradient(165deg,var(--navy7),var(--navy9));border-color:rgba(232,213,165,.55);box-shadow:var(--sh2),0 0 0 4px rgba(176,141,74,.14);justify-content:center;align-items:center;text-align:center;padding:2rem 1.5rem;gap:.4rem}
+.extra-prizes .ep-cash .ep-tag{align-self:center}
+.extra-prizes .ep-cash .ep-title{color:#fff;margin-top:.6rem}
+.extra-prizes .ep-amount{font-size:clamp(2.6rem,6vw,4rem);line-height:1;font-weight:800;letter-spacing:-.04em;background:linear-gradient(95deg,var(--goldl),#B08D4A);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;margin:.8rem 0 .3rem}
+.extra-prizes .ep-cash .ep-text{color:#CBD3DE}
+.extra-prizes .ep-cta{text-align:center;margin-top:2rem}
+@media (max-width:900px){.extra-prizes .ep-grid{grid-template-columns:1fr}}
+</style>
 <!-- NAV STRIP -->
 <nav class="nav-strip">
   <a href="#" class="nav-brand">VW<span>GOL POWER</span></a>
@@ -2730,24 +2794,36 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
       <h1 class="hero-title">
         GRAN
         <span class="title-highlight">SORTEO</span>
-        <span class="title-model">Volkswagen Gol Power</span>
+        <span class="title-model">Gol Power · Gol Trend · $2.000.000</span>
       </h1>
 
       <p class="hero-subtitle">Impecable · Listo para transferir · ¡Puede ser tuyo hoy!</p>
 
       <div class="hero-visual">
-        <div class="hero-car-featured reveal">
-          <img src="./assets/premios/gol-power-34-frontal.jpg" alt="Volkswagen Gol Power" loading="lazy">
-          <div class="hero-visual-plate">VOLKSWAGEN · GOL POWER</div>
-          <div class="floating-badge">
-            <span>Últimas</span>
-            <strong>CHANCES</strong>
-            <span>disponibles</span>
+        <div class="hero-duo reveal">
+          <figure class="duo-car">
+            <img src="./assets/premios/gol-power-34-frontal.jpg" alt="Volkswagen Gol Power" loading="lazy">
+            <span class="duo-num">Premio 1</span>
+            <figcaption class="duo-name">VW Gol Power · Gris</figcaption>
+          </figure>
+          <figure class="duo-car">
+            <img src="./assets/premios/gol-trend-34-frontal.jpg" alt="Volkswagen Gol Trend rojo" loading="lazy">
+            <span class="duo-num">Premio 2</span>
+            <figcaption class="duo-name">VW Gol Trend · Rojo</figcaption>
+          </figure>
+          <div class="duo-cash">
+            <span class="duo-cash-label">Premio 3<small>En efectivo</small></span>
+            <strong class="duo-cash-amount">$2.000.000</strong>
           </div>
+        </div>
+        <div class="floating-badge">
+          <span>Últimas</span>
+          <strong>CHANCES</strong>
+          <span>disponibles</span>
         </div>
       </div>
 
-      <p class="hero-lead">Participá por un hermoso Volkswagen Gol Power. <strong>Seguridad garantizada, lista pública en tiempo real</strong> y un beneficio exclusivo: con 3+ chances te llevás gratis el curso guía para comprar usados.</p>
+      <p class="hero-lead">Participá por dos Volkswagen —un Gol Power y un Gol Trend— y un premio de $2.000.000 en efectivo. <strong>Seguridad garantizada, lista pública en tiempo real</strong> y un beneficio exclusivo: con 3+ chances te llevás gratis el curso guía para comprar usados.</p>
 
       <div class="hero-progress-container reveal">
         <div class="hero-progress-label">
@@ -2807,7 +2883,7 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
 <!-- URGENCY STRIP -->
 <div class="urgency-strip">
-  <span>SORTEO · VOLKSWAGEN GOL POWER · PREMIO · ¡ÚLTIMAS CHANCES! · SORTEO · VOLKSWAGEN GOL POWER · PREMIO ÚNICO · ¡ÚLTIMAS CHANCES! · SORTEO · VOLKSWAGEN GOL POWER · PREMIO · ¡ÚLTIMAS CHANCES! · SORTEO NACIONAL · VOLKSWAGEN GOL POWER · PREMIO ÚNICO · ¡ÚLTIMAS CHANCES! · </span>
+  <span>SORTEO · VOLKSWAGEN GOL POWER · PREMIO · ¡ÚLTIMAS CHANCES! · SORTEO · VOLKSWAGEN GOL POWER · PREMIOS · ¡ÚLTIMAS CHANCES! · SORTEO · VOLKSWAGEN GOL POWER · PREMIO · ¡ÚLTIMAS CHANCES! · SORTEO NACIONAL · VOLKSWAGEN GOL POWER · PREMIOS · ¡ÚLTIMAS CHANCES! · </span>
 </div>
 
 <!-- TRUST STRIP -->
@@ -2834,14 +2910,14 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 <div class="ticker">
   <div class="ticker-inner" id="ticker">
     <span class="ticker-item">Volkswagen Gol Power impecable</span>
-    <span class="ticker-item">Premio único con fotos</span>
+    <span class="ticker-item">3 premios con fotos</span>
     <span class="ticker-item">1 ganador seleccionado al azar</span>
     <span class="ticker-item">Más chances = más posibilidades</span>
     <span class="ticker-item">Sorteo 100% transparente</span>
     <span class="ticker-item">Participás desde toda Argentina</span>
     <span class="ticker-item">Con 3 o más chances llevate el curso gratis</span>
     <span class="ticker-item">Volkswagen Gol Power impecable</span>
-    <span class="ticker-item">Premio único con fotos reales</span>
+    <span class="ticker-item">3 premios con fotos reales</span>
     <span class="ticker-item">1 ganador seleccionado al azar</span>
     <span class="ticker-item">Más chances = más posibilidades</span>
     <span class="ticker-item">Sorteo 100% transparente</span>
@@ -2852,47 +2928,60 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
 <!-- PACKAGES -->
 <section id="video" class="video-section">
-  <div class="video-wrap">
-    <div class="video-copy reveal">
-      <span class="section-tag">🎥 Video real del auto</span>
-      <h2 class="section-title">Miralo <span>en movimiento</span></h2>
-      <p class="section-sub">Así es el Volkswagen Gol Power que se sortea: un recorrido real, sin filtros, por el frente, el lateral y los detalles de la carrocería.</p>
-      <ul class="video-points">
-        <li><b>Gris metalizado</b><span>Pintura pareja y en excelente estado</span></li>
-        <li><b>Llantas y cubiertas</b><span>Se ven en buen estado en el recorrido</span></li>
-        <li><b>Premio único</b><span>Un solo ganador, elegido por selección aleatoria</span></li>
-      </ul>
-      <a class="btn-primary" href="#paquetes">¡Quiero mis chances!</a>
+  <div class="video-wrap video-wrap--duo">
+    <div class="video-copy video-copy--center reveal">
+      <span class="section-tag">🎥 Videos de los autos</span>
+      <h2 class="section-title">Miralos <span>en movimiento</span></h2>
+      <p class="section-sub">Los dos Volkswagen que se sortean, uno al lado del otro: el Gol Power gris y el Gol Trend rojo.</p>
     </div>
-    <div class="video-stage reveal" style="transition-delay:.12s">
-      <div class="video-frame" id="gpVideoFrame">
-        <video id="gpVideo" src="./assets/premios/gol-power-video.mp4" poster="./assets/premios/gol-power-video-poster.jpg" muted loop playsinline preload="metadata" aria-label="Recorrido en video del Volkswagen Gol Power"></video>
-        <span class="video-chip"><i></i> Video real · Gol Power</span>
-        <button type="button" class="video-sound" id="gpVideoSound" aria-label="Activar sonido">🔇</button>
-        <button type="button" class="video-play" id="gpVideoPlay" aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="video-bar"><div class="video-bar-fill" id="gpVideoBar"></div></div>
+    <div class="video-duo">
+      <div class="video-item video-item--portrait reveal" style="transition-delay:.08s">
+        <div class="video-frame" data-gp-video>
+          <video src="./assets/premios/gol-power-video.mp4" poster="./assets/premios/gol-power-video-poster.jpg" muted loop playsinline preload="metadata" aria-label="Recorrido en video del Volkswagen Gol Power"></video>
+          <span class="video-chip"><i></i> Gol Power</span>
+          <button type="button" class="video-sound" data-gp-sound aria-label="Activar sonido">🔇</button>
+          <button type="button" class="video-play" data-gp-play aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="video-bar"><div class="video-bar-fill" data-gp-bar></div></div>
+        </div>
+        <div class="video-caption"><b>Premio 1 · Volkswagen Gol Power</b><span>Gris metalizado</span></div>
+      </div>
+      <div class="video-item video-item--land reveal" style="transition-delay:.16s">
+        <div class="video-frame video-frame--land" data-gp-video>
+          <video src="./assets/premios/gol-trend-video.mp4#t=0.1" muted loop playsinline preload="metadata" aria-label="Video del Volkswagen Gol Trend"></video>
+          <span class="video-chip"><i></i> Gol Trend</span>
+          <button type="button" class="video-sound" data-gp-sound aria-label="Activar sonido">🔇</button>
+          <button type="button" class="video-play" data-gp-play aria-label="Reproducir o pausar"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="video-bar"><div class="video-bar-fill" data-gp-bar></div></div>
+        </div>
+        <div class="video-caption"><b>Premio 2 · Volkswagen Gol Trend</b><span>Rojo</span></div>
       </div>
     </div>
+    <div class="video-cta reveal"><a class="btn-primary" href="#paquetes">¡Quiero mis chances!</a></div>
   </div>
 </section>
 <script>
 (function(){
-  var v=document.getElementById('gpVideo'),f=document.getElementById('gpVideoFrame'),pb=document.getElementById('gpVideoPlay'),sb=document.getElementById('gpVideoSound'),bar=document.getElementById('gpVideoBar');
-  if(!v)return;
-  function sync(){f.classList.toggle('is-paused',v.paused);sb.textContent=v.muted?'🔇':'🔊';}
-  function toggle(){if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();}
-  pb.addEventListener('click',toggle);v.addEventListener('click',toggle);
-  sb.addEventListener('click',function(){v.muted=!v.muted;sync();});
-  v.addEventListener('play',sync);v.addEventListener('pause',sync);
-  v.addEventListener('timeupdate',function(){if(v.duration)bar.style.width=(v.currentTime/v.duration*100)+'%';});
-  if('IntersectionObserver' in window){
-    var userPaused=false;pb.addEventListener('click',function(){userPaused=v.paused;});v.addEventListener('click',function(){userPaused=v.paused;});
-    new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!userPaused){var p=v.play();if(p&&p.catch)p.catch(function(){});}
-      else if(!e.isIntersecting){v.pause();}
-    });},{threshold:.5}).observe(f);
-  }
-  sync();
+  var frames=[].slice.call(document.querySelectorAll('[data-gp-video]'));
+  var players=[];
+  frames.forEach(function(f){
+    var v=f.querySelector('video'),pb=f.querySelector('[data-gp-play]'),sb=f.querySelector('[data-gp-sound]'),bar=f.querySelector('[data-gp-bar]');
+    if(!v)return;
+    var userPaused=false;
+    function sync(){f.classList.toggle('is-paused',v.paused);sb.textContent=v.muted?'🔇':'🔊';}
+    function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    function toggle(){if(v.paused){play();userPaused=false;}else{v.pause();userPaused=true;}}
+    pb.addEventListener('click',toggle);v.addEventListener('click',toggle);
+    sb.addEventListener('click',function(){v.muted=!v.muted;sync();});
+    v.addEventListener('play',sync);v.addEventListener('pause',sync);
+    v.addEventListener('timeupdate',function(){if(v.duration)bar.style.width=(v.currentTime/v.duration*100)+'%';});
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting&&!userPaused){play();}
+        else if(!e.isIntersecting){v.pause();}
+      });},{threshold:.5}).observe(f);
+    }
+    sync();
+  });
 })();
 </script>
 
@@ -3005,6 +3094,38 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
         <span class="gallery-tag">Plazas traseras</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PREMIOS ADICIONALES -->
+<section id="premios-extra" class="extra-prizes">
+  <div class="ep-inner">
+    <div class="ep-head reveal">
+      <span class="section-tag">🎁 Más premios</span>
+      <h2 class="section-title">Un segundo auto<br><span>y $2.000.000</span></h2>
+      <p class="section-sub">Además del Gol Power, el sorteo incluye un Volkswagen Gol Trend rojo y un premio en efectivo.</p>
+    </div>
+    <div class="ep-grid">
+      <article class="ep-card reveal">
+        <div class="ep-photos">
+          <figure><img src="./assets/premios/gol-trend-34-frontal.jpg" alt="Volkswagen Gol Trend rojo vista 3/4 frontal" loading="lazy"><figcaption>Vista principal</figcaption></figure>
+          <figure><img src="./assets/premios/gol-trend-interior.jpg" alt="Volkswagen Gol Trend interior" loading="lazy"><figcaption>Interior</figcaption></figure>
+          <figure><img src="./assets/premios/gol-trend-trasera-34.jpg" alt="Volkswagen Gol Trend vista 3/4 trasera" loading="lazy"><figcaption>Trasera</figcaption></figure>
+        </div>
+        <div class="ep-body">
+          <span class="ep-tag">Premio 2</span>
+          <h3 class="ep-title">Volkswagen Gol Trend</h3>
+          <p class="ep-text">Un Gol Trend rojo, con fotos reales del exterior y del interior.</p>
+        </div>
+      </article>
+      <article class="ep-card ep-cash reveal" style="transition-delay:.12s">
+        <span class="ep-tag">Premio 3</span>
+        <h3 class="ep-title">Premio en efectivo</h3>
+        <div class="ep-amount">$2.000.000</div>
+        <p class="ep-text">Dos millones de pesos argentinos.</p>
+      </article>
+    </div>
+    <div class="ep-cta reveal"><a class="btn-primary" href="#paquetes">¡Quiero participar!</a></div>
   </div>
 </section>
 
@@ -3508,7 +3629,7 @@ const DEFAULT_SHARE_TITLE = 'Gran Sorteo - Volkswagen Gol Power';
 const DEFAULT_SHARE_DESCRIPTION = 'Participa de este sorteo. ¡Últimas chances disponibles!';
 const COURSE_PAGE_PATH = './curso-guia-auto-argentina.html';
 const COURSE_MIN_ENTRIES = 3;
-const DRAW_TARGET_ISO = '2026-11-06T20:20:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
+const DRAW_TARGET_ISO = '2026-11-05T18:30:00-03:00'; // = 2026-11-30 21:00:00+00 (mismo instante que draw_at en el SQL)
 
 let activeCampaign = null;
 let packages = [];
