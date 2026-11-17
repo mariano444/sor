@@ -2630,6 +2630,94 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .hero-prize::after, .prize-card::after, .cash-spark, .cash-bill, .btn-primary.pulse { animation: none !important; }
   .hero-title .title-highlight, .cash-amount { animation: none !important; }
 }
+
+/* ======================================================================
+   CAPA DE DISEÑO PERSUASIVO · GANADORES + PULIDO VISUAL
+   Solo estilos y marcado nuevo. No altera lógica, textos ni Supabase.
+   ====================================================================== */
+.winners-section { position: relative; overflow: hidden; background: var(--ink2); }
+.winners-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 50% at 15% 10%, rgba(217,39,43,0.14), transparent),
+    radial-gradient(ellipse 50% 45% at 90% 95%, rgba(232,163,61,0.13), transparent);
+}
+.winners-section .section-inner { position: relative; z-index: 1; }
+.winners-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 0.5rem; }
+.winners-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(232,163,61,0.18), rgba(232,163,61,0.04));
+  border: 1px solid rgba(232,163,61,0.5); border-radius: 999px;
+  padding: 0.55rem 1.1rem; margin-bottom: 2.75rem;
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cash1);
+  box-shadow: 0 0 28px rgba(232,163,61,0.16);
+}
+.winners-badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: blink 1.4s ease-in-out infinite; }
+.winners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: stretch; }
+.winner-card {
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+  background: var(--ink3); border: 1px solid rgba(255,255,255,0.09); border-radius: 1.2rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.38);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s, box-shadow .4s;
+}
+.winner-card:nth-child(2) { transform: translateY(-14px); border-color: rgba(232,163,61,0.45); box-shadow: 0 26px 60px rgba(232,163,61,0.16); }
+.winner-card:hover { transform: translateY(-10px); border-color: var(--volt); box-shadow: 0 30px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(217,39,43,0.3); }
+.winner-card:nth-child(2):hover { transform: translateY(-22px); border-color: var(--gold); }
+.winner-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--ink4); }
+.winner-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.winner-card:hover .winner-photo img { transform: scale(1.07); }
+.winner-card.w1 .winner-photo img { object-position: 62% 30%; }
+.winner-card.w2 .winner-photo img { object-position: 56% 20%; }
+.winner-card.w3 .winner-photo img { object-position: 22% 40%; }
+.winner-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(18,13,13,0.92) 0%, rgba(18,13,13,0.15) 48%, rgba(18,13,13,0) 70%); pointer-events: none; }
+.winner-tag {
+  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 3;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  background: var(--volt); color: #fff; border-radius: 999px; padding: 0.38rem 0.85rem;
+  font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(217,39,43,0.45);
+}
+.winner-card:nth-child(2) .winner-tag { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(232,163,61,0.4); }
+.winner-seal {
+  position: absolute; top: 0.8rem; right: 0.8rem; z-index: 3; width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(18,13,13,0.78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border: 1.5px solid var(--green); display: flex; align-items: center; justify-content: center;
+  color: var(--green); font-weight: 800; font-size: 1.05rem; box-shadow: 0 0 18px rgba(23,214,127,0.3);
+}
+.winner-info { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 1.1rem 1.25rem 1.2rem; }
+.winner-place { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--silver2); margin-bottom: 0.25rem; }
+.winner-prov { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: clamp(1.7rem, 2.8vw, 2.2rem); line-height: 1; color: var(--white); }
+.winner-prov span { color: var(--volt); }
+.winner-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.85rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
+.winner-foot span { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver2); }
+.winner-foot b { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 0.35rem; }
+.winners-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2.2rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.9rem; overflow: hidden; }
+.winners-strip div { background: var(--ink3); padding: 1rem; text-align: center; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver2); }
+.winners-strip div strong { display: block; font-family: var(--font-display); font-style: italic; font-size: 1.5rem; letter-spacing: 0; text-transform: none; color: var(--white); margin-bottom: 0.2rem; }
+.winners-strip div strong em { color: var(--volt); font-style: inherit; }
+.winners-cta { text-align: center; margin-top: 2.2rem; }
+.winners-cta p { margin-top: 0.9rem; color: var(--silver2); font-size: 0.88rem; }
+@media (max-width: 860px) {
+  .winners-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .winner-card:nth-child(2), .winner-card:nth-child(2):hover { transform: none; }
+  .winners-badge { margin-bottom: 1.5rem; }
+}
+@media (max-width: 520px) { .winners-strip { grid-template-columns: 1fr; } }
+
+/* ---- Pulido persuasivo global (solo visual) ---- */
+.hero-content { box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(217,39,43,0.12), 0 0 80px rgba(217,39,43,0.08); }
+.section-title { background: linear-gradient(180deg, #fff 30%, #CFC8C2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.section-title span { -webkit-text-fill-color: var(--volt); }
+.pkg.featured { transform: translateY(-8px) scale(1.03); box-shadow: 0 24px 54px rgba(217,39,43,0.28), 0 0 0 1px rgba(217,39,43,0.4); }
+.pkg.featured:hover { transform: translateY(-13px) scale(1.03); }
+.pkg.featured .pkg-btn { box-shadow: 0 10px 26px rgba(217,39,43,0.4); }
+.pkg-btn { position: relative; overflow: hidden; }
+.step, .draw-card, .proof-card { box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+.step:hover, .proof-card:hover { transform: translateY(-4px); transition: transform .3s, border-color .2s; }
+.bottom-cta { background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(217,39,43,0.16), transparent), radial-gradient(ellipse 60% 60% at 50% 110%, rgba(232,163,61,0.1), transparent), var(--ink2); }
+.bottom-cta .btn-primary { animation: ctaPulse 2.4s ease-in-out infinite; font-size: 1.1rem; padding: 1.2rem 2.6rem; }
+.whatsapp-float { box-shadow: 0 14px 34px rgba(18,168,50,0.35); }
+@media (prefers-reduced-motion: reduce) { .winners-badge i, .bottom-cta .btn-primary { animation: none !important; } }
 </style>
 </head>
       <!-- Meta Pixel Code -->
@@ -2915,6 +3003,69 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
     <div class="prizes-cta reveal">
       <a href="#paquetes" class="btn-primary pulse">¡QUIERO MIS CHANCES!</a>
+    </div>
+  </div>
+</section>
+
+<!-- GANADORES ANTERIORES -->
+<section id="ganadores" class="winners-section">
+  <div class="section-inner">
+    <div class="winners-head">
+      <div>
+        <span class="section-tag">🏆 Ganadores anteriores</span>
+        <h2 class="section-title">Ellos ya se llevaron<br><span style="color:var(--volt)">las llaves</span></h2>
+      </div>
+      <div class="winners-badge"><i></i>Ganadores de sorteos anteriores</div>
+    </div>
+    <p class="section-sub">Gente de toda Argentina que participó, quedó en la lista y se llevó su premio. El próximo en la foto podés ser vos.</p>
+
+    <div class="winners-grid">
+      <article class="winner-card w1 reveal">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-1.jpg" alt="Ganador de Santa Fe con las llaves de su auto" loading="lazy">
+          <span class="winner-tag">🔑 Ganador</span>
+                    <div class="winner-info">
+            <div class="winner-place">Sorteo anterior</div>
+            <div class="winner-prov">Santa <span>Fe</span></div>
+          </div>
+        </div>
+        <div class="winner-foot"><span>Ganador de un sorteo anterior</span></div>
+      </article>
+
+      <article class="winner-card w2 reveal" style="transition-delay:0.12s">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-2.jpg" alt="Ganador de San Luis con las llaves de su auto" loading="lazy">
+          <span class="winner-tag">🔑 Ganador</span>
+                    <div class="winner-info">
+            <div class="winner-place">Sorteo anterior</div>
+            <div class="winner-prov">San <span>Luis</span></div>
+          </div>
+        </div>
+        <div class="winner-foot"><span>Ganador de un sorteo anterior</span></div>
+      </article>
+
+      <article class="winner-card w3 reveal" style="transition-delay:0.24s">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-3.jpg" alt="Ganadora de Mendoza con las llaves de su auto" loading="lazy">
+          <span class="winner-tag">🔑 Ganadora</span>
+                    <div class="winner-info">
+            <div class="winner-place">Sorteo anterior</div>
+            <div class="winner-prov"><span>Mendoza</span></div>
+          </div>
+        </div>
+        <div class="winner-foot"><span>Ganador de un sorteo anterior</span></div>
+      </article>
+    </div>
+
+    <div class="winners-strip reveal">
+      <div><strong>3 <em>×</em> 3</strong>ganadores, 3 provincias</div>
+      <div><strong>100<em>%</em></strong>lista pública</div>
+      <div><strong>48<em> hs</em></strong>para coordinar la entrega</div>
+    </div>
+
+    <div class="winners-cta reveal">
+      <a href="#paquetes" class="btn-primary pulse">¡QUIERO SER EL PRÓXIMO GANADOR!</a>
+      <p>Más chances, más posibilidades de ganar.</p>
     </div>
   </div>
 </section>
