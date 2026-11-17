@@ -2691,7 +2691,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .winner-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.85rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
 .winner-foot span { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver2); }
 .winner-foot b { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 0.35rem; }
-.winners-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2.2rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.9rem; overflow: hidden; }
+.winners-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 2.2rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.9rem; overflow: hidden; }
 .winners-strip div { background: var(--ink3); padding: 1rem; text-align: center; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--silver2); }
 .winners-strip div strong { display: block; font-family: var(--font-display); font-style: italic; font-size: 1.5rem; letter-spacing: 0; text-transform: none; color: var(--white); margin-bottom: 0.2rem; }
 .winners-strip div strong em { color: var(--volt); font-style: inherit; }
@@ -2702,7 +2702,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .winner-card:nth-child(2), .winner-card:nth-child(2):hover { transform: none; }
   .winners-badge { margin-bottom: 1.5rem; }
 }
-@media (max-width: 520px) { .winners-strip { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .winners-strip { grid-template-columns: 1fr 1fr; } }
 
 /* ---- Pulido persuasivo global (solo visual) ---- */
 .hero-content { box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(217,39,43,0.12), 0 0 80px rgba(217,39,43,0.08); }
@@ -2718,6 +2718,118 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .bottom-cta .btn-primary { animation: ctaPulse 2.4s ease-in-out infinite; font-size: 1.1rem; padding: 1.2rem 2.6rem; }
 .whatsapp-float { box-shadow: 0 14px 34px rgba(18,168,50,0.35); }
 @media (prefers-reduced-motion: reduce) { .winners-badge i, .bottom-cta .btn-primary { animation: none !important; } }
+
+/* ======================================================================
+   SEGUNDA CAPA · REDISEÑO VISUAL DE TODA LA PÁGINA (solo estilos)
+   ====================================================================== */
+:root { --section-pad: clamp(3.5rem, 7vw, 6rem); --line: rgba(237,234,230,0.08); }
+html { scroll-padding-top: 5.5rem; }
+html { background: var(--ink); }
+body { background: radial-gradient(ellipse 90% 700px at 50% 0%, #2A1613 0%, var(--ink) 100%) no-repeat top center, var(--ink); }
+
+/* Ritmo y separadores entre secciones */
+.section-inner { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+section + section { border-top: 1px solid var(--line); }
+.section-eyebrow, .section-tag {
+  display: inline-flex; padding: 0.4rem 0.9rem 0.4rem 0.7rem; border-radius: 999px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+}
+.section-title { font-size: clamp(2.3rem, 5vw, 3.8rem); line-height: 1; }
+.section-sub { font-size: 1.08rem; color: #B9B0A9; }
+
+/* Navegación: más limpia y con presencia */
+.nav-strip { background: rgba(18,13,13,0.78); border-color: rgba(237,234,230,0.18); box-shadow: 0 14px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(217,39,43,0.08); }
+.nav-brand { letter-spacing: 0.06em; font-size: 1.12rem; }
+.nav-cta { background: linear-gradient(135deg, var(--volt), var(--volt2)); color: #fff; }
+
+/* Hero: tarjeta principal con más jerarquía */
+.hero-content { background: linear-gradient(180deg, rgba(30,22,20,0.82), rgba(18,13,13,0.78)); border-radius: 1.4rem; border-top-width: 4px; }
+.hero-title { font-size: clamp(3rem, 7vw, 5.4rem); letter-spacing: -0.02em; }
+.hero-subtitle { color: var(--cash1); letter-spacing: 0.26em; }
+.hero-prize { border-radius: 1rem; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.hero-lead { font-size: 1.1rem; color: #E3DDD7; }
+.hero-progress-bar { height: 12px; border-radius: 999px; background: rgba(255,255,255,0.1); }
+.hero-progress-fill { border-radius: 999px; }
+.hero-visual .hero-car-featured { border-radius: 1.1rem; box-shadow: 0 34px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(217,39,43,0.25); }
+
+/* Botones: uniformes y con más contraste */
+.btn-primary { color: #fff; border-radius: 999px; letter-spacing: 0.06em; text-shadow: 0 1px 0 rgba(0,0,0,0.25); }
+.btn-primary:hover { color: var(--ink); text-shadow: none; }
+.btn-secondary { border-color: rgba(237,234,230,0.28); }
+
+/* Franjas */
+.urgency-strip { background: linear-gradient(90deg, var(--volt2), var(--volt), var(--volt2)); }
+.urgency-strip span { color: #fff; }
+.trust-strip { border-top-width: 3px; }
+.trust-item { padding: 1.6rem 1.5rem; }
+.ticker { background: rgba(217,39,43,0.06); }
+.ticker-item { color: var(--cash1); }
+
+/* Premios */
+.prize-card { border-radius: 1.3rem; }
+.prize-fact { padding: 1.4rem 1rem; }
+.prize-fact strong { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+
+/* Paquetes */
+.packages-section { background: linear-gradient(180deg, var(--ink2), #1A1210); }
+.pkg { border-radius: 1.2rem; padding: 2rem 1.4rem 1.6rem; background: linear-gradient(180deg, #221915, var(--ink3)); }
+.pkg-chances { font-size: 3.6rem; }
+.pkg-price { font-size: 2rem; }
+.pkg .pkg-btn { padding: 0.95rem; font-size: 0.9rem; border-width: 1.5px; }
+.pkg:hover .pkg-btn { background: var(--volt); color: #fff; border-color: var(--volt); }
+
+/* Lista de participantes */
+.participants-table-wrap { border-radius: 1rem; background: var(--ink3); box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+.table-header-gp { background: linear-gradient(180deg, #281C18, var(--ink3)); }
+.participants-table-gp tbody tr { transition: background .2s; }
+.participants-table-gp tbody tr:hover td { background: rgba(217,39,43,0.05); }
+.chances-badge { background: rgba(217,39,43,0.14); border: 1px solid rgba(217,39,43,0.28); }
+.search-input-gp { border-radius: 999px; padding: 0.55rem 1rem; }
+
+/* Galería y bonus */
+.gallery-item-new, .auto-photo-card { border-radius: 1rem; }
+.gallery-item-new:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.45); }
+.course-premium-card { border-radius: 1.3rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: linear-gradient(160deg, #241A16, var(--ink3)); box-shadow: 0 26px 60px rgba(0,0,0,0.4); }
+.course-mockup { border-radius: 1rem; }
+.course-item { border-radius: 0.8rem; transition: transform .25s, border-color .25s; }
+.course-item:hover { transform: translateX(4px); border-color: rgba(217,39,43,0.35); }
+
+/* Cómo funciona / selección */
+.step { border-radius: 1rem; padding: 1.8rem 1.4rem; background: linear-gradient(180deg, #221915, var(--ink3)); }
+.step-num { color: rgba(217,39,43,0.18); font-size: 4rem; }
+.draw-card { border-radius: 0.8rem; background: linear-gradient(160deg, #221915, var(--ink3)); }
+.draw-highlight { border-radius: 1rem; background: linear-gradient(135deg, rgba(217,39,43,0.1), rgba(232,163,61,0.05)); border-color: rgba(217,39,43,0.3); }
+.draw-showcase { border-radius: 1.2rem; }
+.auto-showcase-copy, .auto-showcase-grid { border-radius: 1.2rem; }
+
+/* FAQ */
+.faq-item { border-radius: 0.9rem; background: linear-gradient(180deg, #221915, var(--ink3)); transition: border-color .25s, box-shadow .25s; }
+.faq-item:hover { border-color: rgba(217,39,43,0.3); }
+.faq-item.open { box-shadow: 0 14px 34px rgba(0,0,0,0.35); border-color: rgba(217,39,43,0.45); }
+.faq-q { padding: 1.15rem 1.4rem; }
+
+/* Cierre y footer */
+.bottom-cta-title { font-size: clamp(2.6rem, 7.5vw, 5.4rem); }
+footer { background: #0D0909; padding: 2.4rem 1.5rem; }
+
+/* Modal y feed */
+.modal { border-radius: 1.2rem; }
+.live-feed-card { border-radius: 0.8rem; box-shadow: 0 14px 34px rgba(0,0,0,0.45); }
+.toast { border-radius: 999px; box-shadow: 0 14px 34px rgba(0,0,0,0.5); }
+
+/* Sección de ganadores: ajustes finales */
+.winners-strip { max-width: 640px; margin-left: auto; margin-right: auto; }
+.winner-card { border-radius: 1.3rem; }
+
+/* Celulares */
+@media (max-width: 640px) {
+  .section-inner { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .hero-title { font-size: clamp(2.6rem, 13vw, 3.6rem); }
+  .pkg.featured { transform: none; }
+  .pkg.featured:hover { transform: translateY(-5px); }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .bottom-cta-btns { flex-direction: column; align-items: stretch; }
+}
 </style>
 </head>
       <!-- Meta Pixel Code -->
@@ -3023,7 +3135,6 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
       <article class="winner-card w1 reveal">
         <div class="winner-photo">
           <img src="./assets/ganadores/ganador-1.jpg" alt="Ganador de Santa Fe con las llaves de su auto" loading="lazy">
-          <span class="winner-tag">🔑 Ganador</span>
                     <div class="winner-info">
             <div class="winner-place">Sorteo anterior</div>
             <div class="winner-prov">Santa <span>Fe</span></div>
@@ -3035,7 +3146,6 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
       <article class="winner-card w2 reveal" style="transition-delay:0.12s">
         <div class="winner-photo">
           <img src="./assets/ganadores/ganador-2.jpg" alt="Ganador de San Luis con las llaves de su auto" loading="lazy">
-          <span class="winner-tag">🔑 Ganador</span>
                     <div class="winner-info">
             <div class="winner-place">Sorteo anterior</div>
             <div class="winner-prov">San <span>Luis</span></div>
@@ -3047,7 +3157,6 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
       <article class="winner-card w3 reveal" style="transition-delay:0.24s">
         <div class="winner-photo">
           <img src="./assets/ganadores/ganador-3.jpg" alt="Ganadora de Mendoza con las llaves de su auto" loading="lazy">
-          <span class="winner-tag">🔑 Ganadora</span>
                     <div class="winner-info">
             <div class="winner-place">Sorteo anterior</div>
             <div class="winner-prov"><span>Mendoza</span></div>
@@ -3058,7 +3167,6 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
     </div>
 
     <div class="winners-strip reveal">
-      <div><strong>3 <em>×</em> 3</strong>ganadores, 3 provincias</div>
       <div><strong>100<em>%</em></strong>lista pública</div>
       <div><strong>48<em> hs</em></strong>para coordinar la entrega</div>
     </div>
