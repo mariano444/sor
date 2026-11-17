@@ -2830,6 +2830,12 @@ footer { background: #0D0909; padding: 2.4rem 1.5rem; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
   .bottom-cta-btns { flex-direction: column; align-items: stretch; }
 }
+
+/* Localidad bajo la provincia + protección de las fotos de entregas */
+.winner-loc { margin-top: 0.35rem; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cash1); }
+.winner-card, .winner-photo, .winner-photo img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; }
+.winner-photo img { pointer-events: none; }
+.winner-shield { position: absolute; inset: 0; z-index: 2; background: transparent; }
 </style>
 </head>
       <!-- Meta Pixel Code -->
@@ -3129,30 +3135,36 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
     </div>
     <p class="section-sub">Entregas realizadas en distintos puntos del país</p>
 
-    <div class="winners-grid">
+    <div class="winners-grid" oncontextmenu="return false;">
       <article class="winner-card w1 reveal">
         <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-1.jpg" alt="Ganador de Santa Fe con las llaves de su auto" loading="lazy">
+          <img src="./assets/ganadores/ganador-1.jpg" alt="Entrega en Santa Fe Capital" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
                     <div class="winner-info">
             <div class="winner-prov">Santa <span>Fe</span></div>
+            <div class="winner-loc">Capital</div>
           </div>
         </div>
       </article>
 
       <article class="winner-card w2 reveal" style="transition-delay:0.12s">
         <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-2.jpg" alt="Ganador de San Luis con las llaves de su auto" loading="lazy">
+          <img src="./assets/ganadores/ganador-2.jpg" alt="Entrega en San Luis, Villa Mercedes" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
                     <div class="winner-info">
             <div class="winner-prov">San <span>Luis</span></div>
+            <div class="winner-loc">Villa Mercedes</div>
           </div>
         </div>
       </article>
 
       <article class="winner-card w3 reveal" style="transition-delay:0.24s">
         <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-3.jpg" alt="Ganadora de Mendoza con las llaves de su auto" loading="lazy">
+          <img src="./assets/ganadores/ganador-3.jpg" alt="Entrega en Mendoza, Guaymallén" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
                     <div class="winner-info">
             <div class="winner-prov"><span>Mendoza</span></div>
+            <div class="winner-loc">Guaymallén</div>
           </div>
         </div>
       </article>
