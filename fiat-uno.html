@@ -3706,6 +3706,17 @@ section[id] { scroll-margin-top: 5.5rem; }
 /* Entregas: 4 fotos en una fila (escritorio) */
 @media (min-width: 861px) { .winners-grid { grid-template-columns: repeat(4, 1fr); } }
 .winner-card.w4 .winner-photo img { object-position: 72% 40%; }
+
+/* ===== Protección de imágenes y videos (disuasión) ===== */
+img, video, .winner-photo, .prize-media, .gallery-item-new, .hero-car-featured, .auto-photo-card {
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none; -webkit-user-drag: none;
+}
+/* La imagen no recibe clics: el menú "Guardar imagen como…" y el arrastre no aplican */
+img { pointer-events: none; }
+.td-avatar img, .proof-avatar img, .more-avatar img, .opinion-modal-avatar img, .photo-preview img { pointer-events: none; }
+/* Al imprimir / guardar como PDF no salen las imágenes */
+@media print { img, video { display: none !important; } }
 </style>
 </head>
       <!-- Meta Pixel Code -->
@@ -6763,5 +6774,29 @@ bootLanding();
 })();
 </script>
 
+<script>
+/* Protección básica de imágenes y videos: bloquea menú contextual, arrastre,
+   copiar/guardar/imprimir por teclado y selección. Es disuasivo, no infalible. */
+(function(){
+  'use strict';
+  var isMedia = function(t){ return t && t.closest && t.closest('img, video, .winner-photo, .prize-media, .gallery-item-new, .hero-car-featured, .auto-photo-card, .vsx-frame'); };
+  document.addEventListener('contextmenu', function(e){ if (isMedia(e.target)) e.preventDefault(); }, true);
+  document.addEventListener('dragstart', function(e){ if (isMedia(e.target) || (e.target && e.target.tagName === 'IMG')) e.preventDefault(); }, true);
+  document.addEventListener('selectstart', function(e){ if (isMedia(e.target)) e.preventDefault(); }, true);
+  document.addEventListener('keydown', function(e){
+    var k = (e.key || '').toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'p' || k === 'u')) { e.preventDefault(); }
+    if (e.key === 'PrintScreen') {
+      try { navigator.clipboard && navigator.clipboard.writeText(''); } catch(_) {}
+    }
+  }, true);
+  document.querySelectorAll('img').forEach(function(img){ img.setAttribute('draggable','false'); });
+  new MutationObserver(function(ms){
+    ms.forEach(function(m){ m.addedNodes.forEach(function(n){
+      if (n.nodeType === 1) { if (n.tagName === 'IMG') n.setAttribute('draggable','false'); n.querySelectorAll && n.querySelectorAll('img').forEach(function(i){ i.setAttribute('draggable','false'); }); }
+    }); });
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>
