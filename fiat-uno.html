@@ -3702,6 +3702,10 @@ section[id] { scroll-margin-top: 5.5rem; }
 @media (prefers-reduced-motion: reduce) {
   .vsx-aura, .vsx-sound:not(.is-on) { animation: none !important; }
 }
+
+/* Entregas: 4 fotos en una fila (escritorio) */
+@media (min-width: 861px) { .winners-grid { grid-template-columns: repeat(4, 1fr); } }
+.winner-card.w4 .winner-photo img { object-position: 72% 40%; }
 </style>
 </head>
       <!-- Meta Pixel Code -->
@@ -4036,63 +4040,6 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
 
     <div class="prizes-cta reveal">
       <a href="#paquetes" class="btn-primary pulse">¡QUIERO MIS CHANCES!</a>
-    </div>
-  </div>
-</section>
-
-<!-- GANADORES ANTERIORES -->
-<section id="ganadores" class="winners-section">
-  <div class="section-inner">
-    <div class="winners-head">
-      <div>
-        <h2 class="section-title">Referencias de<br><span style="color:var(--volt)">entregas</span></h2>
-      </div>
-    </div>
-    <p class="section-sub">Entregas realizadas en distintos puntos del país</p>
-
-    <div class="winners-grid" oncontextmenu="return false;">
-      <article class="winner-card w1 reveal">
-        <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-1.jpg" alt="Entrega en Santa Fe Capital" loading="lazy" draggable="false" oncontextmenu="return false;">
-          <span class="winner-shield" aria-hidden="true"></span>
-                    <div class="winner-info">
-            <div class="winner-prov">Santa <span>Fe</span></div>
-            <div class="winner-loc">Capital</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="winner-card w2 reveal" style="transition-delay:0.12s">
-        <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-2.jpg" alt="Entrega en San Luis, Villa Mercedes" loading="lazy" draggable="false" oncontextmenu="return false;">
-          <span class="winner-shield" aria-hidden="true"></span>
-                    <div class="winner-info">
-            <div class="winner-prov">San <span>Luis</span></div>
-            <div class="winner-loc">Villa Mercedes</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="winner-card w3 reveal" style="transition-delay:0.24s">
-        <div class="winner-photo">
-          <img src="./assets/ganadores/ganador-3.jpg" alt="Entrega en Mendoza, Guaymallén" loading="lazy" draggable="false" oncontextmenu="return false;">
-          <span class="winner-shield" aria-hidden="true"></span>
-                    <div class="winner-info">
-            <div class="winner-prov"><span>Mendoza</span></div>
-            <div class="winner-loc">Guaymallén</div>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="winners-strip reveal">
-      <div><strong>100<em>%</em></strong>lista pública</div>
-      <div><strong>48<em> hs</em></strong>para coordinar la entrega</div>
-    </div>
-
-    <div class="winners-cta reveal">
-      <a href="#paquetes" class="btn-primary pulse">¡QUIERO SER EL PRÓXIMO GANADOR!</a>
-      <p>Más chances, más posibilidades de ganar.</p>
     </div>
   </div>
 </section>
@@ -4507,6 +4454,74 @@ src="https://www.facebook.com/tr?id=717335459401864&ev=PageView&noscript=1"
         <button class="faq-q">¿Cómo funciona el curso gratis? <span class="faq-arrow">▼</span></button>
         <div class="faq-a">Si tu compra aprobada es de 3 o más chances, se habilita un código de acceso simple y un botón directo para entrar al curso. No depende de salir ganador: es un bonus concreto por la compra.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- GANADORES ANTERIORES -->
+<section id="ganadores" class="winners-section">
+  <div class="section-inner">
+    <div class="winners-head">
+      <div>
+        <h2 class="section-title">Referencias de<br><span style="color:var(--volt)">entregas</span></h2>
+      </div>
+    </div>
+    <p class="section-sub">Entregas realizadas en distintos puntos del país</p>
+
+    <div class="winners-grid" oncontextmenu="return false;">
+      <article class="winner-card w1 reveal">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-1.jpg" alt="Entrega en Santa Fe Capital" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
+                    <div class="winner-info">
+            <div class="winner-prov">Santa <span>Fe</span></div>
+            <div class="winner-loc">Capital</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="winner-card w4 reveal" style="transition-delay:0.06s">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-4.jpg" alt="Entrega en Santa Fe Capital" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
+                    <div class="winner-info">
+            <div class="winner-prov">Santa <span>Fe</span></div>
+            <div class="winner-loc">Capital</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="winner-card w2 reveal" style="transition-delay:0.12s">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-2.jpg" alt="Entrega en San Luis, Villa Mercedes" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
+                    <div class="winner-info">
+            <div class="winner-prov">San <span>Luis</span></div>
+            <div class="winner-loc">Villa Mercedes</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="winner-card w3 reveal" style="transition-delay:0.24s">
+        <div class="winner-photo">
+          <img src="./assets/ganadores/ganador-3.jpg" alt="Entrega en Mendoza, Guaymallén" loading="lazy" draggable="false" oncontextmenu="return false;">
+          <span class="winner-shield" aria-hidden="true"></span>
+                    <div class="winner-info">
+            <div class="winner-prov"><span>Mendoza</span></div>
+            <div class="winner-loc">Guaymallén</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="winners-strip reveal">
+      <div><strong>100<em>%</em></strong>lista pública</div>
+      <div><strong>48<em> hs</em></strong>para coordinar la entrega</div>
+    </div>
+
+    <div class="winners-cta reveal">
+      <a href="#paquetes" class="btn-primary pulse">¡QUIERO SER EL PRÓXIMO GANADOR!</a>
+      <p>Más chances, más posibilidades de ganar.</p>
     </div>
   </div>
 </section>
